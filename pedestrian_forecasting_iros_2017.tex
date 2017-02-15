@@ -263,14 +263,15 @@ If the agent is of nonlinear type, then we assume the dynamics take the form:
 \end{align}
 where $X_k$ is a vector-field\footnote{A vector-field, generally speaking, is an assignment of a velocity to each position in some space.  A vector-field on $\mathbb{R}^n$ is nothing but a map from $\mathbb{R}^n \to \mathbb{R}^n$.} drawn from a finite collection $\{X_1, \dots, X_n\}$, and $s \in \mathbb{R}$.
 More specifically, we assume that each $X_k$ has the property that $\| X_k(x) \| = 1$ for all $x \in D$.
-This property ensures that speed is constant in time
+This property ensures that speed is constant in time.
 % and it has the further advantage of being the (local) generator of solutions to an optimal navigation problem (see Appendix \ref{app:ioc}).
 As we describe in \S \ref{sec:implementation}, the stationary vector-fields $X_1,\dots,X_n$ are learned from the dataset.
 
 It is assumed that $k$ and $s$ are both constant in time, so that $\check{x}_t$ is determined from the triple $(x_0,k,s)$ by integrating \eqref{eq:ode} with the initial condition $x_0$.
 This insight allows us to use the motion model to generate the posterior for $\Pr( \check{x}_t \mid x_0, k, s)$.
 For each initial condition, $x_0$, we can solve \eqref{eq:ode} as an initial value problem, to obtain a point $\check{x}_t$ with initial condition $\check{x}_0 = x_0$.
-This process, which takes $\check{x}_0$ and outputs $\check{x}_t$, constitutes a map which is termed the flow-map \cite[Ch 4]{MTA}, and which we denote by $\Phi_{k,s}^t$.
+This process of solving the differential equation takes an initial condition, $\check{x}_0$, and outputs a final condition, $\check{x}_t$.
+This constitutes a map which is termed the \emph{flow-map} \cite[Ch 4]{MTA}, and which we denote by $\Phi_{k,s}^t$.
 Explicitly, we have the posterior:
 \begin{align}
 	\Pr( \check{x}_t \mid x_0 , k , s) = \delta( \check{x}_t - \Phi^{t}_{k,s}( x_0) )  d\check{x}_t \label{eq:x_check | ksx}
@@ -310,11 +311,11 @@ Concatenating the measurement model with our motion models yields the Bayesian n
 	\draw[->] (x_check_t) to (x_t); 
 \end{tikzpicture}.\label{eq:pgm}
 \end{align}
-We may use this Bayesian network to compute $\rho_t$ efficiently.
+We use this Bayesian network to compute $\rho_t$ efficiently.
 In particular
 \begin{align}
 	\rho_t(x_t ) &:= \Pr( x_t \mid \hat{x}_0, \hat{v}_0 ) \\
-	&= \left( \sum_{k} \int \Pr( x_t, k , s  \mid \hat{x}_0, \hat{v}_0 ) ds \right) \\
+	&= \left( \sum_{k} \int \Pr( x_t, k , s  \mid \hat{x}_0, \hat{v}_0 ) ds \right)  \nonumber \\
 	&\quad + \Pr( x_t, lin \mid \hat{x}_0, \hat{v}_0 ). \label{eq:decomposition}
 \end{align}
 The final term $\Pr( x_t, lin \mid \hat{x}_0, \hat{v}_0 )$ is expressible in closed form when the posteriors $\Pr( x_0 \mid lin)$ and $\Pr( v_0 \mid lin,x_0)$ have known expressions ( e.g. Gaussians or uniform distributions). 
@@ -340,8 +341,8 @@ we can conclude that the integral term in \eqref{eq:decomposition} can be approx
 	 \end{split} \label{eq:approximation 0}
 \end{align}
 where the error is bounded by $\int| \varepsilon_s | ds \leq  TV(x_t, \hat{x}_0, \hat{v}_0) \Delta s$
-where $TV(x_t, \hat{x}_0, \hat{v}_0)$ is the sum, with respect to $k$, of the total variation of $\Pr( x_t, k , s  \mid \hat{x}_0, \hat{v}_0 )$ with respect to $s$ for fixed $x_t, \hat{x}_0, \hat{v}_0$.
-Since this error term can be controlled, the problem of solving $\rho_t(x_t)$ is reduced to that of efficiently computing $ \Pr( x_t, k , s_j  \mid \hat{x}_0, \hat{v}_0)$
+where $TV(x_t, \hat{x}_0, \hat{v}_0)$ is the sum, with respect to $k$, of the total variation of $\Pr( x_t, k , s, \hat{x}_0, \hat{v}_0 )$ with respect to $s$ for fixed $x_t, \hat{x}_0, \hat{v}_0$.
+Since this error term can be controlled, the problem of solving $\rho_t(x_t)$ is reduced to that of efficiently computing $ \Pr( x_t, k , s_j, \hat{x}_0, \hat{v}_0)$
 for a fixed collection of $s_j$'s.
 
 $\hat{x}_0$ and $\hat{v}_0$ are measured and are assumed fixed for the remainder of this section.
@@ -354,7 +355,6 @@ To begin, from \eqref{eq:pgm}  notice that:
 \end{align}
 Observe that from the last line that $\Pr( x_t, k,s, \hat{x}_0, \hat{v}_0)$ is a convolution of the joint distribution $\Pr( \check{x}_t , \hat{x}_0, \hat{v}_0, k,s)$.
 Assuming, for the moment, that such a convolution can be performed efficiently, we focus on computation of $\Pr( \check{x}_t , \hat{x}_0, \hat{v}_0, k,s)$.
-
 Again, \eqref{eq:pgm} implies:
 \begin{align}
 	&\Pr( \check{x}_t , \hat{x}_0, \hat{v}_0, k,s) = \\
@@ -374,15 +374,14 @@ where the last equality follows from substituting \eqref{eq:x_check | ksx} and \
 \label{eq:push forward}
 \end{align}
  where $\Psi( \hat{v}_0 ;k,s,x_0) := \left. \Pr( \hat{v}_0 \mid v_0) \right|_{v_0 = s X_k(x_0)}$.
- Assuming the density $\Pr(\hat{x}_0, x_0, k, s) \Psi( \hat{v}_0 ; k, s, x_0)$ is of bounded variation in the variable $x_0$ (with all other variables held fixed),
- we may approximate it as a sum of weighted Dirac-delta distributions supported on a regular grid.
+ We may approximate $\Pr(\hat{x}_0, x_0, k, s) \Psi( \hat{v}_0 ; k, s, x_0)$ as a sum of weighted Dirac-delta distributions supported on a regular grid, since $\Pr(\hat{x}_0, x_0, k, s) \Psi( \hat{v}_0 ; k, s, x_0)$  is of bounded variation in the variable $x_0$ (with all other variables held fixed).
  %This is merely the definition of \emph{Riemann integrable} \cite{Rudin1991}.
  
  To accomplish this, let $S_L(\hat{x}_0)$ denote the square of side length $L>0$ centered around $\hat{x}_0$.
  Choose  $L>0$ to be such that $\int_{S_L(\hat{x}_0)} \Pr( x_0 \mid \hat{x}_0) dx_0 = 1 - \varepsilon_{tol}$ for some error tolerance $\varepsilon_{tol}>0$.
- Then, for a given resolution $N_x \in \mathbb{N}$ define the regular grid on $S_L(\hat{x}_0)$ as $\Gamma_L( \hat{x}_0 ; N_x ) := \left\{ x_0^{i,j} \mid i,j = -N_x,\dots,N_x \right\}$, where $x_0^{i,j} = \hat{x}_0 + \frac{L}{2N_x}(i,j)$.
+ Then, for a given resolution $N_x \in \mathbb{N}$ define the regular grid on $S_L(\hat{x}_0)$ as $\Gamma_L( \hat{x}_0 ; N_x ) := \left\{ x_0^{i,j} \mid i,j \in \{ -N_x,\dots,N_x \} \right\}$, where $x_0^{i,j} = \hat{x}_0 + \frac{L}{2N_x}(i,j)$.
  The grid spacing is given by $\Delta x = ( \frac{L}{2N_x}, \frac{L}{2N_x} )$.
-Approximate the smooth distribution $\Pr(\hat{x}_0, x_0, k, s) \Psi( \hat{v}_0 ; k, s, x_0 )$ as a weighted sum of Dirac-deltas (in the variable $x_0$) supported on $\Gamma_L( \hat{x}_0;N)$:
+We approximate the smooth distribution $\Pr(\hat{x}_0, x_0, k, s) \Psi( \hat{v}_0 ; k, s, x_0 )$ as a weighted sum of Dirac-deltas (in the variable $x_0$) supported on $\Gamma_L( \hat{x}_0;N)$:
 \begin{align}
 	\begin{split}
 		&\Pr(\hat{x}_0, x_0, k, s) \Psi( \hat{v}_0 ; k, s, x_0 ) = \\
@@ -391,7 +390,8 @@ Approximate the smooth distribution $\Pr(\hat{x}_0, x_0, k, s) \Psi( \hat{v}_0 ;
 	\end{split}
 	\label{eq:approximation 1}
 \end{align}
-where $W(k,s,i,j,\hat{x}_0)$ is merely the evaluation of $\Pr(\hat{x}_0, x_0, k, s) \Psi( \hat{v}_0 ; k, s, x_0 )$ at the grid point $x_0 = x_0^{i,j} \in \Gamma( \hat{x}_0; N)$.
+where $W(k,s,i,j,\hat{x}_0)$ is the evaluation of $\Pr(\hat{x}_0, x_0, k, s) \Psi( \hat{v}_0 ; k, s, x_0 )$ at the grid point $x_0 = x_0^{i,j} \in \Gamma( \hat{x}_0; N)$.
+More explicitly, this evaluation can be done for each grid point by using only the assumed posterior models in \eqref{eq:pgm}.
 %That is to say
 %\begin{align}
 %	\begin{split}
@@ -402,21 +402,23 @@ where $W(k,s,i,j,\hat{x}_0)$ is merely the evaluation of $\Pr(\hat{x}_0, x_0, k,
 For fixed $k$ and $s$, the expression $\Pr(\hat{x}_0, x_0, k, s) \Psi( \hat{v}_0 ; k, s, x_0 )$ is a density in $x_0$ and the error term in \eqref{eq:approximation 1} has a magnitude of $\| \varepsilon_0 \|_{L^1} \sim \mathcal{O}( | \Delta x |  + \varepsilon_{tol} )$ with respect to the $L^1$-norm in $x_0$.
 %In particular, a feasible constant of proportionality would be the BV-norm.
 %The function $W(k,s,i,j, \hat{x}_0)$, can be computed efficiently as product of the posteriors represented in our Bayesian network \eqref{eq:pgm}.
+
 Substitution of \eqref{eq:approximation 1} into the final line of \eqref{eq:push forward} yields:
 \begin{align}
 	\begin{split}
 	&\Pr( \check{x}_t , \hat{x}_0, \hat{v}_0, k,s) = \\
 	&\quad \sum_{i,j} W(k,s,i,j,\hat{x}_0) \delta \left( \check{x}_t - \Phi_{k,s}( x_0^{i,j}) \right) + \varepsilon_t( \check{x}_t)
 	\end{split}
+	\label{eq:makesense}
 \end{align}
 where $\varepsilon_t( \check{x}_t) = \int \delta\left( \check{x}_t - \Phi_{k,s}^{t}( x_0) \right)  \varepsilon_0(x_0) dx_0$.
-The first term is computable by flowing the points of the grid, $\Gamma_L(\hat{x}_0; N_x)$, along the vector field $s X_k$.
+The first term of the right hand side of \eqref{eq:makesense} is computable by flowing the points of the grid, $\Gamma_L(\hat{x}_0; N_x)$, along the vector field $s X_k$.
 The second term, $\varepsilon_t$, may be viewed as an error term.
 In fact, this method of approximating $\Pr( \check{x}_t , \hat{x}_0, \hat{v}_0, k,s)$ as a sum of Dirac-delta distributions is adaptive, in that the error term does not grow in total mass, which is remarkable since many methods for linear evolution equations accumulate error exponentially in time \cite{Leveque1992,Gottlieb2001}:
 
 \begin{thm} \label{thm:error}
 	The error term, $\varepsilon_t \sim \mathcal{O}( | \Delta x | + \varepsilon_{tol} )$ in the $L^1$-norm, for fixed $k,s,\hat{x}_0$, and $\hat{v}_0$.
-	Moreover, $\| \varepsilon_t \|$ is constant in time.
+	Moreover, $\| \varepsilon_t \|_{L^1}$ is constant in time.
 \end{thm}
 \begin{proof}
 	To declutter notation, let us temporarily denote $\Phi_{k,s}^t$ by $\Phi$.
@@ -481,8 +483,7 @@ We can reduce this burden further by exploiting the following symmetry:
 	Substitution of $t$ with $\tau = t/s$ yields $x(\tau) = \Phi_{k,1}^{s \tau} (x_0)$.
 	As $x(\tau) = \Phi_{k,s}^{\tau}(x_0)$ as well, the result follows.
 \end{proof}
-This, allows us to compute $\Phi_{k,s}^t( x_0^{\alpha})$ using computations of $\Phi_{k,1}^t(x_0^{\alpha})$.
-This yields the following theorem
+This, allows us to compute $\Phi_{k,s}^t( x_0^{\alpha})$ using computations of $\Phi_{k,1}^t(x_0^{\alpha})$, which yields the following result:
 \begin{thm} \label{thm:main}
 	Let $\{s_1,\dots,s_n\}$ be a regular partition on the support of $\Pr(s)$.
 	Then the density
@@ -501,10 +502,10 @@ This yields the following theorem
 	Using \eqref{eq:approximation 0}, we can compute the integral over $s$ approximately, with an error of magnitude $\Delta s$.
 \end{proof}
 
-This is a powerful result, since if $\Pr(s)$ has a support contained within the domain $[-\bar{s}, \bar{s}]$, then to solve for $\Pr( x_t, \hat{x}_0, \hat{v}_0)$  (and thus $\rho_t(x_t)$) at times $0, \Delta t, \dots, N_t \Delta t$, we only need to compute $\Phi_{k,1}^{\ell \Delta t \bar{s}}$ for $\ell = -N_t,\dots,N_t$ once.
-This is because, once $\Phi_{k,1}^{\ell \Delta t \bar{s}}$ is computed for $\ell = -N_t, \dots ,N_t$ we can use the partition of $[-\bar{s}, \bar{s}]$ given by $\{ \bar{s} \frac{m}{\ell} \}_{m=-\ell}^{\ell}$ to compute a $\Delta s = \bar{s} / \ell$ accurate approximation for each $\ell$, courtesy of Theorem \ref{thm:main}.
+This is a powerful result, since if $\Pr(s)$ has a support contained within the domain $[-\bar{s}, \bar{s}]$, then to solve for $\Pr( x_t, \hat{x}_0, \hat{v}_0)$  (and thus $\rho_t(x_t)$) at times $0, \Delta t, \dots, N_t \Delta t$, we only need to compute $\Phi_{k,1}^{\ell \Delta t \bar{s}}$ for each $\ell \in  \{-N_t,\dots,N_t\}$ once.
+This is because, once $\Phi_{k,1}^{\ell \Delta t \bar{s}}$ is computed for each $\ell \in \{-N_t, \dots ,N_t\}$ we can use the partition of $[-\bar{s}, \bar{s}]$ given by $\{ \bar{s} \frac{m}{\ell} \}_{m=-\ell}^{\ell}$ to compute a $\Delta s = \bar{s} / \ell$ accurate approximation for each $\ell$, courtesy of Theorem \ref{thm:main}.
 %Admittedly, this means our approximations might be imprecise over very short times, but more accurate over longer time-horizons.
-The procedure to compute   $\rho_t(x_t)$ is summarized in Algorithm \ref{alg:1}.
+The procedure to compute  $\rho_t(x_t)$ is summarized in Algorithm \ref{alg:1}.
 
 \begin{algorithm}[t]
 		  \caption{Algorithm to Compute  $\rho_t$.}
@@ -539,8 +540,8 @@ The procedure to compute   $\rho_t(x_t)$ is summarized in Algorithm \ref{alg:1}.
 
 %Steps \ref{alg1:step1} and \ref{alg1:step2} are where the bulk of the work occurs.
 %Fortunately, these two steps are embarrassingly parallel and yield tolerable computational complexity for real-time computation.
-For fixed $k$ $i$ and $j$, the computation of $\Phi_{k,1}^t(x_0^{i,j})$ at $t = -N_t\bar{s}, (1-N_t)\bar{s} ,\dots, N_t \bar{s}$ takes $\mathcal{O}(N_t)$ time using an explicit finite difference scheme and can be done in parallel for each $k \in \{1,\dots, n\}$ and $x_0^{i,j} \in \Gamma_L( \hat{x}_0; N_x)$.
-Similarly, computing $W(k,s,i,j,\hat{x}_0)$ constitutes a series of parallel function evaluations over tuples $(k,s,i,j)$, where the continuous variable $s$ is only required at finitely many places in Algorithm \ref{alg:1}.
+For fixed $k$ $i$ and $j$, the computation of $\Phi_{k,1}^t(x_0^{i,j})$ at each $t = \{-N_t\bar{s} ,\dots, N_t \bar{s}\}$ takes $\mathcal{O}(N_t)$ time using an explicit finite difference scheme and can be done in parallel for each $k \in \{1,\dots, n\}$ and $x_0^{i,j} \in \Gamma_L( \hat{x}_0; N_x)$.
+Similarly, computing $W(k,s,i,j,\hat{x}_0)$ constitutes a series of parallel function evaluations over tuples $(k,s,i,j)$ of the posterior distributions described in \eqref{eq:pgm}, where the continuous variable $s$ is only required at finitely many places in Algorithm \ref{alg:1}.
 If the posteriors represented by the arrows in \eqref{eq:pgm} are efficiently computably then the computation of $W(k,s,i,j, \hat{x}_0)$ is equally efficient.
 %We summarize this in the following theorem:
 %\begin{thm}
