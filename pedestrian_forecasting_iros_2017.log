@@ -1,6 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  15 FEB 2017 17:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  15 FEB 2017 18:43
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
 **pedestrian_forecasting_iros_2017.tex
 (./pedestrian_forecasting_iros_2017.tex
@@ -934,254 +935,251 @@ png> <./figures/FirstPage/gates_1_2_t=235.png> <./figures/FirstPage/gates_1_2_t
 LaTeX Warning: Reference `fig:' on page 2 undefined on input line 143.
 
 [2] [3]
-Underfull \hbox (badness 1571) in paragraph at lines 354--357
+Underfull \hbox (badness 1571) in paragraph at lines 355--359
 \T1/ptm/m/n/10 be per-formed ef-fi-ciently, we fo-cus on com-pu-ta-tion of
  []
 
+
+Underfull \hbox (badness 1721) in paragraph at lines 375--379
+\T1/ptm/m/n/10 ap-prox-i-mate $[]\OT1/cmr/m/n/10 ([]\OML/cmm/m/it/10 ; x[]; k; 
+s\OT1/cmr/m/n/10 )	([]; \OML/cmm/m/it/10 k; s; x[]\OT1/cmr/m/n/10 )$ \T1/ptm/m/
+n/10 as a sum of
+ []
+
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 393--406
+Underfull \hbox (badness 10000) in paragraph at lines 392--405
 \T1/ptm/m/n/10 where $\OML/cmm/m/it/10 W\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 k; s;
- i; j; []\OT1/cmr/m/n/10 )$ \T1/ptm/m/n/10 is merely the eval-u-a-tion
+ i; j; []\OT1/cmr/m/n/10 )$ \T1/ptm/m/n/10 is the eval-u-a-tion of
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 393--406
-\T1/ptm/m/n/10 of $[]\OT1/cmr/m/n/10 ([]\OML/cmm/m/it/10 ; x[]; k; s\OT1/cmr/m/
-n/10 )	([]; \OML/cmm/m/it/10 k; s; x[]\OT1/cmr/m/n/10 )$ \T1/ptm/m/n/10 at the 
-grid point
+Underfull \hbox (badness 10000) in paragraph at lines 392--405
+[]\OT1/cmr/m/n/10 ([]\OML/cmm/m/it/10 ; x[]; k; s\OT1/cmr/m/n/10 )	([]; \OML/cm
+m/m/it/10 k; s; x[]\OT1/cmr/m/n/10 )$ \T1/ptm/m/n/10 at the grid point
  []
-
-
-LaTeX Warning: Citation `Leveque1992' on page 5 undefined on input line 415.
-
-
-LaTeX Warning: Citation `Gottlieb2001' on page 5 undefined on input line 415.
 
 [5]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 510.
-
-
-LaTeX Warning: Citation `FreyDueck2007' on page 6 undefined on input line 563.
+put line 511.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 589.
+(hyperref)                removing `math shift' on input line 590.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathop' on input line 589.
+(hyperref)                removing `\mathop' on input line 590.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathgroup' on input line 589.
+(hyperref)                removing `\mathgroup' on input line 590.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\symoperators' on input line 589.
+(hyperref)                removing `\symoperators' on input line 590.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\nmlimits@' on input line 589.
+(hyperref)                removing `\nmlimits@' on input line 590.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 589.
+(hyperref)                removing `subscript' on input line 590.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mid' on input line 589.
+(hyperref)                removing `\mid' on input line 590.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 589.
+(hyperref)                removing `math shift' on input line 590.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 589.
+(hyperref)                removing `math shift' on input line 590.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathop' on input line 589.
+(hyperref)                removing `\mathop' on input line 590.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathgroup' on input line 589.
+(hyperref)                removing `\mathgroup' on input line 590.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\symoperators' on input line 589.
+(hyperref)                removing `\symoperators' on input line 590.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\nmlimits@' on input line 589.
+(hyperref)                removing `\nmlimits@' on input line 590.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 589.
+(hyperref)                removing `math shift' on input line 590.
 
 [6]
-<./figures/comparison/ours_death_1_2_t=70.png, id=206, 1204.5pt x 928.46875pt>
+<./figures/comparison/ours_death_1_2_t=70.png, id=208, 1204.5pt x 928.46875pt>
 File: ./figures/comparison/ours_death_1_2_t=70.png Graphic file (type png)
 
 <use ./figures/comparison/ours_death_1_2_t=70.png>
 Package pdftex.def Info: ./figures/comparison/ours_death_1_2_t=70.png used on i
-nput line 652.
+nput line 654.
 (pdftex.def)             Requested size: 73.71617pt x 56.81076pt.
 
-<./figures/comparison/ours_death_1_2_t=250.png, id=207, 1202.4925pt x 928.46875
+<./figures/comparison/ours_death_1_2_t=250.png, id=209, 1202.4925pt x 928.46875
 pt>
 File: ./figures/comparison/ours_death_1_2_t=250.png Graphic file (type png)
  <use ./figures/comparison/ours_death_1_2_t=250.png>
 Package pdftex.def Info: ./figures/comparison/ours_death_1_2_t=250.png used on 
-input line 655.
+input line 657.
 (pdftex.def)             Requested size: 73.71617pt x 56.90993pt.
 
-<./figures/comparison/ours_death_1_2_t=370.png, id=208, 1207.51125pt x 928.4687
+<./figures/comparison/ours_death_1_2_t=370.png, id=210, 1207.51125pt x 928.4687
 5pt>
 File: ./figures/comparison/ours_death_1_2_t=370.png Graphic file (type png)
  <use ./figures/comparison/ours_death_1_2_t=370.png>
 Package pdftex.def Info: ./figures/comparison/ours_death_1_2_t=370.png used on 
-input line 658.
+input line 660.
 (pdftex.def)             Requested size: 73.71617pt x 56.66908pt.
 
-<./figures/comparison/kit_death_1_2_t=70.png, id=209, 1205.50375pt x 928.46875p
+<./figures/comparison/kit_death_1_2_t=70.png, id=211, 1205.50375pt x 928.46875p
 t>
 File: ./figures/comparison/kit_death_1_2_t=70.png Graphic file (type png)
  <use ./figures/comparison/kit_death_1_2_t=70.png>
 Package pdftex.def Info: ./figures/comparison/kit_death_1_2_t=70.png used on in
-put line 666.
+put line 668.
 (pdftex.def)             Requested size: 73.71617pt x 56.76826pt.
 
-<./figures/comparison/kit_death_1_2_t=250.png, id=210, 1203.49625pt x 928.46875
+<./figures/comparison/kit_death_1_2_t=250.png, id=212, 1203.49625pt x 928.46875
 pt>
 File: ./figures/comparison/kit_death_1_2_t=250.png Graphic file (type png)
  <use ./figures/comparison/kit_death_1_2_t=250.png>
 Package pdftex.def Info: ./figures/comparison/kit_death_1_2_t=250.png used on i
-nput line 669.
+nput line 671.
 (pdftex.def)             Requested size: 73.71617pt x 56.86743pt.
 
-<./figures/comparison/kit_death_1_2_t=370.png, id=211, 1208.515pt x 928.46875pt
+<./figures/comparison/kit_death_1_2_t=370.png, id=213, 1208.515pt x 928.46875pt
 >
 File: ./figures/comparison/kit_death_1_2_t=370.png Graphic file (type png)
  <use ./figures/comparison/kit_death_1_2_t=370.png>
 Package pdftex.def Info: ./figures/comparison/kit_death_1_2_t=370.png used on i
-nput line 672.
+nput line 674.
 (pdftex.def)             Requested size: 73.71617pt x 56.62659pt.
 
-<./figures/comparison/rand_death_1_2_t=70.png, id=212, 1209.51875pt x 928.46875
+<./figures/comparison/rand_death_1_2_t=70.png, id=214, 1209.51875pt x 928.46875
 pt>
 File: ./figures/comparison/rand_death_1_2_t=70.png Graphic file (type png)
  <use ./figures/comparison/rand_death_1_2_t=70.png>
 Package pdftex.def Info: ./figures/comparison/rand_death_1_2_t=70.png used on i
-nput line 680.
+nput line 682.
 (pdftex.def)             Requested size: 73.71617pt x 56.58409pt.
 
-<./figures/comparison/rand_death_1_2_t=250.png, id=213, 1207.51125pt x 928.4687
+<./figures/comparison/rand_death_1_2_t=250.png, id=215, 1207.51125pt x 928.4687
 5pt>
 File: ./figures/comparison/rand_death_1_2_t=250.png Graphic file (type png)
  <use ./figures/comparison/rand_death_1_2_t=250.png>
 Package pdftex.def Info: ./figures/comparison/rand_death_1_2_t=250.png used on 
-input line 683.
+input line 685.
 (pdftex.def)             Requested size: 73.71617pt x 56.66908pt.
 
-<./figures/comparison/rand_death_1_2_t=370.png, id=214, 1209.51875pt x 928.4687
+<./figures/comparison/rand_death_1_2_t=370.png, id=216, 1209.51875pt x 928.4687
 5pt>
 File: ./figures/comparison/rand_death_1_2_t=370.png Graphic file (type png)
  <use ./figures/comparison/rand_death_1_2_t=370.png>
 Package pdftex.def Info: ./figures/comparison/rand_death_1_2_t=370.png used on 
-input line 686.
+input line 688.
 (pdftex.def)             Requested size: 73.71617pt x 56.58409pt.
 
-<./figures/bookstore/ours_1_2_t=50.png, id=215, 346.896pt x 266.85698pt>
+<./figures/bookstore/ours_1_2_t=50.png, id=217, 346.896pt x 266.85698pt>
 File: ./figures/bookstore/ours_1_2_t=50.png Graphic file (type png)
 
 <use ./figures/bookstore/ours_1_2_t=50.png>
 Package pdftex.def Info: ./figures/bookstore/ours_1_2_t=50.png used on input li
-ne 715.
+ne 717.
 (pdftex.def)             Requested size: 73.71617pt x 56.70534pt.
 
-<./figures/bookstore/ours_1_2_t=130.png, id=216, 346.35397pt x 266.31496pt>
+<./figures/bookstore/ours_1_2_t=130.png, id=218, 346.35397pt x 266.31496pt>
 File: ./figures/bookstore/ours_1_2_t=130.png Graphic file (type png)
 
 <use ./figures/bookstore/ours_1_2_t=130.png>
 Package pdftex.def Info: ./figures/bookstore/ours_1_2_t=130.png used on input l
-ine 718.
+ine 720.
 (pdftex.def)             Requested size: 73.71617pt x 56.67955pt.
 
-<./figures/bookstore/ours_1_2_t=370.png, id=217, 346.896pt x 266.31496pt>
+<./figures/bookstore/ours_1_2_t=370.png, id=219, 346.896pt x 266.31496pt>
 File: ./figures/bookstore/ours_1_2_t=370.png Graphic file (type png)
 
 <use ./figures/bookstore/ours_1_2_t=370.png>
 Package pdftex.def Info: ./figures/bookstore/ours_1_2_t=370.png used on input l
-ine 721.
+ine 723.
 (pdftex.def)             Requested size: 73.71617pt x 56.59015pt.
 
-<./figures/bookstore/kit_1_2_t=50.png, id=218, 346.896pt x 266.49562pt>
+<./figures/bookstore/kit_1_2_t=50.png, id=220, 346.896pt x 266.49562pt>
 File: ./figures/bookstore/kit_1_2_t=50.png Graphic file (type png)
 
 <use ./figures/bookstore/kit_1_2_t=50.png>
 Package pdftex.def Info: ./figures/bookstore/kit_1_2_t=50.png used on input lin
-e 729.
+e 731.
 (pdftex.def)             Requested size: 73.71617pt x 56.62854pt.
 
-<./figures/bookstore/kit_1_2_t=130.png, id=219, 347.25735pt x 266.49562pt>
+<./figures/bookstore/kit_1_2_t=130.png, id=221, 347.25735pt x 266.49562pt>
 File: ./figures/bookstore/kit_1_2_t=130.png Graphic file (type png)
 
 <use ./figures/bookstore/kit_1_2_t=130.png>
 Package pdftex.def Info: ./figures/bookstore/kit_1_2_t=130.png used on input li
-ne 732.
+ne 734.
 (pdftex.def)             Requested size: 73.71617pt x 56.57161pt.
 
-<./figures/bookstore/kit_1_2_t=370.png, id=220, 347.25735pt x 266.85698pt>
+<./figures/bookstore/kit_1_2_t=370.png, id=222, 347.25735pt x 266.85698pt>
 File: ./figures/bookstore/kit_1_2_t=370.png Graphic file (type png)
 
 <use ./figures/bookstore/kit_1_2_t=370.png>
 Package pdftex.def Info: ./figures/bookstore/kit_1_2_t=370.png used on input li
-ne 735.
+ne 737.
 (pdftex.def)             Requested size: 73.71617pt x 56.64833pt.
 
-<./figures/bookstore/rand_1_2_t=50.png, id=221, 346.896pt x 266.85698pt>
+<./figures/bookstore/rand_1_2_t=50.png, id=223, 346.896pt x 266.85698pt>
 File: ./figures/bookstore/rand_1_2_t=50.png Graphic file (type png)
 
 <use ./figures/bookstore/rand_1_2_t=50.png>
 Package pdftex.def Info: ./figures/bookstore/rand_1_2_t=50.png used on input li
-ne 743.
+ne 745.
 (pdftex.def)             Requested size: 73.71617pt x 56.70534pt.
 
-<./figures/bookstore/rand_1_2_t=130.png, id=222, 346.1733pt x 265.77292pt>
+<./figures/bookstore/rand_1_2_t=130.png, id=224, 346.1733pt x 265.77292pt>
 File: ./figures/bookstore/rand_1_2_t=130.png Graphic file (type png)
 
 <use ./figures/bookstore/rand_1_2_t=130.png>
 Package pdftex.def Info: ./figures/bookstore/rand_1_2_t=130.png used on input l
-ine 746.
+ine 748.
 (pdftex.def)             Requested size: 73.71617pt x 56.59258pt.
 
-<./figures/bookstore/rand_1_2_t=370.png, id=223, 346.35397pt x 265.2309pt>
+<./figures/bookstore/rand_1_2_t=370.png, id=225, 346.35397pt x 265.2309pt>
 File: ./figures/bookstore/rand_1_2_t=370.png Graphic file (type png)
 
 <use ./figures/bookstore/rand_1_2_t=370.png>
 Package pdftex.def Info: ./figures/bookstore/rand_1_2_t=370.png used on input l
-ine 749.
+ine 751.
 (pdftex.def)             Requested size: 73.71617pt x 56.44884pt.
 Package epstopdf Info: Source file: <./figures/the_results.eps>
-(epstopdf)                    date: 2017-02-14 02:14:08
+(epstopdf)                    date: 2017-02-15 17:50:53
 (epstopdf)                    size: 36236 bytes
 (epstopdf)             Output file: <./figures/the_results-eps-converted-to.pdf
 >
-(epstopdf)                    date: 2017-02-14 19:07:45
+(epstopdf)                    date: 2017-02-15 17:50:53
 (epstopdf)                    size: 21996 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figures/the_results-eps-
 converted-to.pdf ./figures/the_results.eps>
-(epstopdf)             \includegraphics on input line 785.
+(epstopdf)             \includegraphics on input line 787.
 Package epstopdf Info: Output file is already uptodate.
 
-<./figures/the_results-eps-converted-to.pdf, id=227, 578.16pt x 433.62pt>
+<./figures/the_results-eps-converted-to.pdf, id=229, 578.16pt x 433.62pt>
 File: ./figures/the_results-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./figures/the_results-eps-converted-to.pdf>
 Package pdftex.def Info: ./figures/the_results-eps-converted-to.pdf used on inp
-ut line 785.
+ut line 787.
 (pdftex.def)             Requested size: 245.71811pt x 184.28275pt.
  [7 <./figures/comparison/ours_death_1_2_t=70.png (PNG copy)> <./figures/compar
 ison/ours_death_1_2_t=250.png (PNG copy)> <./figures/comparison/ours_death_1_2_
@@ -1208,12 +1206,12 @@ Before submitting the final camera ready copy, remember to:
  process uses the US letter (8.5in X 11in) paper size.
 
 [8 <./figures/the_results-eps-converted-to.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 873.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 873.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 875.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 875.
 
 (./pedestrian_forecasting_iros_2017.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 873.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 873.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 875.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 875.
 Package rerunfilecheck Info: File `pedestrian_forecasting_iros_2017.out' has no
 t changed.
 (rerunfilecheck)             Checksum: 34B30608319A58B0C53A4DB0413B4459;1095.
@@ -1221,13 +1219,13 @@ t changed.
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 873.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 875.
  ) 
 Here is how much of TeX's memory you used:
- 20651 strings out of 493089
- 400841 string characters out of 6134842
- 460842 words of memory out of 5000000
- 23650 multiletter control sequences out of 15000+600000
+ 20654 strings out of 493089
+ 400863 string characters out of 6134842
+ 459913 words of memory out of 5000000
+ 23651 multiletter control sequences out of 15000+600000
  119373 words of font info for 141 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,23n,82p,676b,784s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1255,11 +1253,11 @@ e1/urw/courier/ucrr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/t
 imes/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmbi
 8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></u
 sr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on pedestrian_forecasting_iros_2017.pdf (8 pages, 29284987 bytes
+Output written on pedestrian_forecasting_iros_2017.pdf (8 pages, 29285993 bytes
 ).
 PDF statistics:
- 412 PDF objects out of 1000 (max. 8388607)
- 304 compressed objects within 4 object streams
- 82 named destinations out of 1000 (max. 500000)
+ 420 PDF objects out of 1000 (max. 8388607)
+ 312 compressed objects within 4 object streams
+ 84 named destinations out of 1000 (max. 500000)
  270 words of extra memory for PDF output out of 10000 (max. 10000000)
 
