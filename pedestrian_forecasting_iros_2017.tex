@@ -557,7 +557,7 @@ If the posteriors represented by the arrows in \eqref{eq:pgm} are efficiently co
   From this data we tune the parameters of the model ($\{X_1, \dots, X_n\}$, $\Pr( x_0 \mid M)$ and $\Pr(M)$)  appropriately.
   
   \subsection{Learning the Vector Fields}
-  Before we begin to learn vector-fields, we must learn the number of possible vector-fields.
+ We begin by identifying the number of possible vector-fields.
   To do this we use a clustering algorithm on the trajectories observed in a scene to categorize them into groups.
   %In principal, any clustering algorithm could accomplish this.
   In particular, we use the start and end point for each trajectory to obtain a point in $\mathbb{R}^4$.
@@ -570,14 +570,14 @@ If the posteriors represented by the arrows in \eqref{eq:pgm} are efficiently co
   Since most trajectories appearing in the dataset have roughly constant speed, we chose a vector-field that has unit magnitude. 
   That is, we assume the vector-field takes the form $X_k(x) = \left( \cos( \Theta_k(x) ) , \sin(\Theta_k(x)) \right)$ for some scalar function $\Theta_k(x)$.
   Learning the vector-fields then boils down to learning the scalar function $\Theta_k$.
-  We assume $\Theta_k$ takes the form
+  We assume $\Theta_k$ takes the form:
   \begin{align*}
   	\Theta_k(x) = \sum_{\alpha} \theta_{k,\alpha} L_{\alpha}(x),
   \end{align*}
   for some collection of coefficients, $\theta_{k,\alpha}$, and a fixed collection of basis functions, $L_{\alpha}$.
   In our case, we choose $L_{\alpha}$ to be a set of low degree Legendre polynomials.
- $\Theta_k$ can be learned by computing the velocities observed in the cluster, $S_k$.
-  These velocities may be obtained by a low order finite difference formula.
+ $\Theta_k$ is learned by computing the velocities observed in the cluster, $S_k$.
+  These velocities are obtained by a low order finite difference formula.
   Upon normalizing the velocities, we obtain a unit-length velocity vectors, $v_{i,k}$, anchored at each point, $x_{i,k}$, of $S_k$.
   We learn $\Theta_k$ by defining the cost-function:
   \begin{align*}
@@ -589,16 +589,16 @@ If the posteriors represented by the arrows in \eqref{eq:pgm} are efficiently co
   
   \subsection{Learning $\Pr( x_0 \mid M)$ and $\Pr(M)$}
   
-  We begin by considering the nonlinear models first.
+We first considering the nonlinear models.
 %  That is to say, we are concerned with $M = (k,s)$ for an integer $k$ and scalar $s$.
 %  We'd like to compute $\Pr( x_0 \mid k,s)$ for each cluster $k=1,\dots,n$ and each speed $s \in \mathbb{R}$.
-  We make the modeling assumption that $x_0$ is independent of $s$ given $k$, i.e. $\Pr( x_0 \mid k,s) = \Pr(x_0 \mid k)$.
+  We begin by assuming that $x_0$ is independent of $s$ given $k$, i.e. $\Pr( x_0 \mid k,s) = \Pr(x_0 \mid k)$.
   Additionally, we assume that $s$ and $k$ are independent.
   This means that we only need to learn $\Pr( x_0 \mid k)$, $\Pr(k)$, and $\Pr(s)$.
   
   We let $\Pr(k) = (n+1)^{-1}$ and $\Pr(s) \sim \mathcal{U}( [-s_{\max}, s_{\max} ] )$  where $s_{\max}>0$ is the largest observed speed in the dataset.  
   This implies that $\Pr(lin) = (n+1)^{-1}$ as well.
-  Other reasonable choices (such as $\Pr(k) \propto | S_k|$) could work, but we have chosen to be conservative in this paper.
+%  Other reasonable choices (such as $\Pr(k) \propto | S_k|$) could work, but we have chosen to be conservative in this paper.
   
 %  To learn $\Pr( x_0 \mid k)$, we assume that its logarithm may be approximated by a low dimensional subspace of functions on $\mathbb{R}^2$.
 %  That is to say, 
@@ -607,14 +607,14 @@ If the posteriors represented by the arrows in \eqref{eq:pgm} are efficiently co
   	V_k(x_0; \mathbf{c} ) := \sum_{|\alpha|< d} c_{\alpha} L_{\alpha}( x_0)
   \end{align*}
   for a collection of basis functions, $L_{\alpha}$ and coefficients $\mathbf{c} = \{ c_{\alpha} \}_{|\alpha| < d}$.
-  We chose our basis functions to be the collection of tensor products from the first six Legendre polynomials, normalized to the size of the domain.
+  We chose our basis functions to be the collection of tensor products of the first six Legendre polynomials, normalized to the size of the domain.
   Then, one may fit the coefficients $c_{\alpha}$ to the data by using a log-likelihood criterion.
   The resulting (convex) optimization problem takes the form:
   \begin{align*}
   	\mathbf{c}^* = \inf_{ |\mathbf{c}| } \sum_{x \in S_k} V_k( x_0; \mathbf{c})
   \end{align*}
   Where the norm on $\mathbf{c}$ is a sup-norm.
-  We can also bias this optimization towards more regular functions by adding a penalty to the cost function.
+  We bias this optimization towards more regular functions by adding a penalty to the cost function.
     Finally, we let $\Pr( x_0 \mid lin) \sim \mathcal{U}(D)$.
   
   \subsection{Learning the Measurement Model}
@@ -642,7 +642,8 @@ If the posteriors represented by the arrows in \eqref{eq:pgm} are efficiently co
   
  \subsection{Evaluating Performance}
 In this section we establish our methods for evaluating the quality of our predictions, and comparing them against the model from [8] and a random walk.
-We implemented our model as well as the evaluation code in Python 2.6. Our implementation is available online \footnote{https://github.com/OkayHughes/iros2017\_pedestrian\_forecasting}.
+We implement our model as well as the evaluation code in Python 2.6. 
+Our implementation is available online \footnote{https://github.com/OkayHughes/iros2017\_pedestrian\_forecasting}.
 
 \begin{figure}
 	\centering
