@@ -126,22 +126,6 @@ As depicted in Figure \ref{fig:gates-1-2}, this method works quickly to generate
 	\label{fig:gates-1-2}
 \end{figure}
 
-Autonomous systems are increasingly being deployed in and around humans.
- The ability to accurately model and anticipate human behavior is of great value to maximize safety, confidence, and effectiveness in human-centric environments. 
- The stochasticity of humans necessitates a probabilistic approach to capture the likelihood of possible action over a set a of possible behaviors. 
- Since the set of plausible behaviors in arbitrary situations may be vast, this work constrains the problem to anticipating the possible future locations of people within a bounded area. This problem is critical in many application domains such as enabling personal robots to navigate in crowded environments, managing pedestrian flow in smart cities, and synthesizing safe controllers for autonomous vehicles (AV).  
- 
- With a particular focus on the AV application several additional design criteria become important. 
- First, false negative rates for unoccupied regions must be minimized. 
- The misclassification of space in this way has obvious safety issues. 
- Second, speed is paramount. 
- To effectively use human prediction within a vehicle control loop prediction rates must be commensurate with the speed at which humans change trajectories. 
- The margins between humans and vehicles are small and both frequently operate at the boundary. 
- Finally, long-time horizon forecasting is preferable since this improves robot predictability, reduces operation close to safety margins, prevents the need for overly conservative or aggressive controllers and makes high-level goal planning more feasible.
-
-This paper presents an algorithm for real-time, long-term prediction of pedestrian behavior which can subsequently be used by autonomous agents.
-As depicted in Figure \ref{fig:}, this approach relies upon ... 
-
 %First, since safety is paramount, generated predictions must avoid misclassifying areas as unoccupied even though humans are present. 
 %Though this may unduly reduce the precision of the algorithm 
 
