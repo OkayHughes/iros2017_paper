@@ -638,26 +638,8 @@ We first considering the nonlinear models.
   This choice is justified from the our use of finite differences to estimate velocity.
   In particular, if velocity is approximated via finite differencing as $v(t) \approx (x(t+h) - x(t))\,\Delta t^{-1} + \mathcal{O}(h)$ and the measurements are corrupted by Gaussian noise, then the measurement $\hat{v}(t)$ is related to $v(t)$ by Gaussian noise with roughly the same standard deviation as $(x(t+h) - x(t))\,\Delta t^{-1}$.
   
-  \subsection{Learning the Noise Model}
-  Finally, we assume that the true position is related to the model by Gaussian noise with a growing variance.
-  In particular, we assume $\Pr( x_t \mid \check{x}_t) \sim \mathcal{N}( \check{x}_t , \kappa t)$ for some constant $\kappa \geq 0$.
-  The parameter, $\kappa$, must be learned.
- % We've taken an adhoc approach in this paper, although more intelligent and theoretically sound alternatives likely exist.
-  For each curve in $S_k$ we create a synthetic curve using the initial position and speed and integrating the corresponding vector-field, $s\, X_k$.
-  So for each curve, $x_i(t)$, of $S_k$, we have a synthesized curve $x_{i,synth}(t)$ as well.
-  We then measure the standard deviation of $(x_i(t) - x_{i,synth}(t)) / t$ over $i$ and at few time, $t \in \{ 0, 100, 200 \}$ in order to obtain $\kappa$.
   
- \subsection{Evaluating Performance}
- 
-This section establishes our methods performance and compares it to the model from \cite{Kitani2012} and a random walk.
-We implement our model as well as our evaluation code in Python 2.6. 
-Our implementation is available online\footnote{https://github.com/OkayHughes/iros2017\_pedestrian\_forecasting}.
-Our test data used a total  annotations in \cite{Robicquet2016}. 
-We did a 2-fold cross validation by using $20\%$ of the data for testing and the remainder for training.
-We used the same partitions of the trajectories for all three predictors.
-Our analysis was conducted on 4 different scenes of varying complexity with a total of $350$ total annotations. 
-
-\begin{figure}
+  \begin{figure}
 	\centering
 	\begin{minipage}[c]{0.5cm}
 		\rotatebox{90}{\small{Our Algorithm}   }
@@ -782,6 +764,27 @@ Our analysis was conducted on 4 different scenes of varying complexity with a to
 	
 	\label{fig:death-1-2}
 \end{figure}
+
+  
+  \subsection{Learning the Noise Model}
+  Finally, we assume that the true position is related to the model by Gaussian noise with a growing variance.
+  In particular, we assume $\Pr( x_t \mid \check{x}_t) \sim \mathcal{N}( \check{x}_t , \kappa t)$ for some constant $\kappa \geq 0$.
+  The parameter, $\kappa$, must be learned.
+ % We've taken an adhoc approach in this paper, although more intelligent and theoretically sound alternatives likely exist.
+  For each curve in $S_k$ we create a synthetic curve using the initial position and speed and integrating the corresponding vector-field, $s\, X_k$.
+  So for each curve, $x_i(t)$, of $S_k$, we have a synthesized curve $x_{i,synth}(t)$ as well.
+  We then measure the standard deviation of $(x_i(t) - x_{i,synth}(t)) / t$ over $i$ and at few time, $t \in \{ 0, 100, 200 \}$ in order to obtain $\kappa$.
+  
+ \subsection{Evaluating Performance}
+ 
+This section establishes our methods performance and compares it to the model from \cite{Kitani2012} and a random walk.
+We implement our model as well as our evaluation code in Python 2.6. 
+Our implementation is available online\footnote{https://github.com/OkayHughes/iros2017\_pedestrian\_forecasting}.
+Our test data used a total  annotations in \cite{Robicquet2016}. 
+We did a 2-fold cross validation by using $20\%$ of the data for testing and the remainder for training.
+We used the same partitions of the trajectories for all three predictors.
+Our analysis was conducted on 4 different scenes of varying complexity with a total of $350$ total annotations. 
+
 
 %Our data came from the Stanford Drone Dataset in the form of hand annotated bounding boxes around agents (e.g. cars, pedestrians, bicycles). 
 
