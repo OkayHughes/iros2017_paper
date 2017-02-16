@@ -315,7 +315,9 @@ This section details how this modeling choice can be leveraged to compute $\rho_
 To begin, rather than focusing on computing $\rho_t(x_t)$, we describe how to compute the joint probability $\Pr( x_t , \hat{x}_0, \hat{v}_0)$.
 We can obtain $\rho_t(x_t)$ by normalizing $\Pr( x_t , \hat{x}_0, \hat{v}_0)$ with respect to integration over $x_t$.
 We can approximate the integration over $s$ in \eqref{eq:decomposition}, with a Riemann sum.
-Given a regular partition $\{ s_0, s_1, \dots, s_n \}$ of step-size $\Delta s > 0$ on the support of $\Pr(s)$, 
+Let us assume that $\Pr(s \mid k)$ is compactly supported for all $k = 1,\dots,n$, and the supported is always contained
+in some interval $[ - \bar{s} , \bar{s} ]$ for some $\bar{s} > 0$.
+Given a regular partition $\{ s_0, s_1, \dots, s_n \}$ of step-size $\Delta s > 0$ on $[-\bar{s}, \bar{s}]$, 
 we can conclude that the integral term in \eqref{eq:decomposition} can be approximated by
 \begin{align}
 	\begin{split}
@@ -474,7 +476,7 @@ This, allows us to compute $\Phi_{k,s}^t( x_0^{\alpha})$ using computations of $
 	Then the density
 	\begin{align}
 		\begin{split}
-		&\Delta s \sum_{i,j,k,\ell} W(k,s_\ell,i,j,\hat{x}_0) \left. \Pr( x_t \mid \check{x}_t ) \right|_{ \check{x}_t = \Phi_{k,1}^{s_\ell t}( x_0^{i,j}) } \\
+		&\Delta s \sum_{i,j,k,m} W(k,s_m,i,j,\hat{x}_0) \left. \Pr( x_t \mid \check{x}_t ) \right|_{ \check{x}_t = \Phi_{k,1}^{s_m t}( x_0^{i,j}) } \\
 		&+\Pr( x_t , lin, \hat{x}_0, \hat{v}_0 )
 		\end{split}
 		\label{eq:approximation 3}
@@ -487,21 +489,38 @@ This, allows us to compute $\Phi_{k,s}^t( x_0^{\alpha})$ using computations of $
 	Using \eqref{eq:approximation 0}, we can compute the integral over $s$ approximately, with an error of magnitude $\Delta s$.
 \end{proof}
 
-This is a powerful result, since if $\Pr(s)$ has a support contained within the domain $[-\bar{s}, \bar{s}]$, then to solve for $\Pr( x_t, \hat{x}_0, \hat{v}_0)$  (and thus $\rho_t(x_t)$) at times $0, \Delta t, \dots, N_t \Delta t$, we only need to compute $\Phi_{k,1}^{\ell \Delta t \bar{s}}$ for each $\ell \in  \{-N_t,\dots,N_t\}$ once.
-This is because, once $\Phi_{k,1}^{\ell \Delta t \bar{s}}$ is computed for each $\ell \in \{-N_t, \dots ,N_t\}$ we can use the partition of $[-\bar{s}, \bar{s}]$ given by $\{ \bar{s} \frac{m}{\ell} \}_{m=-\ell}^{\ell}$ to compute a $\Delta s = \bar{s} / \ell$ accurate approximation for each $\ell$, courtesy of Theorem \ref{thm:main}.
+This is a powerful result, because it allows us to solve for $\Pr( x_t, \hat{x}_0, \hat{v}_0)$  (and thus $\rho_t(x_t)$) at times $t=\Delta t, \dots, N_t \Delta t$ by a single computation of $\Phi_{k,1}^{\ell \Delta t \bar{s}}( x_0^{i,j})$ for each $\ell \in  \{-N_t,\dots,N_t\}$, $k \in \{1,\dots,n\}$, and $x_0^{i,j} \in \Gamma_L( \hat{x}_0 , N_x)$.
+To explain this, assume we are given $\Phi_{k,1}^{m \Delta t \bar{s}}(x_0^{i,j})$ for all $|m| \leq \ell$.
+We can then use the regular partition
+\begin{align}
+	\mathcal{P}_\ell := \left\{ \frac{m}{\ell} \bar{s} \right\}_{m=-\ell}^{\ell} \label{eq:partition}
+\end{align}
+of $[-\bar{s}, \bar{s}]$ to compute a Riemann sum approximation using Theorem \ref{thm:main}.
+The partition $\mathcal{P}_\ell$ has a width of size, $\Delta s = \bar{s} / \ell$, and substitution in \eqref{eq:approximation 3} yields an approximation of $\Pr( x_t, \hat{x}_0, \hat{v}_0)$ given by
+\begin{align*}
+	\begin{split}
+		&\frac{\bar{s}}{\ell} \sum_{i,j,k,m} W(k,m \bar{s} / \ell ,i,j,\hat{x}_0) \left. \Pr( x_t \mid \check{x}_t ) \right|_{ \check{x}_t = \Phi_{k,1}^{m \bar{s} \Delta t}( x_0^{i,j}) } \\
+		&\qquad+\Pr( x_t , lin, \hat{x}_0, \hat{v}_0 ).
+	\end{split}
+\end{align*}
+As we've already computed $\Phi_{k,1}^{m \bar{s} \Delta t}$ for $| m | \leq \ell$ by assumption, the only obstacle to computing this sum is the computation of the weights $W(k,m \bar{s} / \ell ,i,j,\hat{x}_0)$.
 %Admittedly, this means our approximations might be imprecise over very short times, but more accurate over longer time-horizons.
 The procedure to compute  $\rho_t(x_t)$ is summarized in Algorithm \ref{alg:1}.
 
 \begin{algorithm}[t]
-		  \caption{Algorithm to Compute  $\rho_t$ at times $t=0,\Delta t, 2 \Delta t, \dots, N_t \Delta t$.}
+		  \caption{Algorithm to Compute  $\rho_t$ at times $t= \Delta t, 2 \Delta t, \dots, N_t \Delta t$.}
 		  \label{alg:1}
 		  \begin{algorithmic}[1]
-		    \Require $N_t \in \mathbb{N}, \Delta t > 0,   \{ X_k \}_{k=1}^{n}, \hat{x}_0, \hat{v}_0, \Gamma_L( \hat{x}_0, N_x)$, and the posteriors of \eqref{eq:pgm}.
-		    \For {$\ell = 0,\dots,N_t$}
+		    \Require $\bar{s} > 0, N_t \in \mathbb{N}, \Delta t > 0,   \{ X_k \}_{k=1}^{n}, \hat{x}_0, \hat{v}_0, \Gamma_L( \hat{x}_0, N_x)$,
+		    routines for $\Pr(x_0 \mid M), \Pr(x_0 \mid \hat{x}_0), \Pr(v_0 \mid \hat{v}_0 ), \Pr(M \in \mathcal{M}), \Pr(s \mid k)$ .
+		    \For {$\ell = 1,\dots,N_t$}
+		    \State Compute and store $\Phi_{k,1}^{ \pm \bar{s} \ell \Delta t}( x_0^{i,j} )$ for all $x_0^{i,j} \in \Gamma_L( \hat{x}_0 ; N_x)$.
 		    \For {$m = -\ell,\dots,\ell$}
-		    \State Compute $W(k,s,i,j,\hat{x}_0)$ for $s = \bar{s} m / \ell$.
+		    \State Compute $W(k,s,i,j,\hat{x}_0)$ for $s = \bar{s} m / \ell$ using \eqref{eq:pgm}.
 		    \EndFor  
-		    \State Construct a $\mathcal{O}( \Delta x + \bar{s}/\ell + \varepsilon_{\rm tol})$ approximation of $\Pr(\check{x}_t, \hat{x}_0, \hat{v}_0)$ at $t=\ell \Delta t$ via Theorem \ref{thm:main} \label{alg1:step2}.
+		    \State Construct a $\mathcal{O}( \Delta x + \bar{s}/\ell + \varepsilon_{\rm tol})$ approximation of $\Pr(\check{x}_t, \hat{x}_0, \hat{v}_0)$ at $t=\ell \Delta t$ via Theorem \ref{thm:main} 
+		    with partition $\mathcal{P}_\ell$ of \eqref{eq:partition}.
+		   \label{alg1:step2}.
 		    \State Normalize with respect to $\check{x}_t$ to obtain an approximation of $\Pr(\check{x}_t \mid \hat{x}_0, \hat{v}_0)$.
 		    \State Convolve with respect to $\Pr( x_t \mid \check{x}_t)$ to obtain $\rho_t(x_t)$ at $t= \ell \cdot \Delta t$
 		    \EndFor
