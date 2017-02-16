@@ -90,7 +90,7 @@ When compared with MDP-based methods, our algorithm appears to be superior from 
 Autonomous systems are increasingly being deployed in and around humans. 
 The ability to accurately model and anticipate human behavior is critical to maximizing safety, confidence, and effectiveness of these systems in human-centric environments. 
 The stochasticity of humans necessitates a probabilistic approach to capture the likelihood of an action over a set of possible behaviors. 
-Since the set of plausible human behaviors is vast, this work focuses on anticipating the possible future locations of people within a bounded area. 
+Since the set of plausible human behaviors is vast, this work focuses on anticipating the possible future locations of pedestrians within a bounded area. 
 This problem is critical in many application domains such as enabling personal robots to navigate in crowded environments, managing pedestrian flow in smart cities, and synthesizing safe controllers for autonomous vehicles (AV).  
 
 With a particular focus on the AV application several additional design criteria become important. 
@@ -767,7 +767,7 @@ Without this information the implementation of the predictor provided by the aut
 Neither our algorithm nor the random walk were provided this information.
 
 The output distributions of the three algorithms were compared using their integrals over the cells of a regular grid over our domain. 
-These integrals are used to visualize the distributions in Figures \ref{fig:death-1-2} and \ref{fig:bookstore-1-2}.
+These integrals are used to visualize the distributions in Figures \ref{fig:bookstore-1-2} and \ref{fig:death-1-2}.
 %In keeping with our measurement model, the ground truth compared against was a grid that was identically zero except on a bounding box around the measurement at time $t$. 
 %The ground truth bounding box at each time instance were set equal to the average bounding box dimension centered at the 
 %were the average bounding box dimensions in the training data set. 
