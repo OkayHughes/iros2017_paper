@@ -505,8 +505,8 @@ given by
 	\end{split}
 \end{align*}
 As we have already computed $\Phi_{k,1}^{m \bar{s} \Delta t}$ for $| m | \leq \ell$ by assumption, the only obstacle to computing this sum is the computation of the weights $W(k,m \bar{s} / \ell ,i,j,\hat{x}_0)$.
+Now if we want to compute $\Pr( x_t, \hat{x}_0, \hat{v}_0)$ at $t=(\ell + 1 ) \Delta t$, then by reusing the earlier computation one would only need to compute $\Phi_{k,1}^{m  \bar{s} \Delta t}(x_0^{i,j})$ for $m \in \{ -( \ell + 1 ), (\ell + 1 )\}$ along with the weights.
 %Admittedly, this means our approximations might be imprecise over very short times, but more accurate over longer time-horizons.
-The procedure to compute  $\rho_t(x_t)$ is summarized in Algorithm \ref{alg:1}.
 
 \begin{algorithm}[t]
 		  \caption{Algorithm to compute  $\rho_t$ for each $t \in  \{\Delta t, 2 \Delta t, \dots, N_t \Delta t$\}.}
@@ -514,9 +514,9 @@ The procedure to compute  $\rho_t(x_t)$ is summarized in Algorithm \ref{alg:1}.
 		  \begin{algorithmic}[1]
 		    \Require $\bar{s} > 0$, $N_t \in \mathbb{N}$, $\Delta t > 0$,  $ \{ X_k \}_{k=1}^{n}$, $\hat{x}_0$, $\hat{v}_0$, $\Gamma_L( \hat{x}_0, N_x)$, $\Pr(x_0 \mid M), \Pr(x_0 \mid \hat{x}_0), \Pr(v_0 \mid \hat{v}_0 ), \Pr(M \in \mathcal{M}), \text{ and } \Pr(s \mid k)$.
 		    \For {$\ell \in \{1,\dots,N_t\}$}
-		    \State Compute $\Phi_{k,1}^{ \pm \bar{s} \ell \Delta t}( x_0^{i,j} )$ for all $x_0^{i,j} \in \Gamma_L( \hat{x}_0 ; N_x)$ and all $k=1,\dots, n$.
+		    \State Compute $\Phi_{k,1}^{ \pm \bar{s} \ell \Delta t}( x_0^{i,j} )$ for all $x_0^{i,j} \in \Gamma_L( \hat{x}_0 ; N_x)$ and \hspace*{12pt} for all $k \in  \{1,\dots, n\}$.
 		    \For {$m \in \{-\ell,\dots,\ell\}$}
-		    \State Compute $W(k,s,i,j,\hat{x}_0)$ for $s = \bar{s} m / \ell$ for all $i,j=-N_x,\dots, N_x$ and $k=1,\dots,n$.
+		    \State Compute $W(k,s,i,j,\hat{x}_0)$ for $s = \bar{s} m / \ell$ for all \hspace*{28pt} $i,j\in \{-N_x,\dots, N_x\}$ and $k\in \{1,\dots,n\}$.
 		    \EndFor  
 		    \State Compute $\Pr(\check{x}_t, \hat{x}_0, \hat{v}_0)$ at $t=\ell \Delta t$ via Theorem \ref{thm:main} 
 %		    \State Construct a $\mathcal{O}( \Delta x + \bar{s}/\ell + \varepsilon_{\rm tol})$ approximation of $\Pr(\check{x}_t, \hat{x}_0, \hat{v}_0)$ at $t=\ell \Delta t$ via Theorem \ref{thm:main} 
@@ -546,6 +546,7 @@ The procedure to compute  $\rho_t(x_t)$ is summarized in Algorithm \ref{alg:1}.
 
 %Steps \ref{alg1:step1} and \ref{alg1:step2} are where the bulk of the work occurs.
 %Fortunately, these two steps are embarrassingly parallel and yield tolerable computational complexity for real-time computation.
+The procedure to compute  $\rho_t(x_t)$ is summarized in Algorithm \ref{alg:1}.
 For fixed $k$, $i$, and $j$, the computation of $\Phi_{k,1}^t(x_0^{i,j})$ at each $t = \{-N_t \Delta t \bar{s} ,\dots, N_t \Delta t \bar{s}\}$ takes $\mathcal{O}(N_t)$ time using an explicit finite difference scheme and can be done in parallel for each $k \in \{1,\dots, n\}$ and $x_0^{i,j} \in \Gamma_L( \hat{x}_0; N_x)$.
 Similarly, computing $W(k,s,i,j,\hat{x}_0)$ constitutes a series of parallel function evaluations over tuples $(k,s,i,j)$ of the posterior distributions described in \eqref{eq:pgm}, where the continuous variable $s$ is only required at finitely many places in Algorithm \ref{alg:1}.
 If the posteriors represented by the arrows in \eqref{eq:pgm} are efficiently computably then the computation of $W(k,s,i,j, \hat{x}_0)$ is equally efficient.
