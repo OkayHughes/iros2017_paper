@@ -546,7 +546,7 @@ The procedure to compute  $\rho_t(x_t)$ is summarized in Algorithm \ref{alg:1}.
 
 %Steps \ref{alg1:step1} and \ref{alg1:step2} are where the bulk of the work occurs.
 %Fortunately, these two steps are embarrassingly parallel and yield tolerable computational complexity for real-time computation.
-For fixed $k$, $i$, and $j$, the computation of $\Phi_{k,1}^t(x_0^{i,j})$ at each $t = \{-N_t\bar{s} ,\dots, N_t \bar{s}\}$ takes $\mathcal{O}(N_t)$ time using an explicit finite difference scheme and can be done in parallel for each $k \in \{1,\dots, n\}$ and $x_0^{i,j} \in \Gamma_L( \hat{x}_0; N_x)$.
+For fixed $k$, $i$, and $j$, the computation of $\Phi_{k,1}^t(x_0^{i,j})$ at each $t = \{-N_t \Delta t \bar{s} ,\dots, N_t \Delta t \bar{s}\}$ takes $\mathcal{O}(N_t)$ time using an explicit finite difference scheme and can be done in parallel for each $k \in \{1,\dots, n\}$ and $x_0^{i,j} \in \Gamma_L( \hat{x}_0; N_x)$.
 Similarly, computing $W(k,s,i,j,\hat{x}_0)$ constitutes a series of parallel function evaluations over tuples $(k,s,i,j)$ of the posterior distributions described in \eqref{eq:pgm}, where the continuous variable $s$ is only required at finitely many places in Algorithm \ref{alg:1}.
 If the posteriors represented by the arrows in \eqref{eq:pgm} are efficiently computably then the computation of $W(k,s,i,j, \hat{x}_0)$ is equally efficient.
 %We summarize this in the following theorem:
