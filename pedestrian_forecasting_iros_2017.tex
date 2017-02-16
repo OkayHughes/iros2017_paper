@@ -514,9 +514,9 @@ The procedure to compute  $\rho_t(x_t)$ is summarized in Algorithm \ref{alg:1}.
 		  \begin{algorithmic}[1]
 		    \Require $\bar{s} > 0$, $N_t \in \mathbb{N}$, $\Delta t > 0$,  $ \{ X_k \}_{k=1}^{n}$, $\hat{x}_0$, $\hat{v}_0$, $\Gamma_L( \hat{x}_0, N_x)$, $\Pr(x_0 \mid M), \Pr(x_0 \mid \hat{x}_0), \Pr(v_0 \mid \hat{v}_0 ), \Pr(M \in \mathcal{M}), \text{ and } \Pr(s \mid k)$.
 		    \For {$\ell \in \{1,\dots,N_t\}$}
-		    \State Compute $\Phi_{k,1}^{ \pm \bar{s} \ell \Delta t}( x_0^{i,j} )$ for all $x_0^{i,j} \in \Gamma_L( \hat{x}_0 ; N_x)$.
+		    \State Compute $\Phi_{k,1}^{ \pm \bar{s} \ell \Delta t}( x_0^{i,j} )$ for all $x_0^{i,j} \in \Gamma_L( \hat{x}_0 ; N_x)$ and all $k=1,\dots, n$.
 		    \For {$m \in \{-\ell,\dots,\ell\}$}
-		    \State Compute $W(k,s,i,j,\hat{x}_0)$ for $s = \bar{s} m / \ell$.
+		    \State Compute $W(k,s,i,j,\hat{x}_0)$ for $s = \bar{s} m / \ell$ for all $i,j=-N_x,\dots, N_x$ and $k=1,\dots,n$.
 		    \EndFor  
 		    \State Compute $\Pr(\check{x}_t, \hat{x}_0, \hat{v}_0)$ at $t=\ell \Delta t$ via Theorem \ref{thm:main} 
 %		    \State Construct a $\mathcal{O}( \Delta x + \bar{s}/\ell + \varepsilon_{\rm tol})$ approximation of $\Pr(\check{x}_t, \hat{x}_0, \hat{v}_0)$ at $t=\ell \Delta t$ via Theorem \ref{thm:main} 
