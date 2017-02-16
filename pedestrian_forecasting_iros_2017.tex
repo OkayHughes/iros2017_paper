@@ -496,7 +496,8 @@ We can then use the regular partition
 	\mathcal{P}_\ell := \left\{ \frac{m}{\ell} \bar{s} \right\}_{m=-\ell}^{\ell} \label{eq:partition}
 \end{align}
 of $[-\bar{s}, \bar{s}]$ to compute a Riemann sum approximation using Theorem \ref{thm:main}.
-The partition $\mathcal{P}_\ell$ has a width of size, $\Delta s = \bar{s} / \ell$, and substitution in \eqref{eq:approximation 3} yields an approximation of $\Pr( x_t, \hat{x}_0, \hat{v}_0)$ given by
+The partition $\mathcal{P}_\ell$ has a width of size, $\Delta s = \bar{s} / \ell$, and substitution in \eqref{eq:approximation 3} yields an approximation of $\Pr( x_t, \hat{x}_0, \hat{v}_0)$ at time $t=\ell \Delta t$
+given by
 \begin{align*}
 	\begin{split}
 		&\frac{\bar{s}}{\ell} \sum_{i,j,k,m} W(k,m \bar{s} / \ell ,i,j,\hat{x}_0) \left. \Pr( x_t \mid \check{x}_t ) \right|_{ \check{x}_t = \Phi_{k,1}^{m \bar{s} \Delta t}( x_0^{i,j}) } \\
