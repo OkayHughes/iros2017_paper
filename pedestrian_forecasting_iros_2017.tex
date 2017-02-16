@@ -493,16 +493,18 @@ This is because, once $\Phi_{k,1}^{\ell \Delta t \bar{s}}$ is computed for each 
 The procedure to compute  $\rho_t(x_t)$ is summarized in Algorithm \ref{alg:1}.
 
 \begin{algorithm}[t]
-		  \caption{Algorithm to Compute  $\rho_t$.}
+		  \caption{Algorithm to Compute  $\rho_t$ at times $t=0,\Delta t, 2 \Delta t, \dots, N_t \Delta t$.}
 		  \label{alg:1}
 		  \begin{algorithmic}[1]
-		    \Require $N_t \in \mathbb{N},  \{ X_k \}_{k=1}^{n}, \hat{x}_0, \hat{v}_0, \Gamma_L( \hat{x}_0, N_x)$, and the posteriors of \eqref{eq:pgm}.
-		    \ForEach {$m \in \{ -\ell,\dots,\ell \}$}
+		    \Require $N_t \in \mathbb{N}, \Delta t > 0,   \{ X_k \}_{k=1}^{n}, \hat{x}_0, \hat{v}_0, \Gamma_L( \hat{x}_0, N_x)$, and the posteriors of \eqref{eq:pgm}.
+		    \For {$\ell = 0,\dots,N_t$}
+		    \For {$m = -\ell,\dots,\ell$}
 		    \State Compute $W(k,s,i,j,\hat{x}_0)$ for $s = \bar{s} m / \ell$.
 		    \EndFor  
 		    \State Construct a $\mathcal{O}( \Delta x + \bar{s}/\ell + \varepsilon_{\rm tol})$ approximation of $\Pr(\check{x}_t, \hat{x}_0, \hat{v}_0)$ at $t=\ell \Delta t$ via Theorem \ref{thm:main} \label{alg1:step2}.
 		    \State Normalize with respect to $\check{x}_t$ to obtain an approximation of $\Pr(\check{x}_t \mid \hat{x}_0, \hat{v}_0)$.
 		    \State Convolve with respect to $\Pr( x_t \mid \check{x}_t)$ to obtain $\rho_t(x_t)$ at $t= \ell \cdot \Delta t$
+		    \EndFor
 		  \end{algorithmic}
 \end{algorithm}
 
