@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  5 MAY 2017 00:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  5 MAY 2017 11:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -386,8 +386,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 107--108
 
  []
 
-Missing character: There is no Ã in font cmbx10!
-Missing character: There is no – in font cmbx10!
 
 Overfull \hbox (37.66669pt too wide) in paragraph at lines 118--119
 [][][][][][]
@@ -399,69 +397,74 @@ Underfull \hbox (badness 10000) in paragraph at lines 118--119
  []
 
 [3]
-Overfull \hbox (37.66669pt too wide) in paragraph at lines 135--138
+Overfull \hbox (37.66669pt too wide) in paragraph at lines 143--144
 [][][][][][]
  []
 
 
-Overfull \hbox (37.66669pt too wide) in paragraph at lines 163--166
-[][][][][][] 
- []
-
-
-Overfull \hbox (37.66669pt too wide) in paragraph at lines 172--174
-[][][][][][]
- []
-
-
-Overfull \hbox (37.66669pt too wide) in paragraph at lines 172--174
-[][][][][][]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 172--174
+Underfull \hbox (badness 10000) in paragraph at lines 143--144
 
  []
 
 [4]
-Overfull \hbox (37.66669pt too wide) in paragraph at lines 188--189
+Overfull \hbox (37.66669pt too wide) in paragraph at lines 171--174
+[][][][][][] 
+ []
+
+
+Overfull \hbox (37.66669pt too wide) in paragraph at lines 180--182
 [][][][][][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 188--189
-
- []
-
-
-Overfull \hbox (37.66669pt too wide) in paragraph at lines 200--201
+Overfull \hbox (37.66669pt too wide) in paragraph at lines 180--182
 [][][][][][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 200--201
+Underfull \hbox (badness 10000) in paragraph at lines 180--182
 
  []
 
 
-Overfull \hbox (37.66669pt too wide) in paragraph at lines 202--204
+Overfull \hbox (37.66669pt too wide) in paragraph at lines 196--197
 [][][][][][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 202--204
+Underfull \hbox (badness 10000) in paragraph at lines 196--197
 
  []
 
-[5] (./response.aux) ) 
+[5]
+Overfull \hbox (37.66669pt too wide) in paragraph at lines 208--209
+[][][][][][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 208--209
+
+ []
+
+
+Overfull \hbox (37.66669pt too wide) in paragraph at lines 210--212
+[][][][][][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 210--212
+
+ []
+
+[6] (./response.aux) ) 
 Here is how much of TeX's memory you used:
- 3413 strings out of 493089
- 47000 string characters out of 6134842
+ 3414 strings out of 493089
+ 47008 string characters out of 6134842
  126312 words of memory out of 5000000
- 6839 multiletter control sequences out of 15000+600000
+ 6840 multiletter control sequences out of 15000+600000
  12122 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,6n,35p,888b,286s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,6n,35p,1026b,286s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsf
@@ -474,10 +477,10 @@ cmr17.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 r7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
 0.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/m
 sbm10.pfb>
-Output written on response.pdf (5 pages, 177179 bytes).
+Output written on response.pdf (6 pages, 179377 bytes).
 PDF statistics:
- 141 PDF objects out of 1000 (max. 8388607)
- 53 compressed objects within 1 object stream
+ 144 PDF objects out of 1000 (max. 8388607)
+ 55 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  5 MAY 2017 00:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  5 MAY 2017 11:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1272,10 +1272,10 @@ t changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 903.
  ) 
 Here is how much of TeX's memory you used:
- 20722 strings out of 493089
- 402065 string characters out of 6134842
- 466780 words of memory out of 5000000
- 23710 multiletter control sequences out of 15000+600000
+ 20714 strings out of 493089
+ 401981 string characters out of 6134842
+ 466678 words of memory out of 5000000
+ 23703 multiletter control sequences out of 15000+600000
  119373 words of font info for 141 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,23n,82p,1157b,784s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1303,11 +1303,11 @@ e1/urw/courier/ucrr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/t
 imes/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmbi
 8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></u
 sr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on pedestrian_forecasting_iros_2017.pdf (9 pages, 936490 bytes).
+Output written on pedestrian_forecasting_iros_2017.pdf (9 pages, 936354 bytes).
 
 PDF statistics:
- 451 PDF objects out of 1000 (max. 8388607)
- 320 compressed objects within 4 object streams
- 88 named destinations out of 1000 (max. 500000)
+ 450 PDF objects out of 1000 (max. 8388607)
+ 319 compressed objects within 4 object streams
+ 87 named destinations out of 1000 (max. 500000)
  275 words of extra memory for PDF output out of 10000 (max. 10000000)
 

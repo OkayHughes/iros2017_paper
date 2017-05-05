@@ -32,7 +32,7 @@ We would like to begin by thanking the reviewers and the editor for their carefu
 The comments provided were incredibly helpful and insightful, and have strengthened the paper considerably.
 Based on the recommendations of the reviewers and the editor, we have made several modifications to the paper.
 %The changes made are presented below as a highlighted manuscript that indicates additions in green and removals in red.
-\todo{The changes made are summarized in detail below and a highlighted manuscript is attached that indicates additions in red.}	
+The changes made are summarized in detail below and a highlighted manuscript is attached that indicates additions in red.
 % See the response to reviewers for a detailed breakdown of the changes made.
 
 \section*{Reviewer 1}
@@ -83,7 +83,7 @@ instances such as collision avoidance)?}
 \end{item}
 Thank you for this insightful question. Social forces are a natural avenue for future work, and so we included the following paragraph in the paper.
 
-\response{Though including social forces into the model is out of the scope of this paper, incorporation could begin as follows.  In the current motion model with a single vector field, the acceleration of the $i$th agent is given by $\ddot{x}_i = s^2 DX(x_i) \cdot X(x_i)$.  Incorporating a social force $F_{i}$ acting on the $i$th can be done by instead asserting $\ddot{x}_i = s^2 DX(x) \cdot X(x) + F_i$.  Usually $F_{i} = \sum_{j} \nabla U( x_j - x_i)$ where $U$ is an interaction potential.}
+\response{Though including social forces into the model is out of the scope of this paper, incorporation could begin as follows.  In the current motion model with a single vector field, the acceleration of the $i$th agent is given by $\ddot{x}_i = s^2 DX(x_i) \cdot X(x_i)$.  Incorporating a social force $F_{i}$ acting on the $i$th can be done by instead asserting $\ddot{x}_i = s^2 DX(x) \cdot X(x) + F_i$.  Usually $F_{i} = \sum_{j} \nabla U( x_j - x_i)$ where $U$ is an interaction potential \todo{[Helbing and Molnar]}.}
 
 
 \begin{item}
@@ -110,7 +110,7 @@ Thank you for noticing that this is unclear. Our algorithm trains on each scene 
 \begin{item}
 \textbf{The motivation behind choosing the affinity propagation clustering
 algorithm is not clearly stated. 
-What is the distance measure used (i.e Euclidian, Ö) ? Not specifying
+What is the distance measure used (i.e Euclidian, \"{O}) ? Not specifying
 such information makes reproduction of this work not feasible. }
 
 This was an oversight on our part, thank you for noticing it. The distance used is actually a custom distance function on $\mathbb{R}^4$, which disregards the involution $(x_1, x_2, x_3, x_4) \to (x_3, x_4, x_1, x_2)$, and so doesn't care about parity of trajectories. We have included the following clarification:
@@ -130,10 +130,18 @@ Hospedales et al. 2009; Emonet et al. 2011; Yi et al. 2015.}
 \end{item}
 
 We agree that this adds to the paper, thank you for the suggestion. We added a section to our literature to reflect the relevant work.
+\todo{Other classes of algorithm focus on predicting social behaviour based on  social interactions of people 
+	[yamaguchi] incorporates social grouping into a discrete-time dynamical system model of pedestrian movement using a learned energy function to determine the dynamics that incorporates collision/group details, and learns social groups using an improvement on [Pellegrini].
+	[Yi] does it by learning a scene energy map, a moving pedestrian energy map, and a stationary energy map by maximizing likelihood, then computes trajectories by minimizing this map between the start and the end point.
+	[Emonet] uses heirarchical dirichlet processes to infer behavioural motifs in videos. 
+	[Hospedales 2009] Uses an improvement on LDA, does online topic discovery, unclear if it does prediction.
+	[helbing and Molnar] describes pedestrian behaviour according to an interaction potential, causing pedestrians to avoid each other.
+	[Pellegrini]  uses a third-order CRF to group pedestrians based on behaviour. No prediction.
+	[robicquet]  uses LSTM to learn pedestrian behaviours, and predict based on them.
+	[zhou] }
 
-\response{Other classes of algorithm focus on predicting social behaviour based on  social interactions of people 
-	[yamaguchi] and [yi] do this by minimizing learned energy functions. }
-\todo{FINISHTHIS}
+\response{Along different lines, many authors have focused on using social interaction as a main part of their motion model. \todo{[yamaguchi]} incorporates social grouping into the energy function used to determine the velocity of a discrete-time dynamical system, whiel [Yi] incorporates pedestrians into an energy map, and calculate the prediction between two points as the lowest cost path. [helbing and molnar] introduced the idea of an actual Social Force, which was shown to be effective on modern data by \todo{[A. Lerner, Y. Chrysanthou]}, and \todo{[pellegrini 2010]}.  \todo{[emonet]} and \todo{[hospedales]} both operate on raw video data, using Heirarchical Dirichlet Processes and an extension of LDA to find behaviours in scenes. Though these methods are good at detecting anomalous behaviour, without an actual underlying motion model their individual predictive power is limited. \todo{robicquet} uses a Long Short-Term Memory network to learn and predict social behaviours. }
+
 \begin{item}
 \textbf{Furthermore a comprehensive review on trajectory clustering algorithms
 is required. This should be used to motivate the reason of choosing
