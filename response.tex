@@ -130,17 +130,85 @@ Hospedales et al. 2009; Emonet et al. 2011; Yi et al. 2015.}
 \end{item}
 
 We agree that this adds to the paper, thank you for the suggestion. We added a section to our literature to reflect the relevant work.
-\todo{Other classes of algorithm focus on predicting social behaviour based on  social interactions of people 
-	[yamaguchi] incorporates social grouping into a discrete-time dynamical system model of pedestrian movement using a learned energy function to determine the dynamics that incorporates collision/group details, and learns social groups using an improvement on [Pellegrini].
-	[Yi] does it by learning a scene energy map, a moving pedestrian energy map, and a stationary energy map by maximizing likelihood, then computes trajectories by minimizing this map between the start and the end point.
-	[Emonet] uses heirarchical dirichlet processes to infer behavioural motifs in videos. 
-	[Hospedales 2009] Uses an improvement on LDA, does online topic discovery, unclear if it does prediction.
-	[helbing and Molnar] describes pedestrian behaviour according to an interaction potential, causing pedestrians to avoid each other.
-	[Pellegrini]  uses a third-order CRF to group pedestrians based on behaviour. No prediction.
-	[robicquet]  uses LSTM to learn pedestrian behaviours, and predict based on them.
-	[zhou] }
 
-\response{Along different lines, many authors have focused on using social interaction as a main part of their motion model. \todo{[yamaguchi]} incorporates social grouping into the energy function used to determine the velocity of a discrete-time dynamical system, whiel [Yi] incorporates pedestrians into an energy map, and calculate the prediction between two points as the lowest cost path. [helbing and molnar] introduced the idea of an actual Social Force, which was shown to be effective on modern data by \todo{[A. Lerner, Y. Chrysanthou]}, and \todo{[pellegrini 2010]}.  \todo{[emonet]} and \todo{[hospedales]} both operate on raw video data, using Heirarchical Dirichlet Processes and an extension of LDA to find behaviours in scenes. Though these methods are good at detecting anomalous behaviour, without an actual underlying motion model their individual predictive power is limited. \todo{robicquet} uses a Long Short-Term Memory network to learn and predict social behaviours. }
+Other classes of algorithm focus on predicting social behaviour based on  social interactions of people 
+	[yamaguchi] incorporates social grouping into a discrete-time dynamical system model of pedestrian movement using a learned energy function (minimizing over energy function to find velocity, local minimum) to determine the dynamics that incorporates collision/group details, and learns social groups using an improvement on [Pellegrini]. Learns weight parameters by throwing simplex method at an LP version of the problem and hopes it converges on a local min. Scene obstacles are modeled as pedestrians. Destination forecasted by learned SVM on destinations of observed trajectories. Uses a classifier to determine groups.
+	Mentions:
+	Mentions Helbing, similarity to physics
+	"The assumption of discretized choice allows efficient prediction
+	with analytical solutions despite the large number of
+	factors considered in the model [1, 10]. However, due to the
+	nature of the discretization, the behavioral prediction tends
+	to show artifacts when metric is continuous."
+	[pellegrini: you'll never walk alone ] ``An advantage of continuous model is the flexibility of constructing
+	complex models, however, previous work focuses
+	on individual motivation of the behavior [you'll never walk alone, 11], and the
+	only social context is collision avoidance.''
+	[As in [you'll], our model assumes that each pedestrian makes a
+	decision on the velocity based on various environmental
+	and social factors in the scene]
+	Yamaguchi uses collision avoidance from [you'll]
+	[pellegrini: improving ]: Yamaguchi attempts a simpler method of social grouping, with better computation time.
+	
+	Notes on CRFs from [Yamaguchi]: "The CRF formulation indirectly
+	encodes a behavioral model. Our focus is to build an
+	explicit behavioral model which can exploit the rich behavioral
+	context in social interactions,"
+	
+	[Yi] does it by learning a scene energy map, a moving pedestrian energy map, and a stationary energy map by maximizing likelihood, then computes trajectories by minimizing this map between the start and the end point. These are learned by using gradient ascent to maximize the likelihood of the data under the energy maps. Requires endpoint. No mention of real-time, or run-time.
+	
+	Mentions:
+	[emonet]: Spatio-temporal dependency on motion patterns could be
+	included in topic models [emonet] - [31].
+	[hospedales] included in last
+	[helbing] and abnormal event detection [helbing].
+	[zhou] It can be used for various applications
+	including pedestrian walking path prediction [1], [zhou],
+	``Previous studies [zhou], [17]–[19] have shown that the walking
+	behavior of an individual can be influenced by a variety
+	of factors including scene layout (e.g. entrances, exits,
+	walls, and obstacles), inter-person variations on the choice
+	of source and destination, and interactions with other moving
+	pedestrians. ''
+	``A mixture model of dynamic
+	agents (MDA) is proposed by Zhou et al. [2], which can learn
+	parameters automatically. Typical agent-based models also
+	include the self-driven particle model [43], and the reciprocal
+	velocity obstacle model [44].''
+	``Most previous methods [2], [17], [18], [40]–[42] are local
+	models. Decisions are made based on local environments and
+	the interactions with nearby people. These models may make
+	reasonable decisions when there are not so many people in
+	the scene and the scene is not that complex.''
+	``. Two existing approaches,
+	i.e., the MDA model [zhou ]and an unsupervised visual prediction
+	approach (UVP) [54], are used for comparison.''
+	`` This is because only the motion pattern
+	information are modeled for MDA [2] and UVP [54], while the
+	influences of stationary objects (e.g. stationary crowd groups)
+	are ignored''
+	[wang: unsupervised] ``traffic
+	flow segmentation [3]–[5],''
+	
+	
+	
+		
+	[Emonet] uses heirarchical dirichlet processes on optical flow of downsampled video, discretize to 8 cardinal directions, then find the most common low-level words, and do heirarchical dirichlet processes to generate topics there. Can't predict individual pedestrians?
+	[Hospedales 2009] Uses an improvement on LDA, does online topic discovery in real time. Adds heirarchical modeling, to reflect how simple actions can be turned into behaviours. Doesn't have explicit motion model though, Doesn't necessarily work for a single pedestrian?
+	[helbing and Molnar] describes pedestrian behaviour according to an interaction potential, causing pedestrians to avoid each other. Doesn't include a complex motion model. 
+	
+	[alahi]  uses LSTM to learn pedestrian behaviours, and predict based on them.
+	[zhou] 
+	[wang1: Trajectory analysis]
+	[wang2: Unsupervised Activity Perception]
+	[Xu]
+	[Pellegrini1:Improving data]
+	[Pellegrini2: wrong turn]
+	[Pellegrini3 : you'll never walk alone]
+	[Koppula]
+	
+
+	\response{Along different lines, many authors have focused on using social interaction as a main part of their motion model. \todo{[yamaguchi]} incorporates social grouping into the energy function used to determine the velocity of a discrete-time dynamical system, while \todo{[Yi]} incorporates pedestrians into an energy map, and calculate the prediction between two points as the lowest cost path. Both of these approaches  [helbing and molnar] introduced the idea of an actual Social Force, which was shown to be effective on modern data by \todo{[]}, and \todo{[pellegrini 2010]}. \todo{[pellegrini 2010]} uses a stochastic linear trajectory avoidance.  \todo{[emonet]} and \todo{[hospedales]} both operate on raw video data, using Heirarchical Dirichlet Processes and an extension of LDA to find behaviours in scenes. Though these methods are good at detecting anomalous behaviour, without an actual underlying motion model their individual predictive power is limited. \todo{robicquet} uses a Long Short-Term Memory network to learn and predict social behaviours. }
 
 \begin{item}
 \textbf{Furthermore a comprehensive review on trajectory clustering algorithms
