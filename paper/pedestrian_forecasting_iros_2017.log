@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  7 MAY 2017 03:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  7 MAY 2017 05:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -936,29 +936,36 @@ line 125.
  <./figures/FirstPage/gates_1_2_t=55.jpg> <./figures/FirstPage/gates_1_2_t=145.
 jpg> <./figures/FirstPage/gates_1_2_t=235.jpg> <./figures/FirstPage/gates_1_2_t
 =345.jpg>]
+Package marginnote Info: Margin note 2.1 is on absolute page 2
+(marginnote)              on input line 179.
+Package marginnote Info: right page because not two side mode on input line 179
+.
+Package marginnote Info: xpos seems to be 314.37439pt,
+(marginnote)             \marginnoterightadjust ignored on input line 179.
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [2]
 [3]
-Underfull \hbox (badness 1571) in paragraph at lines 349--353
+Underfull \hbox (badness 1571) in paragraph at lines 351--355
 \T1/ptm/m/n/10 be per-formed ef-fi-ciently, we fo-cus on com-pu-ta-tion of
  []
 
 
-Underfull \hbox (badness 1721) in paragraph at lines 369--373
+Underfull \hbox (badness 1721) in paragraph at lines 371--375
 \T1/ptm/m/n/10 ap-prox-i-mate $[]\OT1/cmr/m/n/10 ([]\OML/cmm/m/it/10 ; x[]; k; 
 s\OT1/cmr/m/n/10 )	([]; \OML/cmm/m/it/10 k; s; x[]\OT1/cmr/m/n/10 )$ \T1/ptm/m/
 n/10 as a sum of
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 386--399
+Underfull \hbox (badness 10000) in paragraph at lines 388--401
 \T1/ptm/m/n/10 where $\OML/cmm/m/it/10 W\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 k; s;
  i; j; []\OT1/cmr/m/n/10 )$ \T1/ptm/m/n/10 is the eval-u-a-tion of
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 386--399
+Underfull \hbox (badness 10000) in paragraph at lines 388--401
 []\OT1/cmr/m/n/10 ([]\OML/cmm/m/it/10 ; x[]; k; s\OT1/cmr/m/n/10 )	([]; \OML/cm
 m/m/it/10 k; s; x[]\OT1/cmr/m/n/10 )$ \T1/ptm/m/n/10 at the grid point
  []
@@ -967,7 +974,7 @@ m/m/it/10 k; s; x[]\OT1/cmr/m/n/10 )$ \T1/ptm/m/n/10 at the grid point
 Underfull \vbox (badness 8094) has occurred while \output is active []
 
  [5]
-Underfull \hbox (badness 3250) in paragraph at lines 499--502
+Underfull \hbox (badness 3250) in paragraph at lines 501--504
 \T1/ptm/m/n/10 pute $[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; []; []\OT1/cmr/m/
 n/10 )$ \T1/ptm/m/n/10 (and thus $\OML/cmm/m/it/10 ^^Z[]\OT1/cmr/m/n/10 (\OML/c
 mm/m/it/10 x[]\OT1/cmr/m/n/10 )$\T1/ptm/m/n/10 ) at times $\OML/cmm/m/it/10 t \
@@ -975,7 +982,7 @@ OMS/cmsy/m/n/10 2
  []
 
 
-Underfull \hbox (badness 1460) in paragraph at lines 499--502
+Underfull \hbox (badness 1460) in paragraph at lines 501--504
 \T1/ptm/m/n/10 for each $\OML/cmm/m/it/10 ` \OMS/cmsy/m/n/10 2 f^^@\OML/cmm/m/i
 t/10 N[]; [] ; N[]\OMS/cmsy/m/n/10 g$\T1/ptm/m/n/10 , $\OML/cmm/m/it/10 k \OMS/
 cmsy/m/n/10 2 f\OT1/cmr/m/n/10 1\OML/cmm/m/it/10 ; [] ; n\OMS/cmsy/m/n/10 g$\T1
@@ -983,22 +990,34 @@ cmsy/m/n/10 2 f\OT1/cmr/m/n/10 1\OML/cmm/m/it/10 ; [] ; n\OMS/cmsy/m/n/10 g$\T1
  []
 
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 519.
+put line 521.
+Package marginnote Info: Margin note 6.1 is on absolute page 6
+(marginnote)              on input line 570.
+Package marginnote Info: right page because not two side mode on input line 570
+.
+Package marginnote Info: xpos seems to be 314.37439pt,
+(marginnote)             \marginnoterightadjust ignored on input line 570.
+Package marginnote Info: Margin note 6.2 is on absolute page 6
+(marginnote)              on input line 581.
+Package marginnote Info: right page because not two side mode on input line 581
+.
+Package marginnote Info: xpos seems to be 399.03094pt,
+(marginnote)             \marginnoterightadjust ignored on input line 581.
 
-LaTeX Warning: Citation `Lee2007' on page 6 undefined on input line 577.
+LaTeX Warning: Citation `Lee2007' on page 6 undefined on input line 581.
 
 
-Underfull \hbox (badness 4846) in paragraph at lines 574--580
+Underfull \hbox (badness 4846) in paragraph at lines 577--584
 []\T1/ptm/m/n/10 We be-gin by iden-ti-fy-ing the num-ber of pos-si-ble
  []
 
 
-Underfull \hbox (badness 1888) in paragraph at lines 574--580
+Underfull \hbox (badness 1888) in paragraph at lines 577--584
 \T1/ptm/m/n/10 on the tra-jec-to-ries ob-served in a scene to cat-e-go-rize
  []
 
 
-Underfull \hbox (badness 1377) in paragraph at lines 574--580
+Underfull \hbox (badness 1377) in paragraph at lines 577--584
 \T1/ptm/m/n/10 fined by $\OML/cmm/m/it/10 d\OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 x
 []; x[]; x[]; x[]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; \OT1/cmr/bx/n/10 y\OT1/cmr
 /m/n/10 ) : \U/msb/m/n/10 R[] \OMS/cmsy/m/n/10 ^^B \U/msb/m/n/10 R[] \OMS/cmsy/
@@ -1008,66 +1027,66 @@ m/n/10 ! \U/msb/m/n/10 R \OT1/cmr/m/n/10 =
 [6]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 603.
+(hyperref)                removing `math shift' on input line 607.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathop' on input line 603.
+(hyperref)                removing `\mathop' on input line 607.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathgroup' on input line 603.
+(hyperref)                removing `\mathgroup' on input line 607.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\symoperators' on input line 603.
+(hyperref)                removing `\symoperators' on input line 607.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\nmlimits@' on input line 603.
+(hyperref)                removing `\nmlimits@' on input line 607.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 603.
+(hyperref)                removing `subscript' on input line 607.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mid' on input line 603.
+(hyperref)                removing `\mid' on input line 607.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 603.
+(hyperref)                removing `math shift' on input line 607.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 603.
+(hyperref)                removing `math shift' on input line 607.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathop' on input line 603.
+(hyperref)                removing `\mathop' on input line 607.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathgroup' on input line 603.
+(hyperref)                removing `\mathgroup' on input line 607.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\symoperators' on input line 603.
+(hyperref)                removing `\symoperators' on input line 607.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\nmlimits@' on input line 603.
+(hyperref)                removing `\nmlimits@' on input line 607.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 603.
+(hyperref)                removing `math shift' on input line 607.
 
 <./figures/bookstore/ours_1_2_t=50.jpg, id=204, 90.3375pt x 69.55988pt>
 File: ./figures/bookstore/ours_1_2_t=50.jpg Graphic file (type jpg)
 
 <use ./figures/bookstore/ours_1_2_t=50.jpg>
 Package pdftex.def Info: ./figures/bookstore/ours_1_2_t=50.jpg used on input li
-ne 654.
+ne 658.
 (pdftex.def)             Requested size: 73.71617pt x 56.76137pt.
 
 <./figures/bookstore/ours_1_2_t=130.jpg, id=205, 90.3375pt x 69.3792pt>
@@ -1075,7 +1094,7 @@ File: ./figures/bookstore/ours_1_2_t=130.jpg Graphic file (type jpg)
 
 <use ./figures/bookstore/ours_1_2_t=130.jpg>
 Package pdftex.def Info: ./figures/bookstore/ours_1_2_t=130.jpg used on input l
-ine 657.
+ine 661.
 (pdftex.def)             Requested size: 73.71617pt x 56.61392pt.
 
 <./figures/bookstore/ours_1_2_t=370.jpg, id=206, 90.3375pt x 69.3792pt>
@@ -1083,7 +1102,7 @@ File: ./figures/bookstore/ours_1_2_t=370.jpg Graphic file (type jpg)
 
 <use ./figures/bookstore/ours_1_2_t=370.jpg>
 Package pdftex.def Info: ./figures/bookstore/ours_1_2_t=370.jpg used on input l
-ine 660.
+ine 664.
 (pdftex.def)             Requested size: 73.71617pt x 56.61392pt.
 
 <./figures/bookstore/kit_1_2_t=50.jpg, id=207, 90.3375pt x 69.3792pt>
@@ -1091,7 +1110,7 @@ File: ./figures/bookstore/kit_1_2_t=50.jpg Graphic file (type jpg)
 
 <use ./figures/bookstore/kit_1_2_t=50.jpg>
 Package pdftex.def Info: ./figures/bookstore/kit_1_2_t=50.jpg used on input lin
-e 668.
+e 672.
 (pdftex.def)             Requested size: 73.71617pt x 56.61392pt.
 
 <./figures/bookstore/kit_1_2_t=130.jpg, id=208, 90.3375pt x 69.3792pt>
@@ -1099,7 +1118,7 @@ File: ./figures/bookstore/kit_1_2_t=130.jpg Graphic file (type jpg)
 
 <use ./figures/bookstore/kit_1_2_t=130.jpg>
 Package pdftex.def Info: ./figures/bookstore/kit_1_2_t=130.jpg used on input li
-ne 671.
+ne 675.
 (pdftex.def)             Requested size: 73.71617pt x 56.61392pt.
 
 <./figures/bookstore/kit_1_2_t=370.jpg, id=209, 90.3375pt x 69.3792pt>
@@ -1107,7 +1126,7 @@ File: ./figures/bookstore/kit_1_2_t=370.jpg Graphic file (type jpg)
 
 <use ./figures/bookstore/kit_1_2_t=370.jpg>
 Package pdftex.def Info: ./figures/bookstore/kit_1_2_t=370.jpg used on input li
-ne 674.
+ne 678.
 (pdftex.def)             Requested size: 73.71617pt x 56.61392pt.
 
 <./figures/bookstore/rand_1_2_t=50.jpg, id=210, 90.3375pt x 69.55988pt>
@@ -1115,7 +1134,7 @@ File: ./figures/bookstore/rand_1_2_t=50.jpg Graphic file (type jpg)
 
 <use ./figures/bookstore/rand_1_2_t=50.jpg>
 Package pdftex.def Info: ./figures/bookstore/rand_1_2_t=50.jpg used on input li
-ne 682.
+ne 686.
 (pdftex.def)             Requested size: 73.71617pt x 56.76137pt.
 
 <./figures/bookstore/rand_1_2_t=130.jpg, id=211, 90.3375pt x 69.3792pt>
@@ -1123,7 +1142,7 @@ File: ./figures/bookstore/rand_1_2_t=130.jpg Graphic file (type jpg)
 
 <use ./figures/bookstore/rand_1_2_t=130.jpg>
 Package pdftex.def Info: ./figures/bookstore/rand_1_2_t=130.jpg used on input l
-ine 685.
+ine 689.
 (pdftex.def)             Requested size: 73.71617pt x 56.61392pt.
 
 <./figures/bookstore/rand_1_2_t=370.jpg, id=212, 90.3375pt x 69.19853pt>
@@ -1131,22 +1150,28 @@ File: ./figures/bookstore/rand_1_2_t=370.jpg Graphic file (type jpg)
 
 <use ./figures/bookstore/rand_1_2_t=370.jpg>
 Package pdftex.def Info: ./figures/bookstore/rand_1_2_t=370.jpg used on input l
-ine 688.
+ine 692.
 (pdftex.def)             Requested size: 73.71617pt x 56.4665pt.
+Package marginnote Info: Margin note 7.1 is on absolute page 7
+(marginnote)              on input line 713.
+Package marginnote Info: right page because not two side mode on input line 713
+.
+Package marginnote Info: xpos seems to be 314.37439pt,
+(marginnote)             \marginnoterightadjust ignored on input line 713.
 
 <./figures/comparison/ours_death_1_2_t=70.jpg, id=213, 501.875pt x 387.4475pt>
 File: ./figures/comparison/ours_death_1_2_t=70.jpg Graphic file (type jpg)
 
 <use ./figures/comparison/ours_death_1_2_t=70.jpg>
 Package pdftex.def Info: ./figures/comparison/ours_death_1_2_t=70.jpg used on i
-nput line 717.
+nput line 722.
 (pdftex.def)             Requested size: 73.71617pt x 56.90857pt.
 
 <./figures/comparison/ours_death_1_2_t=250.jpg, id=214, 501.875pt x 387.4475pt>
 File: ./figures/comparison/ours_death_1_2_t=250.jpg Graphic file (type jpg)
 <use ./figures/comparison/ours_death_1_2_t=250.jpg>
 Package pdftex.def Info: ./figures/comparison/ours_death_1_2_t=250.jpg used on 
-input line 720.
+input line 725.
 (pdftex.def)             Requested size: 73.71617pt x 56.90857pt.
 
 <./figures/comparison/ours_death_1_2_t=370.jpg, id=215, 501.875pt x 385.44pt>
@@ -1154,7 +1179,7 @@ File: ./figures/comparison/ours_death_1_2_t=370.jpg Graphic file (type jpg)
 
 <use ./figures/comparison/ours_death_1_2_t=370.jpg>
 Package pdftex.def Info: ./figures/comparison/ours_death_1_2_t=370.jpg used on 
-input line 723.
+input line 728.
 (pdftex.def)             Requested size: 73.71617pt x 56.61371pt.
 
 <./figures/comparison/kit_death_1_2_t=70.jpg, id=216, 501.875pt x 386.44376pt>
@@ -1162,7 +1187,7 @@ File: ./figures/comparison/kit_death_1_2_t=70.jpg Graphic file (type jpg)
 
 <use ./figures/comparison/kit_death_1_2_t=70.jpg>
 Package pdftex.def Info: ./figures/comparison/kit_death_1_2_t=70.jpg used on in
-put line 731.
+put line 736.
 (pdftex.def)             Requested size: 73.71617pt x 56.76114pt.
 
 <./figures/comparison/kit_death_1_2_t=250.jpg, id=217, 501.875pt x 387.4475pt>
@@ -1170,7 +1195,7 @@ File: ./figures/comparison/kit_death_1_2_t=250.jpg Graphic file (type jpg)
 
 <use ./figures/comparison/kit_death_1_2_t=250.jpg>
 Package pdftex.def Info: ./figures/comparison/kit_death_1_2_t=250.jpg used on i
-nput line 734.
+nput line 739.
 (pdftex.def)             Requested size: 73.71617pt x 56.90857pt.
 
 <./figures/comparison/kit_death_1_2_t=370.jpg, id=218, 501.875pt x 385.44pt>
@@ -1178,7 +1203,7 @@ File: ./figures/comparison/kit_death_1_2_t=370.jpg Graphic file (type jpg)
 
 <use ./figures/comparison/kit_death_1_2_t=370.jpg>
 Package pdftex.def Info: ./figures/comparison/kit_death_1_2_t=370.jpg used on i
-nput line 737.
+nput line 742.
 (pdftex.def)             Requested size: 73.71617pt x 56.61371pt.
 
 <./figures/comparison/rand_death_1_2_t=70.jpg, id=219, 501.875pt x 385.44pt>
@@ -1186,7 +1211,7 @@ File: ./figures/comparison/rand_death_1_2_t=70.jpg Graphic file (type jpg)
 
 <use ./figures/comparison/rand_death_1_2_t=70.jpg>
 Package pdftex.def Info: ./figures/comparison/rand_death_1_2_t=70.jpg used on i
-nput line 745.
+nput line 750.
 (pdftex.def)             Requested size: 73.71617pt x 56.61371pt.
 
 <./figures/comparison/rand_death_1_2_t=250.jpg, id=220, 501.875pt x 385.44pt>
@@ -1194,7 +1219,7 @@ File: ./figures/comparison/rand_death_1_2_t=250.jpg Graphic file (type jpg)
 
 <use ./figures/comparison/rand_death_1_2_t=250.jpg>
 Package pdftex.def Info: ./figures/comparison/rand_death_1_2_t=250.jpg used on 
-input line 748.
+input line 753.
 (pdftex.def)             Requested size: 73.71617pt x 56.61371pt.
 
 <./figures/comparison/rand_death_1_2_t=370.jpg, id=221, 501.875pt x 385.44pt>
@@ -1202,13 +1227,37 @@ File: ./figures/comparison/rand_death_1_2_t=370.jpg Graphic file (type jpg)
 
 <use ./figures/comparison/rand_death_1_2_t=370.jpg>
 Package pdftex.def Info: ./figures/comparison/rand_death_1_2_t=370.jpg used on 
-input line 751.
+input line 756.
 (pdftex.def)             Requested size: 73.71617pt x 56.61371pt.
+Package marginnote Info: Margin note 7.2 is on absolute page 8
+(marginnote)              on input line 776.
+Package marginnote Info: right page because not two side mode on input line 776
+.
+Package marginnote Info: xpos seems to be 54.2025pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 776.
+Package marginnote Info: Margin note 7.3 is on absolute page 8
+(marginnote)              on input line 795.
+Package marginnote Info: right page because not two side mode on input line 795
+.
+Package marginnote Info: xpos seems to be 271.01447pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 795.
+Package marginnote Info: Margin note 7.4 is on absolute page 8
+(marginnote)              on input line 797.
+Package marginnote Info: right page because not two side mode on input line 797
+.
+Package marginnote Info: xpos seems to be 54.2025pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 797.
  [7 <./figures/bookstore/ours_1_2_t=50.jpg> <./figures/bookstore/ours_1_2_t=130
 .jpg> <./figures/bookstore/ours_1_2_t=370.jpg> <./figures/bookstore/kit_1_2_t=5
 0.jpg> <./figures/bookstore/kit_1_2_t=130.jpg> <./figures/bookstore/kit_1_2_t=3
 70.jpg> <./figures/bookstore/rand_1_2_t=50.jpg> <./figures/bookstore/rand_1_2_t
 =130.jpg> <./figures/bookstore/rand_1_2_t=370.jpg>]
+Package marginnote Info: Margin note 8.1 is on absolute page 8
+(marginnote)              on input line 812.
+Package marginnote Info: right page because not two side mode on input line 812
+.
+Package marginnote Info: xpos seems to be 241.0319pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 812.
 Package epstopdf Info: Source file: <./figures/the_results.eps>
 (epstopdf)                    date: 2017-05-04 18:04:34
 (epstopdf)                    size: 36220 bytes
@@ -1218,15 +1267,21 @@ Package epstopdf Info: Source file: <./figures/the_results.eps>
 (epstopdf)                    size: 21234 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figures/the_results-eps-
 converted-to.pdf ./figures/the_results.eps>
-(epstopdf)             \includegraphics on input line 813.
+(epstopdf)             \includegraphics on input line 821.
 Package epstopdf Info: Output file is already uptodate.
 
 <./figures/the_results-eps-converted-to.pdf, id=234, 462.72874pt x 346.29375pt>
 File: ./figures/the_results-eps-converted-to.pdf Graphic file (type pdf)
 <use ./figures/the_results-eps-converted-to.pdf>
 Package pdftex.def Info: ./figures/the_results-eps-converted-to.pdf used on inp
-ut line 813.
+ut line 821.
 (pdftex.def)             Requested size: 245.71811pt x 183.88882pt.
+Package marginnote Info: Margin note 8.2 is on absolute page 8
+(marginnote)              on input line 824.
+Package marginnote Info: right page because not two side mode on input line 824
+.
+Package marginnote Info: xpos seems to be 314.37439pt,
+(marginnote)             \marginnoterightadjust ignored on input line 824.
 Package epstopdf Info: Source file: <./figures/MHD_results.eps>
 (epstopdf)                    date: 2017-05-04 15:56:48
 (epstopdf)                    size: 38593 bytes
@@ -1236,7 +1291,7 @@ Package epstopdf Info: Source file: <./figures/MHD_results.eps>
 (epstopdf)                    size: 22563 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figures/MHD_results-eps-
 converted-to.pdf ./figures/MHD_results.eps>
-(epstopdf)             \includegraphics on input line 820.
+(epstopdf)             \includegraphics on input line 829.
 Package epstopdf Info: Output file is already uptodate.
 
 <./figures/MHD_results-eps-converted-to.pdf, id=235, 578.16pt x 433.62pt>
@@ -1244,21 +1299,51 @@ File: ./figures/MHD_results-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./figures/MHD_results-eps-converted-to.pdf>
 Package pdftex.def Info: ./figures/MHD_results-eps-converted-to.pdf used on inp
-ut line 820.
+ut line 829.
 (pdftex.def)             Requested size: 245.71811pt x 184.28275pt.
+Package marginnote Info: Margin note 8.3 is on absolute page 8
+(marginnote)              on input line 832.
+Package marginnote Info: right page because not two side mode on input line 832
+.
+Package marginnote Info: xpos seems to be 314.37439pt,
+(marginnote)             \marginnoterightadjust ignored on input line 832.
 
-Overfull \hbox (3.5952pt too wide) in paragraph at lines 830--837
+Overfull \hbox (2.5pt too wide) in paragraph at lines 832--832
+\T1/ptm/m/n/10 #4.10 
+ []
+
+
+Overfull \hbox (3.5952pt too wide) in paragraph at lines 840--847
  [] 
  []
 
+Package marginnote Info: Margin note 8.4 is on absolute page 8
+(marginnote)              on input line 851.
+Package marginnote Info: right page because not two side mode on input line 851
+.
+Package marginnote Info: xpos seems to be 314.37439pt,
+(marginnote)             \marginnoterightadjust ignored on input line 851.
 [8 <./figures/comparison/ours_death_1_2_t=70.jpg> <./figures/comparison/ours_de
 ath_1_2_t=250.jpg> <./figures/comparison/ours_death_1_2_t=370.jpg> <./figures/c
 omparison/kit_death_1_2_t=70.jpg> <./figures/comparison/kit_death_1_2_t=250.jpg
 > <./figures/comparison/kit_death_1_2_t=370.jpg> <./figures/comparison/rand_dea
 th_1_2_t=70.jpg> <./figures/comparison/rand_death_1_2_t=250.jpg> <./figures/com
-parison/rand_death_1_2_t=370.jpg> <./figures/the_results-eps-converted-to.pdf>]
-(./pedestrian_forecasting_iros_2017.bbl [9 <./figures/MHD_results-eps-converted
--to.pdf>])
+parison/rand_death_1_2_t=370.jpg> <./figures/the_results-eps-converted-to.pdf> 
+<./figures/MHD_results-eps-converted-to.pdf>]
+Package marginnote Info: Margin note 9.1 is on absolute page 9
+(marginnote)              on input line 866.
+Package marginnote Info: right page because not two side mode on input line 866
+.
+Package marginnote Info: xpos seems to be 77.30544pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 866.
+Package marginnote Info: Margin note 9.2 is on absolute page 9
+(marginnote)              on input line 866.
+Package marginnote Info: right page because not two side mode on input line 866
+.
+Package marginnote Info: xpos seems to be 96.84312pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 866.
+
+(./pedestrian_forecasting_iros_2017.bbl [9])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -1270,14 +1355,14 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the US letter (8.5in X 11in) paper size.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 906.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 917.
 [10
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 906.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 917.
  (./pedestrian_forecasting_iros_2017.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 906.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 906.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 917.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 917.
 Package rerunfilecheck Info: File `pedestrian_forecasting_iros_2017.out' has no
 t changed.
 (rerunfilecheck)             Checksum: 69091532738985E584E1E95DF5EA0948;1095.
@@ -1285,13 +1370,13 @@ t changed.
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 906.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 917.
  ) 
 Here is how much of TeX's memory you used:
- 20744 strings out of 493089
- 402262 string characters out of 6134842
- 465974 words of memory out of 5000000
- 23718 multiletter control sequences out of 15000+600000
+ 20757 strings out of 493089
+ 402405 string characters out of 6134842
+ 463847 words of memory out of 5000000
+ 23731 multiletter control sequences out of 15000+600000
  119373 words of font info for 141 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,23n,82p,2129b,784s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1299,18 +1384,16 @@ Here is how much of TeX's memory you used:
 exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texl
 ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texli
-ve/2015/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/te
-xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/tex
-live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texli
-ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive
-/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2
-015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/201
-5/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2015/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2015/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2015/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2015/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/texmf-dist/fon
+ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texliv
+e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/
+2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/20
+15/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2015
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2015/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2015/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2015/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2015/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2015/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2015/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2015/texmf-dist/fonts/typ
@@ -1321,11 +1404,11 @@ e1/urw/courier/ucrr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/t
 imes/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmbi
 8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></u
 sr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on pedestrian_forecasting_iros_2017.pdf (10 pages, 961509 bytes)
+Output written on pedestrian_forecasting_iros_2017.pdf (10 pages, 942930 bytes)
 .
 PDF statistics:
- 478 PDF objects out of 1000 (max. 8388607)
- 344 compressed objects within 4 object streams
+ 470 PDF objects out of 1000 (max. 8388607)
+ 338 compressed objects within 4 object streams
  102 named destinations out of 1000 (max. 500000)
  275 words of extra memory for PDF output out of 10000 (max. 10000000)
 

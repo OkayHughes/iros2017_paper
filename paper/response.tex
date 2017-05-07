@@ -6,6 +6,7 @@
 \usepackage{xcolor}
 \usepackage{graphicx}
 \usepackage{booktabs}
+\usepackage{marginnote}
 \newcommand{\todo}[1]{\textcolor{red}{#1}}
 
 \providecommand{\response}[1]{
@@ -59,6 +60,8 @@ Thank you for noticing the difficulty in comparing the improvements. We addresse
 
 We feel that both plots add something to the analysis, so we've included the following passage to justify both our metrics.
 
+
+\reversemarginpar\marginnote{\#4.5}
 \response{ In our analysis we sought a metric that measured the similarity between the predictor and the ground truth as well as the ``safety'' of the prediction. We used the area under the curve of the ROC curve as our measure of this. The ROC curve plots the rate of false positive detections against the probability of detecting a pedestrian, or in essence the quality of the detection versus the safety. The area under this curve is a standard measure of the quality of a predictor. Figure \ref{AUC} shows the analysis of the AUC of each algorithm versus time. In addition, we used the Modified Hausdorff Distance (MHD) from the ground truth trajectory to a sample from the predictions at each time in order to provide a geometric measure of how accurate the predictions are. Figure \ref{MHD} shows MHD plotted against time.}
 
 \end{item}
@@ -66,6 +69,7 @@ We feel that both plots add something to the analysis, so we've included the fol
 	\centering
 	\includegraphics[width=0.6\textwidth]{figures/mhd_results.eps}
 	\caption{A comparison of the Modified Hausdorff Distance from the ground truth of the pedestrian to a 1000 point sample from each distribution. The method from \cite{Alahi2016} does very well at short time scales due to its confidence, but we outperform all other methods at intermediate times. At long timescales the MHD to the trajectory of most algorithms converges. Our method increases positional uncertainty with time, and so \cite{Kitani2012} outperforms us because they know the end point and we do not, and \cite{Alahi2016} places too much significance on the initial positions of other pedestrians at large time scales.}
+   \reversemarginpar\marginnote{\#4.10}
 	\label{MHD}
 \end{figure}
 
@@ -73,6 +77,7 @@ We feel that both plots add something to the analysis, so we've included the fol
 	\centering
 	\includegraphics[width=0.6\textwidth]{figures/the_results.eps}
 	\caption{A comparison of the AUC of the various algorithms. Note that the initial dip in the performance of \cite{Kitani2012} is due to their confidence in their initial estimate. We sampled the S-LSTM \cite{Alahi2016} model 100 times in order to give them the best chance in this analysis, but their confidence combined with the over-reliance on social forces at moderate-to-large timescales lowered their performance.}
+	\reversemarginpar\marginnote{\#4.9}
 	\label{AUC}
 \end{figure}
 
@@ -104,6 +109,7 @@ learnt, are they learnt in scene specific manner or altogether?}
 \end{item}
 Thank you for noticing that this is unclear. Our algorithm trains on each scene independently, so clustering, vector field learning, and learning the potential functions are all done for each Valley, Fangron, etc. We've added the following text to the paper:
 
+\reversemarginpar\marginnote{\#4.3}
 \response{We did a 2-fold cross validation by using 20\% of the data for testing and the remainder for training within each scene. We learned separate collections of vector fields and model parameters for each fold on all of the four scenes on which we tested.}
 
 
@@ -115,6 +121,7 @@ such information makes reproduction of this work not feasible. }
 
 This was an oversight on our part, thank you for noticing it. The distance used is actually a custom distance function on $\mathbb{R}^4$, which disregards the involution $(x_1, x_2, x_3, x_4) \to (x_3, x_4, x_1, x_2)$, and so doesn't care about parity of trajectories. We have included the following clarification:
 
+\reversemarginpar\marginnote{\#4.2}
 \response{We then cluster in $\mathbb{R}^4$ using Affinity Propagation \cite{FreyDueck2007} and a custom distance measure defined by $d((x_1, x_2, x_3, x_4),\mathbf{y}) : \mathbb{R}^4 \times \mathbb{R}^4 \to \mathbb{R} = \min \left\{ d_e((x_1, x_2, x_3, x_4), \mathbf{y}), d_e((x_3, x_4, x_1, x_2), \mathbf{y}) \right\}$, for the euclidean distance $d_e$. This function measures the distance between the endpoints irrespective of their ordering. The scale of the datasets we tested on had large enough spatial scale that clustering based on endpoints captured people moving from destination to destination, e.g. from a storefront to the sidewalk at the edge of a scene. On our data, other distance measures from \cite{Morris2009} and \cite{Lee2007} didn't identify coherent motion models. This is partly due to the fact that oftentimes pedestrians would take slightly different routes to get to their destination, and the cumulative effect on the distance measures is enough to hinder the clustering. }
 	
 \end{item}
@@ -131,6 +138,7 @@ Hospedales et al. 2009; Emonet et al. 2011; Yi et al. 2015.}
 
 We agree that this adds to the paper, thank you for the suggestion. We added a section to our literature review to reflect the relevant work.
 
+\reversemarginpar\marginnote{\#1.1}
 	\response{On the other hand, many authors have approached pedestrian forecasting by deriving their motion model from interactions between pedestrians. Early work by \cite{Helbing1995} and \cite{Xu2012} describe pedestrians interactions using physically motivated methods. Several models such as \cite{Yamaguchi2011}, \cite{Yi2016}, and \cite{Pellegrini2009} derive their motion models from \cite{Helbing1995} who incorporate collision avoidance through an interaction potential which repels pedestrians from each other, leading to forms of what is called Linear Trajectory Avoidance (LTA). However LTA suffers from not planning for other pedestrian’s positions at future times. \cite{Emonet2011}, \cite{Hospedales2009} , and \cite{Wang2009}  all take optical flow as input. \cite{Wang2009} and \cite{Emonet2011} both use variants of Hierarchical Dirichlet Processes on discretized optical flow to determine temporal motifs (i.e. classes of motion within the scene), where \cite{Hospedales2009} substitutes a Markov model. These models are not agent based, and the lack of an explicit motion model limits their predictive power in situations where we know more about the data. \cite{Koppula2016} predict trajectories by introducing and sampling Anticipatory Temporal Conditional Random Fields which incorporate learned affordances for humans and objects based on observed objectives within the scene. \cite{Tay2008} , \cite{Wang2008}, and \cite{Trautman2015} create agent-based models based on Gaussian Processes, though they suffer issues when trained on discretized trajectories. \cite{Alahi2016} uses Long Short-Term Memory to learn pedestrian motion models without making implicit (as in the case of CRFs) or explicit (in the case of social forces) assumptions about the manner in which agents will interact. \cite{Alahi2016} outperforms LTA, social forcing based on \cite{Yamaguchi2011},  and IGP from \cite{Trautman2015}. Along with its quick run time, this establishes \cite{Alahi2016} as state-of-the-art for socially based models, and so we our algorithm to theirs. }
 
 \begin{item}
@@ -159,6 +167,7 @@ Need to be clearer and
 dive a little bit deeper into the technical approach. }
 Thank you for this criticism. We hope we adequately addressed it by strengthening the description of our method for learning the motion model, as well as quantifying the way that we tested our data. We also changed the language below to better reflect that the specific implementation we chose is an example of how to use the larger framework.
 
+\reversemarginpar\marginnote{\#4.1}
 \response{Given the model established in the previous section, we describe an implementation to showcase one way the model can be applied to observational data.}
 \end{item}
 \begin{item}
@@ -167,8 +176,11 @@ Need to use and apply more deep learning approaches such as social LSTM
 or other machine methods.}
 Thank you for the suggestion. We hope that we have addressed it by including a review of literature of social motivated models, including S-LSTM, as well as a section on how social factors can be integrated into our model. In addition, we compared against S-LSTM in addition to \cite{Kitani2012} from the paper. The figures corresponding to the predictions of the S-LSTM model are ommitted from the paper because as happened for many of the agents, the S-LSTM predictions quickly exit the bounds of the scene, and so the visualization is identically zero. We changed the subtitle of the figure to reflect this, which is shown below.
 
+\reversemarginpar\marginnote{\#4.8}
 \response{An illustration of the predictions generated by the various algorithms. In this figure, the dot is the start point of the test trajectory, the diamond is the position at time t, and the X is the end of the trajectory. The likelihood of detection is depicted using the virdis color palette. Notice that the Random Walk is imprecise, while the predictions generated by the algorithm in \cite{Kitani2012} suffer from the inability of their motion model to adequately match the speed of the agent. The algorithm from \cite{Alahi2016} quickly passes beyond the boundaries of the scene, so the plots are ommitted here.
 }
+
+\reversemarginpar\marginnote{\#4.9}
 \response{An illustration of the predictions generated by the various algorithms. In this figure, the dot is the start point of the test trajectory, the diamond is the position at time t, and the X is the end of the trajectory. The likelihood of detection is depicted using the virdis color palette. Notice that the Random Walk is imprecise, while the predictions generated by the algorithm in \cite{Kitani2012} are unable to match the speed of the agent and choose the wrong direction to follow the agent around the circle. The algorithm in \cite{Alahi2016} passes beyond the boundaries of the scene, and so the plots are ommitted here.}
 
 \end{item}
@@ -196,8 +208,10 @@ by "averaged across several agents and scenes" (how many?).}
 
 Thank you for noticing this. We have clarified the paper in the passages listed below to clarify the list of scenes we ran in comparison, and how many agents total were run. We clarified that the set of agents used to evaluate were the same that were used to determine run times. Note that we attempted to compare on all of the scenes in the Stanford Drone Dataset, but the difficulty in getting the other models to converge in a reasonable amount of time prevented us from doing so.
 
+\reversemarginpar\marginnote{\#4.4}
 \response{ Our analysis was conducted on the Coupa, Bookstore, Death Circle, and Gates scenes from the dataset from \cite{Robicquet2016}, with a total of 142 trajectories analyzed.}
 
+\reversemarginpar\marginnote{\#4.6}
 \response{The run time per frame for each algorithm was generated using the mean run time for 400 frames, averaged across all of the trajectory data used in the quality analysis.}
 \end{item}
 
