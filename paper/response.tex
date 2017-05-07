@@ -111,6 +111,7 @@ Whereas the MHD would describe this generated set of predictions as informative.
 group motion) and the influences from neighbouring pedestrians (for
 instances such as collision avoidance)?}
 \end{item}
+
 Thank you for this insightful question. 
 Since the focus of this paper was on developing a method to generate predictions at real-time for the autonomous vehicle context, we did not consider the effect of incorporating interactions between predictions. 
 However, social forces are a natural avenue for future work, and so we included the following paragraph in the paper:
@@ -130,6 +131,7 @@ clear. Does clustering based on start/end points help to identify
 different motion models? Isn't it better to cluster considering the
 entire trajectory? }
 \end{item}
+
 Thank you for this relevant question.
 As stated in \cite{Morris2009}, the choice of clustering technique is not nearly as important as the distance metric. 
 Our success with distance functions that took a whole trajectory was limited on the data we tested and we found more success using a custom distance metric that only considered the start and end points of a trajectory as we describe in Comment \ref{distmetric} to Reviewer 1. 
@@ -143,6 +145,7 @@ Similarly, we tested against high quality data in which trajectories with irreco
 Valley, Fangron) separately or all together? When motion models are
 learnt, are they learnt in scene specific manner or altogether?}
 \end{item}
+
 Thank you for noticing that this is unclear. 
 Our algorithm trains on each scene independently, so clustering, vector field learning, and learning the potential functions are all done for each scene separately. 
 To make this more clear, we added the following text to the paper:
