@@ -175,7 +175,7 @@ The resulting predictions outperformed \cite{Kitani2012} when comparing the most
 As in all methods mentioned thus far, computational speed and accuracy of any predicted posteriors were not a concern of \cite{Walker2014}, so no such results were reported.
 However, since the motion model was a Markov jump process which required the application of a sample based technique, we should expect the same painful trade-off between error and speed to occur as in \cite{Karasev2016} and \cite{Ballan2016}.
 
-\rtext{On the other hand, authors have approached pedestrian forecasting by deriving their motion model from interactions between pedestrians. Early work by [helbig] and [Xu] describe pedestrians interactions using physically motivated tools. Several models [yamaguchi, yi, pellegrini you’ll never] derive their motion models from [helbing] which incorporates collision avoidance through an interaction potential which repels pedestrians from each other, leading to forms of Linear Trajectory Avoidance (LTA). However LTA suffers from not planning for other pedestrian’s positions at future times. [emonet], [hospedales], and [wang: unsupervised] all take optical flow as input. [wang] and [emonet] both use variants of Hierarchical Dirichlet Processes on discretized optical flow to determine temporal motifs (i.e. classes of motion within the scene), where [hospedales] substitutes a Markov model. These models are not agent based, and the lack of an explicit motion model limits their predictive power in situations where we know more about the data. [koppula and saxena] predict trajectories by introducing and sampling Anticipatory Temporal Conditional Random Fields which incorporate human affordances relating to human objectives within the scene. [Tay], [Wang jw], and [Trautman] create agent-based models based on Gaussian Processes, though they suffer issues when trained on discretized trajectories. [alahi] uses Long Short-Term Memory to learn pedestrian motion models without making implicit (as in the case of CRFs) or explicit (in the case of social forces) assumptions about the manner in which agents will interact. [alahi] outperformed LTA, and social forcing based on [yamaguchi]  and IGP from [trautman]. Along with its quick run time, this motivated our decision to test our algorithm against it. }
+\rtext{On the other hand, many authors have approached pedestrian forecasting by deriving their motion model from interactions between pedestrians. Early work by [helbig] and [Xu] describe pedestrians interactions using physically motivated methods. Several models [yamaguchi, yi, pellegrini you’ll never] derive their motion models from [helbing] who incorporate collision avoidance through an interaction potential which repels pedestrians from each other, leading to forms of what is called Linear Trajectory Avoidance (LTA). However LTA suffers from not planning for other pedestrian’s positions at future times. [emonet], [hospedales], and [wang: unsupervised] all take optical flow as input. [wang] and [emonet] both use variants of Hierarchical Dirichlet Processes on discretized optical flow to determine temporal motifs (i.e. classes of motion within the scene), where [hospedales] substitutes a Markov model. These models are not agent based, and the lack of an explicit motion model limits their predictive power in situations where we know more about the data. [koppula and saxena] predict trajectories by introducing and sampling Anticipatory Temporal Conditional Random Fields which incorporate learned affordances for humans and objects based on observed objectives within the scene. [Tay], [Wang jw], and [Trautman] create agent-based models based on Gaussian Processes, though they suffer issues when trained on discretized trajectories. [alahi] uses Long Short-Term Memory to learn pedestrian motion models without making implicit (as in the case of CRFs) or explicit (in the case of social forces) assumptions about the manner in which agents will interact. [alahi] outperformed LTA, the social forcing based on [yamaguchi],  and IGP from [trautman]. Along with its quick run time, this establishes [alahi] as state-of-the-art for socially based models, and so we our algorithm to theirs. }
 
 
 
@@ -574,7 +574,7 @@ If the posteriors represented by the arrows in \eqref{eq:pgm} are efficiently co
  We begin by identifying the number of possible vector-fields.
   To do this we use a clustering algorithm on the trajectories observed in a scene to categorize them into groups.
   %In principal, any clustering algorithm could accomplish this.
-\rtext{We then cluster in $\mathbb{R}^4$ using Affinity Propagation\cite{FreyDueck2007} and a custom distance measure defined by $d((x_1, x_2, x_3, x_4),\mathbf{y}) : \mathbb{R}^4 \times \mathbb{R}^4 \to \mathbb{R} = \min \left\{ d_e((x_1, x_2, x_3, x_4), \mathbf{y}), d_e((x_3, x_4, x_1, x_2), \mathbf{y}) \right\}$, for the euclidean distance $d_e$. This function measures the distance between the endpoints irrespective of their ordering. The scale of the datasets we tested on had large enough spatial scale that clustering based on endpoints captured people moving from destination to destination, e.g. from a storefront to the sidewalk at the edge of a scene. On our data, other distance measures from [Morris and Trivedi] and [Lee 2007] didn't identify coherent motion models.}
+\rtext{We then cluster in $\mathbb{R}^4$ using Affinity Propagation[17] and a custom distance measure defined by $d((x_1, x_2, x_3, x_4),\mathbf{y}) : \mathbb{R}^4 \times \mathbb{R}^4 \to \mathbb{R} = \min \left\{ d_e((x_1, x_2, x_3, x_4), \mathbf{y}), d_e((x_3, x_4, x_1, x_2), \mathbf{y}) \right\}$, for the euclidean distance $d_e$. This function measures the distance between the endpoints irrespective of their ordering. The scale of the datasets we tested on had large enough spatial scale that clustering based on endpoints captured people moving from destination to destination, e.g. from a storefront to the sidewalk at the edge of a scene. On our data, other distance measures from \todo{[Morris and Trivedi]} and \todo{[Lee 2007]} didn't identify coherent motion models. This is partly due to the fact that oftentimes pedestrians would take slightly different routes to get to their destination, and the cumulative effect on the distance measures is enough to hinder the clustering.We did a 2-fold cross validation by using 20\% of the data for testing and the remainder for training within each scene. We learned separate collections of vector fields and model parameters for each fold on all of the four scenes on which we tested.}
   This clustering of the end-points induces a clustering of the trajectories.
   Suppose we obtain clusters $S_1, \dots, S_n$ consisting of trajectories from our data set, as well as a set of unclassified trajectories, $S_0$.
   
@@ -703,7 +703,7 @@ We first considering the nonlinear models.
 		$t = 12.33s$
 	\end{minipage}
 	
-	\caption{\rtext{An illustration of the predictions generated by the various algorithms. In this figure, the dot is the start point of the test trajectory, the diamond is the position at time t, and the X is the end of the trajectory. The likelihood of detection is depicted using the virdis color palette. Notice that the Random Walk is imprecise, while the predictions generated by the algorithm in \cite{Kitani2012} suffer from the inability of their motion model to adequately match the speed of the agent. The algorithm from [asdfasdf] quickly passes beyond the boundaries of the scene, so the plots are ommitted here.}}
+	\caption{\rtext{An illustration of the predictions generated by the various algorithms. In this figure, the dot is the start point of the test trajectory, the diamond is the position at time t, and the X is the end of the trajectory. The likelihood of detection is depicted using the virdis color palette. Notice that the Random Walk is imprecise, while the predictions generated by the algorithm in [7] suffer from the inability of their motion model to adequately match the speed of the agent. The algorithm from [13] quickly passes beyond the boundaries of the scene, so the plots are ommitted here.}}
 	
 	\label{fig:bookstore-1-2}
 \end{figure}
@@ -766,7 +766,7 @@ We first considering the nonlinear models.
 		$t = 12.33s$
 	\end{minipage}
 	
-	\caption{\rtext{An illustration of the predictions generated by the various algorithms. In this figure, the dot is the start point of the test trajectory, the diamond is the position at time t, and the X is the end of the trajectory. The likelihood of detection is depicted using the virdis color palette. Notice that the Random Walk is imprecise, while the predictions generated by the algorithm in \cite{Kitani2012} are unable to match the speed of the agent and choose the wrong direction to follow the agent around the circle. The algorithm in [asdfasdf] passes beyond the boundaries of the scene, and so the plots are ommitted here.}}
+	\caption{\rtext{An illustration of the predictions generated by the various algorithms. In this figure, the dot is the start point of the test trajectory, the diamond is the position at time t, and the X is the end of the trajectory. The likelihood of detection is depicted using the virdis color palette. Notice that the Random Walk is imprecise, while the predictions generated by the algorithm in [7] are unable to match the speed of the agent and choose the wrong direction to follow the agent around the circle. The algorithm in [13] passes beyond the boundaries of the scene, and so the plots are ommitted here.}}
 	
 	\label{fig:death-1-2}
 \end{figure}
@@ -787,7 +787,7 @@ This section establishes our methods performance and compares it to the model fr
 We implement our model as well as our evaluation code in Python 2.6. 
 Our implementation is available online\footnote{https://github.com/OkayHughes/iros2017\_pedestrian\_forecasting}.
 \rtext{We did a 2-fold cross validation by using 20\% of the data for testing and the remainder for training within each scene. We learned separate collections of vector fields and model parameters for each fold on all of the four scenes on which we tested.}
-\rtext{Our analysis was conducted on the Coupa, Bookstore, Death Circle, and Gates scenes from the dataset from [asdfasdf], with a total of 142 trajectories analyzed.}
+\rtext{Our analysis was conducted on the Coupa, Bookstore, Death Circle, and Gates scenes from the dataset from [13], with a total of 142 trajectories analyzed.}
 
 
 %Our data came from the Stanford Drone Dataset in the form of hand annotated bounding boxes around agents (e.g. cars, pedestrians, bicycles). 
@@ -818,7 +818,7 @@ This is despite providing the algorithm in \cite{Kitani2012} with the specific f
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{./figures/MHD_results.eps}
-	\caption{\rtext{A comparison of the Modified Hausdorff Distance from the ground truth of the pedestrian to a 1000 point sample from each distribution. The method from [asdfasdf] does very well at short time scales due to its confidence, but we outperform all other methods at intermediate times. At long timescales the MHD to the trajectory of most algorithms converges. Our method increases positional uncertainty with time, and so \cite{Kitani2012} outperforms us because they know the end point and we do not, and [asdfasdf] places too much significance on the positions of other pedestrians at large time scales.}}
+	\caption{\rtext{A comparison of the Modified Hausdorff Distance from the ground truth of the pedestrian to a 1000 point sample from each distribution. The method from [asdfasdf] does very well at short time scales due to its confidence, but we outperform all other methods at intermediate times. At long timescales the MHD to the trajectory of most algorithms converges. Our method increases positional uncertainty with time, and so \cite{Kitani2012} outperforms us because they know the end point and we do not, and [asdfasdf] places too much significance on the initial positions of other pedestrians at large time scales.}}
 	\label{fig:mhd_vs_time}
 \end{figure}
 
@@ -827,17 +827,17 @@ This is despite providing the algorithm in \cite{Kitani2012} with the specific f
 		\caption{Comparison of runtimes of the various algorithms.}
 		\label{tab:time}
 		\renewcommand{\arraystretch}{1.5}% Spread rows out...
-		\begin{tabular}{||c | c c  c ||} 
+		\begin{tabular}{||c | c c  c c ||} 
 			\hline
-			& Our Algorithm & Random Walk & Kitani et al. \\ [0.5ex] 
+			& Our Algorithm & Random Walk & Kitani et al. & S-LSTM \\ [0.5ex] 
 			\hline 
-			$\frac{\mathrm{time}}{\mathrm{frame}}$ & 0.0169s & 2.1E-7s & 0.0614s \\
+			$\frac{\mathrm{time}}{\mathrm{frame}}$ & 0.00443s & 2.1E-7s & 0.0706s & 0.0134s \\
 			\hline
 		\end{tabular}
 	\end{center}
 \end{table}
 
-\rtext{The run time per frame for each algorithm was generated using the mean run time for 400 frames, averaged across all of the data used in the quality analysis.}
+\rtext{The run time per frame for each algorithm was generated using the mean run time for 400 frames, averaged across all of the trajectory data used in the quality analysis.}
 This is shown in Table~\ref{tab:time}. 
 Our algorithm implementation leveraged its embarrassing parallelism using a relatively naive Python implementation, which split the computation of frames among 18 cores. 
 %Our run times would significantly decrease using an implementation of our algorithm in C that uses a more clever scheme. 
@@ -852,7 +852,7 @@ The algorithm in \cite{Kitani2012} was timed with minimal modification using the
 This paper presents a real-time approach to probabilistic pedestrian modeling. 
 We demonstrate the ability to accurately predict the final location of a pedestrian with superior accuracy compared to a state-of-the-art with additional contributions in three critical areas: 1) prediction speed is efficient enabling tight loop real-time control;  2) our error bound on the predictions accurately reflects potential paths for the human limiting false negatives and maximizing the utility and safety of the predictions; and 3) the prediction made by the proposed approach do not require knowledge of the end point  making them applicable to a wide variety of real world applications. 
 These three features have great utility for robotic applications, and we see the integration of such techniques with autonomous system control as one pathway to enable safer operations in shared human-robot spaces. 
-We plan to explore the optimization of the naive python implementation using GPU parallelization to further increase speed and ease integration into system's control loop. \rtext{Though including social forces into the model is out of the scope of this paper, incorporation could begin as follows.  In the current motion model with a single vector field, the acceleration of the $i$th agent is given by $\ddot{x}_i = s^2 DX(x_i) \cdot X(x_i)$.  Incorporating a social force $F_{i}$ acting on the $i$th can be done by instead asserting $\ddot{x}_i = s^2 DX(x) \cdot X(x) + F_i$.  Usually $F_{i} = \sum_{j} \nabla U( x_j - x_i)$ where $U$ is an interaction potential.} \rtext{We also hope to do learning transfer with this model using scene segmentation from \cite{Walker2014}, as well as the semantic context descriptors and routing scores from \cite{Ballan2016} to show how vector fields can be transferred to novel scenes. It appears that the low-order parameterization of our model, and unit-length vector field assumption make it particularly amenable to the methods developed in \cite{Ballan2016}.}
+We plan to explore the optimization of the naive python implementation using GPU parallelization to further increase speed and ease integration into system's control loop. \rtext{Though including social forces into the model is out of the scope of this paper, incorporation could begin as follows.  In the current motion model with a single vector field, the acceleration of the $i$th agent is given by $\ddot{x}_i = s^2 DX(x_i) \cdot X(x_i)$.  Incorporating a social force $F_{i}$ acting on the $i$th agent can be done by instead asserting $\ddot{x}_i = s^2 DX(x) \cdot X(x) + F_i$.  Usually $F_{i} = \sum_{j} \nabla U( x_j - x_i)$ where $U$ is an interaction potential.} \rtext{We also hope to do learning transfer with this model using scene segmentation from \cite{Walker2014}, as well as the semantic context descriptors and routing scores from \cite{Ballan2016} to show how vector fields can be transferred to novel scenes. It appears that the low-order parameterization of our model, and unit-length vector field assumption make it particularly amenable to the methods developed in \cite{Ballan2016}.}
 
 \section*{Acknowledgments}
 Kris Kitani was critical in aiding the comparison to his algorithm.

@@ -111,8 +111,4 @@ D.~Gottlieb and J.~Hesthaven, ``Spectral methods for hyperbolic problems,''
   \url{http://www.sciencedirect.com/science/article/pii/S0377042700005100}
 \BIBentrySTDinterwordspacing
 
-\bibitem{FreyDueck2007}
-B.~J. Frey and D.~Dueck, ``Clustering by passing messages between data
-  points,'' \emph{Science}, vol. 315, no. 5814, pp. 972--976, 2007.
-
 \end{thebibliography}

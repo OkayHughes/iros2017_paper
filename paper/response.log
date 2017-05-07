@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  6 MAY 2017 04:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  7 MAY 2017 03:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -325,48 +325,46 @@ Underfull \hbox (badness 10000) in paragraph at lines 62--63
 
  []
 
-Package epstopdf Info: Source file: <paper/figures/mhd_results.eps>
+[1
+
+{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Package epstopdf Info: Source file: <figures/mhd_results.eps>
 (epstopdf)                    date: 2017-05-04 15:56:48
 (epstopdf)                    size: 38593 bytes
-(epstopdf)             Output file: <paper/figures/mhd_results-eps-converted-to
-.pdf>
+(epstopdf)             Output file: <figures/mhd_results-eps-converted-to.pdf>
 (epstopdf)                    date: 2017-05-04 16:28:58
 (epstopdf)                    size: 22563 bytes
-(epstopdf)             Command: <repstopdf --outfile=paper/figures/mhd_results-
-eps-converted-to.pdf paper/figures/mhd_results.eps>
+(epstopdf)             Command: <repstopdf --outfile=figures/mhd_results-eps-co
+nverted-to.pdf figures/mhd_results.eps>
 (epstopdf)             \includegraphics on input line 67.
 Package epstopdf Info: Output file is already uptodate.
-<paper/figures/mhd_results-eps-converted-to.pdf, id=1, 578.16pt x 433.62pt>
-File: paper/figures/mhd_results-eps-converted-to.pdf Graphic file (type pdf)
 
-<use paper/figures/mhd_results-eps-converted-to.pdf>
-Package pdftex.def Info: paper/figures/mhd_results-eps-converted-to.pdf used on
- input line 67.
+<figures/mhd_results-eps-converted-to.pdf, id=11, 578.16pt x 433.62pt>
+File: figures/mhd_results-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figures/mhd_results-eps-converted-to.pdf>
+Package pdftex.def Info: figures/mhd_results-eps-converted-to.pdf used on input
+ line 67.
 (pdftex.def)             Requested size: 260.17464pt x 195.1272pt.
-Package epstopdf Info: Source file: <paper/figures/the_results.eps>
+Package epstopdf Info: Source file: <figures/the_results.eps>
 (epstopdf)                    date: 2017-05-04 18:04:34
 (epstopdf)                    size: 36220 bytes
-(epstopdf)             Output file: <paper/figures/the_results-eps-converted-to
-.pdf>
+(epstopdf)             Output file: <figures/the_results-eps-converted-to.pdf>
 (epstopdf)                    date: 2017-05-04 18:05:30
 (epstopdf)                    size: 21234 bytes
-(epstopdf)             Command: <repstopdf --outfile=paper/figures/the_results-
-eps-converted-to.pdf paper/figures/the_results.eps>
+(epstopdf)             Command: <repstopdf --outfile=figures/the_results-eps-co
+nverted-to.pdf figures/the_results.eps>
 (epstopdf)             \includegraphics on input line 74.
 Package epstopdf Info: Output file is already uptodate.
 
-<paper/figures/the_results-eps-converted-to.pdf, id=2, 462.72874pt x 346.29375p
-t>
-File: paper/figures/the_results-eps-converted-to.pdf Graphic file (type pdf)
- <use paper/figures/the_results-eps-converted-to.pdf>
-Package pdftex.def Info: paper/figures/the_results-eps-converted-to.pdf used on
- input line 74.
-(pdftex.def)             Requested size: 260.17464pt x 194.71048pt.
- [1
+<figures/the_results-eps-converted-to.pdf, id=12, 462.72874pt x 346.29375pt>
+File: figures/the_results-eps-converted-to.pdf Graphic file (type pdf)
 
-{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2 <./p
-aper/figures/mhd_results-eps-converted-to.pdf> <./paper/figures/the_results-eps
--converted-to.pdf>]
+<use figures/the_results-eps-converted-to.pdf>
+Package pdftex.def Info: figures/the_results-eps-converted-to.pdf used on input
+ line 74.
+(pdftex.def)             Requested size: 260.17464pt x 194.71048pt.
+
 Overfull \hbox (37.66669pt too wide) in paragraph at lines 86--87
 [][][][][][]
  []
@@ -376,7 +374,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 86--87
 
  []
 
-
+[2 <./figures/mhd_results-eps-converted-to.pdf>]
 Overfull \hbox (37.66669pt too wide) in paragraph at lines 107--108
 [][][][][][]
  []
@@ -386,7 +384,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 107--108
 
  []
 
-
+[3 <./figures/the_results-eps-converted-to.pdf>]
 Overfull \hbox (37.66669pt too wide) in paragraph at lines 118--119
 [][][][][][]
  []
@@ -396,10 +394,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 118--119
 
  []
 
-[3]
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ™ in font cmr10!
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ™ in font cmr10!
@@ -413,12 +407,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 134--135
 
  []
 
-
+[4]
 Overfull \hbox (37.66669pt too wide) in paragraph at lines 162--165
 [][][][][][] 
  []
 
-[4]
+
 Overfull \hbox (37.66669pt too wide) in paragraph at lines 171--173
 [][][][][][]
  []
@@ -443,7 +437,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 187--188
 
  []
 
-
+[5]
 Overfull \hbox (37.66669pt too wide) in paragraph at lines 199--200
 [][][][][][]
  []
@@ -453,7 +447,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 199--200
 
  []
 
-[5]
+
 Overfull \hbox (37.66669pt too wide) in paragraph at lines 201--203
 [][][][][][]
  []
@@ -463,31 +457,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 201--203
 
  []
 
-[6] (./response.aux) ) 
+(./response.bbl [6] [7]) [8] (./response.aux) ) 
 Here is how much of TeX's memory you used:
- 3414 strings out of 493089
- 47008 string characters out of 6134842
- 126312 words of memory out of 5000000
- 6840 multiletter control sequences out of 15000+600000
- 12122 words of font info for 47 fonts, out of 8000000 for 9000
+ 3448 strings out of 493089
+ 47404 string characters out of 6134842
+ 126387 words of memory out of 5000000
+ 6870 multiletter control sequences out of 15000+600000
+ 12468 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,6n,35p,1861b,286s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmex10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmmi7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr17.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/m
-sbm10.pfb>
-Output written on response.pdf (6 pages, 178974 bytes).
+ 38i,6n,35p,2111b,286s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2015/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2015/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2015/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2015/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2015/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/p
+ublic/amsfonts/symbols/msbm10.pfb>
+Output written on response.pdf (8 pages, 204598 bytes).
 PDF statistics:
- 144 PDF objects out of 1000 (max. 8388607)
- 55 compressed objects within 1 object stream
+ 156 PDF objects out of 1000 (max. 8388607)
+ 64 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

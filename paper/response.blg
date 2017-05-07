@@ -1,6 +1,6 @@
 This is BibTeX, Version 0.99d (TeX Live 2015)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
-The top-level auxiliary file: pedestrian_forecasting_iros_2017.aux
+The top-level auxiliary file: response.aux
 The style file: IEEEtran.bst
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
@@ -13,44 +13,44 @@ Database file #1: references.bib
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 
 Done.
-You've used 16 entries,
+You've used 21 entries,
             3975 wiz_defined-function locations,
-            919 strings with 10844 characters,
-and the built_in function-call counts, 10980 in all, are:
-= -- 827
-> -- 274
-< -- 74
-+ -- 142
-- -- 50
-* -- 537
-:= -- 1655
-add.period$ -- 32
-call.type$ -- 16
-change.case$ -- 15
-chr.to.int$ -- 183
-cite$ -- 16
-duplicate$ -- 801
-empty$ -- 1000
-format.name$ -- 62
-if$ -- 2534
+            950 strings with 11882 characters,
+and the built_in function-call counts, 18188 in all, are:
+= -- 1440
+> -- 436
+< -- 177
++ -- 245
+- -- 68
+* -- 886
+:= -- 2595
+add.period$ -- 49
+call.type$ -- 21
+change.case$ -- 19
+chr.to.int$ -- 429
+cite$ -- 21
+duplicate$ -- 1262
+empty$ -- 1491
+format.name$ -- 89
+if$ -- 4244
 int.to.chr$ -- 0
-int.to.str$ -- 16
-missing$ -- 147
-newline$ -- 78
-num.names$ -- 15
-pop$ -- 382
+int.to.str$ -- 21
+missing$ -- 207
+newline$ -- 87
+num.names$ -- 21
+pop$ -- 488
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 860
+skip$ -- 1407
 stack$ -- 0
-substring$ -- 416
-swap$ -- 593
-text.length$ -- 13
+substring$ -- 1027
+swap$ -- 1078
+text.length$ -- 34
 text.prefix$ -- 0
 top$ -- 5
 type$ -- 0
 warning$ -- 0
-while$ -- 43
-width$ -- 18
-write$ -- 173
+while$ -- 90
+width$ -- 23
+write$ -- 225

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  6 MAY 2017 04:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  7 MAY 2017 02:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -935,11 +935,7 @@ line 125.
 
  <./figures/FirstPage/gates_1_2_t=55.jpg> <./figures/FirstPage/gates_1_2_t=145.
 jpg> <./figures/FirstPage/gates_1_2_t=235.jpg> <./figures/FirstPage/gates_1_2_t
-=345.jpg>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [2]
-[3]
+=345.jpg>] [2] [3]
 Underfull \hbox (badness 1571) in paragraph at lines 349--353
 \T1/ptm/m/n/10 be per-formed ef-fi-ciently, we fo-cus on com-pu-ta-tion of
  []
@@ -984,6 +980,108 @@ cmsy/m/n/10 2 f\OT1/cmr/m/n/10 1\OML/cmm/m/it/10 ; [] ; n\OMS/cmsy/m/n/10 g$\T1
 
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
 put line 519.
+Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
+ine 577.
+
+Overfull \hbox (18.74954pt too wide) in paragraph at lines 577--577
+[][][][]\T1/ptm/m/n/10 [Morris 
+ []
+
+
+Overfull \hbox (2.63994pt too wide) in paragraph at lines 577--577
+\T1/ptm/m/n/10 and 
+ []
+
+
+Overfull \hbox (20.21973pt too wide) in paragraph at lines 577--577
+\T1/ptm/m/n/10 Trivedi]  
+ []
+
+
+Overfull \hbox (18.74954pt too wide) in paragraph at lines 577--577
+[][][][]\T1/ptm/m/n/10 [Morris 
+ []
+
+
+Overfull \hbox (2.63994pt too wide) in paragraph at lines 577--577
+\T1/ptm/m/n/10 and 
+ []
+
+
+Overfull \hbox (20.21973pt too wide) in paragraph at lines 577--577
+\T1/ptm/m/n/10 Trivedi]  
+ []
+
+
+Overfull \hbox (18.74954pt too wide) in paragraph at lines 577--577
+[][][][]\T1/ptm/m/n/10 [Morris 
+ []
+
+
+Overfull \hbox (2.63994pt too wide) in paragraph at lines 577--577
+\T1/ptm/m/n/10 and 
+ []
+
+
+Overfull \hbox (20.21973pt too wide) in paragraph at lines 577--577
+\T1/ptm/m/n/10 Trivedi]  
+ []
+
+
+Overfull \hbox (18.74954pt too wide) in paragraph at lines 577--577
+[][][][]\T1/ptm/m/n/10 [Morris 
+ []
+
+
+Overfull \hbox (2.63994pt too wide) in paragraph at lines 577--577
+\T1/ptm/m/n/10 and 
+ []
+
+
+Overfull \hbox (20.21973pt too wide) in paragraph at lines 577--577
+\T1/ptm/m/n/10 Trivedi]  
+ []
+
+
+Overfull \hbox (6.51982pt too wide) in paragraph at lines 577--577
+[][][][]\T1/ptm/m/n/10 [Lee 
+ []
+
+
+Overfull \hbox (11.52995pt too wide) in paragraph at lines 577--577
+\T1/ptm/m/n/10 2007]  
+ []
+
+
+Overfull \hbox (6.51982pt too wide) in paragraph at lines 577--577
+[][][][]\T1/ptm/m/n/10 [Lee 
+ []
+
+
+Overfull \hbox (11.52995pt too wide) in paragraph at lines 577--577
+\T1/ptm/m/n/10 2007]  
+ []
+
+
+Overfull \hbox (6.51982pt too wide) in paragraph at lines 577--577
+[][][][]\T1/ptm/m/n/10 [Lee 
+ []
+
+
+Overfull \hbox (11.52995pt too wide) in paragraph at lines 577--577
+\T1/ptm/m/n/10 2007]  
+ []
+
+
+Overfull \hbox (6.51982pt too wide) in paragraph at lines 577--577
+[][][][]\T1/ptm/m/n/10 [Lee 
+ []
+
+
+Overfull \hbox (11.52995pt too wide) in paragraph at lines 577--577
+\T1/ptm/m/n/10 2007]  
+ []
+
 
 Underfull \hbox (badness 4846) in paragraph at lines 574--580
 []\T1/ptm/m/n/10 We be-gin by iden-ti-fy-ing the num-ber of pos-si-ble
@@ -1001,6 +1099,9 @@ Underfull \hbox (badness 1377) in paragraph at lines 574--580
 /m/n/10 ) : \U/msb/m/n/10 R[] \OMS/cmsy/m/n/10 ^^B \U/msb/m/n/10 R[] \OMS/cmsy/
 m/n/10 ! \U/msb/m/n/10 R \OT1/cmr/m/n/10 =
  []
+
+
+LaTeX Warning: Marginpar on page 6 moved.
 
 [6]
 
@@ -1059,7 +1160,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 603.
 
-<./figures/bookstore/ours_1_2_t=50.jpg, id=204, 90.3375pt x 69.55988pt>
+<./figures/bookstore/ours_1_2_t=50.jpg, id=206, 90.3375pt x 69.55988pt>
 File: ./figures/bookstore/ours_1_2_t=50.jpg Graphic file (type jpg)
 
 <use ./figures/bookstore/ours_1_2_t=50.jpg>
@@ -1067,7 +1168,7 @@ Package pdftex.def Info: ./figures/bookstore/ours_1_2_t=50.jpg used on input li
 ne 654.
 (pdftex.def)             Requested size: 73.71617pt x 56.76137pt.
 
-<./figures/bookstore/ours_1_2_t=130.jpg, id=205, 90.3375pt x 69.3792pt>
+<./figures/bookstore/ours_1_2_t=130.jpg, id=207, 90.3375pt x 69.3792pt>
 File: ./figures/bookstore/ours_1_2_t=130.jpg Graphic file (type jpg)
 
 <use ./figures/bookstore/ours_1_2_t=130.jpg>
@@ -1075,7 +1176,7 @@ Package pdftex.def Info: ./figures/bookstore/ours_1_2_t=130.jpg used on input l
 ine 657.
 (pdftex.def)             Requested size: 73.71617pt x 56.61392pt.
 
-<./figures/bookstore/ours_1_2_t=370.jpg, id=206, 90.3375pt x 69.3792pt>
+<./figures/bookstore/ours_1_2_t=370.jpg, id=208, 90.3375pt x 69.3792pt>
 File: ./figures/bookstore/ours_1_2_t=370.jpg Graphic file (type jpg)
 
 <use ./figures/bookstore/ours_1_2_t=370.jpg>
@@ -1083,7 +1184,7 @@ Package pdftex.def Info: ./figures/bookstore/ours_1_2_t=370.jpg used on input l
 ine 660.
 (pdftex.def)             Requested size: 73.71617pt x 56.61392pt.
 
-<./figures/bookstore/kit_1_2_t=50.jpg, id=207, 90.3375pt x 69.3792pt>
+<./figures/bookstore/kit_1_2_t=50.jpg, id=209, 90.3375pt x 69.3792pt>
 File: ./figures/bookstore/kit_1_2_t=50.jpg Graphic file (type jpg)
 
 <use ./figures/bookstore/kit_1_2_t=50.jpg>
@@ -1091,7 +1192,7 @@ Package pdftex.def Info: ./figures/bookstore/kit_1_2_t=50.jpg used on input lin
 e 668.
 (pdftex.def)             Requested size: 73.71617pt x 56.61392pt.
 
-<./figures/bookstore/kit_1_2_t=130.jpg, id=208, 90.3375pt x 69.3792pt>
+<./figures/bookstore/kit_1_2_t=130.jpg, id=210, 90.3375pt x 69.3792pt>
 File: ./figures/bookstore/kit_1_2_t=130.jpg Graphic file (type jpg)
 
 <use ./figures/bookstore/kit_1_2_t=130.jpg>
@@ -1099,7 +1200,7 @@ Package pdftex.def Info: ./figures/bookstore/kit_1_2_t=130.jpg used on input li
 ne 671.
 (pdftex.def)             Requested size: 73.71617pt x 56.61392pt.
 
-<./figures/bookstore/kit_1_2_t=370.jpg, id=209, 90.3375pt x 69.3792pt>
+<./figures/bookstore/kit_1_2_t=370.jpg, id=211, 90.3375pt x 69.3792pt>
 File: ./figures/bookstore/kit_1_2_t=370.jpg Graphic file (type jpg)
 
 <use ./figures/bookstore/kit_1_2_t=370.jpg>
@@ -1107,7 +1208,7 @@ Package pdftex.def Info: ./figures/bookstore/kit_1_2_t=370.jpg used on input li
 ne 674.
 (pdftex.def)             Requested size: 73.71617pt x 56.61392pt.
 
-<./figures/bookstore/rand_1_2_t=50.jpg, id=210, 90.3375pt x 69.55988pt>
+<./figures/bookstore/rand_1_2_t=50.jpg, id=212, 90.3375pt x 69.55988pt>
 File: ./figures/bookstore/rand_1_2_t=50.jpg Graphic file (type jpg)
 
 <use ./figures/bookstore/rand_1_2_t=50.jpg>
@@ -1115,7 +1216,7 @@ Package pdftex.def Info: ./figures/bookstore/rand_1_2_t=50.jpg used on input li
 ne 682.
 (pdftex.def)             Requested size: 73.71617pt x 56.76137pt.
 
-<./figures/bookstore/rand_1_2_t=130.jpg, id=211, 90.3375pt x 69.3792pt>
+<./figures/bookstore/rand_1_2_t=130.jpg, id=213, 90.3375pt x 69.3792pt>
 File: ./figures/bookstore/rand_1_2_t=130.jpg Graphic file (type jpg)
 
 <use ./figures/bookstore/rand_1_2_t=130.jpg>
@@ -1123,7 +1224,7 @@ Package pdftex.def Info: ./figures/bookstore/rand_1_2_t=130.jpg used on input l
 ine 685.
 (pdftex.def)             Requested size: 73.71617pt x 56.61392pt.
 
-<./figures/bookstore/rand_1_2_t=370.jpg, id=212, 90.3375pt x 69.19853pt>
+<./figures/bookstore/rand_1_2_t=370.jpg, id=214, 90.3375pt x 69.19853pt>
 File: ./figures/bookstore/rand_1_2_t=370.jpg Graphic file (type jpg)
 
 <use ./figures/bookstore/rand_1_2_t=370.jpg>
@@ -1131,7 +1232,7 @@ Package pdftex.def Info: ./figures/bookstore/rand_1_2_t=370.jpg used on input l
 ine 688.
 (pdftex.def)             Requested size: 73.71617pt x 56.4665pt.
 
-<./figures/comparison/ours_death_1_2_t=70.jpg, id=213, 501.875pt x 387.4475pt>
+<./figures/comparison/ours_death_1_2_t=70.jpg, id=215, 501.875pt x 387.4475pt>
 File: ./figures/comparison/ours_death_1_2_t=70.jpg Graphic file (type jpg)
 
 <use ./figures/comparison/ours_death_1_2_t=70.jpg>
@@ -1139,14 +1240,14 @@ Package pdftex.def Info: ./figures/comparison/ours_death_1_2_t=70.jpg used on i
 nput line 717.
 (pdftex.def)             Requested size: 73.71617pt x 56.90857pt.
 
-<./figures/comparison/ours_death_1_2_t=250.jpg, id=214, 501.875pt x 387.4475pt>
+<./figures/comparison/ours_death_1_2_t=250.jpg, id=216, 501.875pt x 387.4475pt>
 File: ./figures/comparison/ours_death_1_2_t=250.jpg Graphic file (type jpg)
 <use ./figures/comparison/ours_death_1_2_t=250.jpg>
 Package pdftex.def Info: ./figures/comparison/ours_death_1_2_t=250.jpg used on 
 input line 720.
 (pdftex.def)             Requested size: 73.71617pt x 56.90857pt.
 
-<./figures/comparison/ours_death_1_2_t=370.jpg, id=215, 501.875pt x 385.44pt>
+<./figures/comparison/ours_death_1_2_t=370.jpg, id=217, 501.875pt x 385.44pt>
 File: ./figures/comparison/ours_death_1_2_t=370.jpg Graphic file (type jpg)
 
 <use ./figures/comparison/ours_death_1_2_t=370.jpg>
@@ -1154,7 +1255,7 @@ Package pdftex.def Info: ./figures/comparison/ours_death_1_2_t=370.jpg used on
 input line 723.
 (pdftex.def)             Requested size: 73.71617pt x 56.61371pt.
 
-<./figures/comparison/kit_death_1_2_t=70.jpg, id=216, 501.875pt x 386.44376pt>
+<./figures/comparison/kit_death_1_2_t=70.jpg, id=218, 501.875pt x 386.44376pt>
 File: ./figures/comparison/kit_death_1_2_t=70.jpg Graphic file (type jpg)
 
 <use ./figures/comparison/kit_death_1_2_t=70.jpg>
@@ -1162,7 +1263,7 @@ Package pdftex.def Info: ./figures/comparison/kit_death_1_2_t=70.jpg used on in
 put line 731.
 (pdftex.def)             Requested size: 73.71617pt x 56.76114pt.
 
-<./figures/comparison/kit_death_1_2_t=250.jpg, id=217, 501.875pt x 387.4475pt>
+<./figures/comparison/kit_death_1_2_t=250.jpg, id=219, 501.875pt x 387.4475pt>
 File: ./figures/comparison/kit_death_1_2_t=250.jpg Graphic file (type jpg)
 
 <use ./figures/comparison/kit_death_1_2_t=250.jpg>
@@ -1170,7 +1271,7 @@ Package pdftex.def Info: ./figures/comparison/kit_death_1_2_t=250.jpg used on i
 nput line 734.
 (pdftex.def)             Requested size: 73.71617pt x 56.90857pt.
 
-<./figures/comparison/kit_death_1_2_t=370.jpg, id=218, 501.875pt x 385.44pt>
+<./figures/comparison/kit_death_1_2_t=370.jpg, id=220, 501.875pt x 385.44pt>
 File: ./figures/comparison/kit_death_1_2_t=370.jpg Graphic file (type jpg)
 
 <use ./figures/comparison/kit_death_1_2_t=370.jpg>
@@ -1178,7 +1279,7 @@ Package pdftex.def Info: ./figures/comparison/kit_death_1_2_t=370.jpg used on i
 nput line 737.
 (pdftex.def)             Requested size: 73.71617pt x 56.61371pt.
 
-<./figures/comparison/rand_death_1_2_t=70.jpg, id=219, 501.875pt x 385.44pt>
+<./figures/comparison/rand_death_1_2_t=70.jpg, id=221, 501.875pt x 385.44pt>
 File: ./figures/comparison/rand_death_1_2_t=70.jpg Graphic file (type jpg)
 
 <use ./figures/comparison/rand_death_1_2_t=70.jpg>
@@ -1186,7 +1287,7 @@ Package pdftex.def Info: ./figures/comparison/rand_death_1_2_t=70.jpg used on i
 nput line 745.
 (pdftex.def)             Requested size: 73.71617pt x 56.61371pt.
 
-<./figures/comparison/rand_death_1_2_t=250.jpg, id=220, 501.875pt x 385.44pt>
+<./figures/comparison/rand_death_1_2_t=250.jpg, id=222, 501.875pt x 385.44pt>
 File: ./figures/comparison/rand_death_1_2_t=250.jpg Graphic file (type jpg)
 
 <use ./figures/comparison/rand_death_1_2_t=250.jpg>
@@ -1194,7 +1295,7 @@ Package pdftex.def Info: ./figures/comparison/rand_death_1_2_t=250.jpg used on
 input line 748.
 (pdftex.def)             Requested size: 73.71617pt x 56.61371pt.
 
-<./figures/comparison/rand_death_1_2_t=370.jpg, id=221, 501.875pt x 385.44pt>
+<./figures/comparison/rand_death_1_2_t=370.jpg, id=223, 501.875pt x 385.44pt>
 File: ./figures/comparison/rand_death_1_2_t=370.jpg Graphic file (type jpg)
 
 <use ./figures/comparison/rand_death_1_2_t=370.jpg>
@@ -1218,7 +1319,7 @@ converted-to.pdf ./figures/the_results.eps>
 (epstopdf)             \includegraphics on input line 813.
 Package epstopdf Info: Output file is already uptodate.
 
-<./figures/the_results-eps-converted-to.pdf, id=235, 462.72874pt x 346.29375pt>
+<./figures/the_results-eps-converted-to.pdf, id=236, 462.72874pt x 346.29375pt>
 File: ./figures/the_results-eps-converted-to.pdf Graphic file (type pdf)
 <use ./figures/the_results-eps-converted-to.pdf>
 Package pdftex.def Info: ./figures/the_results-eps-converted-to.pdf used on inp
@@ -1236,20 +1337,24 @@ converted-to.pdf ./figures/MHD_results.eps>
 (epstopdf)             \includegraphics on input line 820.
 Package epstopdf Info: Output file is already uptodate.
 
-<./figures/MHD_results-eps-converted-to.pdf, id=236, 578.16pt x 433.62pt>
+<./figures/MHD_results-eps-converted-to.pdf, id=237, 578.16pt x 433.62pt>
 File: ./figures/MHD_results-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./figures/MHD_results-eps-converted-to.pdf>
 Package pdftex.def Info: ./figures/MHD_results-eps-converted-to.pdf used on inp
 ut line 820.
 (pdftex.def)             Requested size: 245.71811pt x 184.28275pt.
- [8 <./figures/comparison/ours_death_1_2_t=70.jpg> <./figures/comparison/ours_d
-eath_1_2_t=250.jpg> <./figures/comparison/ours_death_1_2_t=370.jpg> <./figures/
-comparison/kit_death_1_2_t=70.jpg> <./figures/comparison/kit_death_1_2_t=250.jp
-g> <./figures/comparison/kit_death_1_2_t=370.jpg> <./figures/comparison/rand_de
-ath_1_2_t=70.jpg> <./figures/comparison/rand_death_1_2_t=250.jpg> <./figures/co
-mparison/rand_death_1_2_t=370.jpg> <./figures/the_results-eps-converted-to.pdf>
-]
+
+Overfull \hbox (3.5952pt too wide) in paragraph at lines 830--837
+ [] 
+ []
+
+[8 <./figures/comparison/ours_death_1_2_t=70.jpg> <./figures/comparison/ours_de
+ath_1_2_t=250.jpg> <./figures/comparison/ours_death_1_2_t=370.jpg> <./figures/c
+omparison/kit_death_1_2_t=70.jpg> <./figures/comparison/kit_death_1_2_t=250.jpg
+> <./figures/comparison/kit_death_1_2_t=370.jpg> <./figures/comparison/rand_dea
+th_1_2_t=70.jpg> <./figures/comparison/rand_death_1_2_t=250.jpg> <./figures/com
+parison/rand_death_1_2_t=370.jpg> <./figures/the_results-eps-converted-to.pdf>]
 (./pedestrian_forecasting_iros_2017.bbl)
 
 ** Conference Paper **
@@ -1271,17 +1376,17 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 906.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 906.
 Package rerunfilecheck Info: File `pedestrian_forecasting_iros_2017.out' has no
 t changed.
-(rerunfilecheck)             Checksum: 69091532738985E584E1E95DF5EA0948;1095.
+(rerunfilecheck)             Checksum: 6141A06AB84C29C9707351BEBA45E2CE;1096.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 906.
  ) 
 Here is how much of TeX's memory you used:
- 20714 strings out of 493089
- 401981 string characters out of 6134842
- 464560 words of memory out of 5000000
- 23703 multiletter control sequences out of 15000+600000
+ 20765 strings out of 493089
+ 403035 string characters out of 6134842
+ 467509 words of memory out of 5000000
+ 23753 multiletter control sequences out of 15000+600000
  119373 words of font info for 141 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,23n,82p,1905b,784s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,23n,82p,1963b,863s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texl
@@ -1306,11 +1411,11 @@ e1/urw/courier/ucrr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/t
 imes/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmbi
 8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></u
 sr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on pedestrian_forecasting_iros_2017.pdf (9 pages, 938555 bytes).
+Output written on pedestrian_forecasting_iros_2017.pdf (9 pages, 939448 bytes).
 
 PDF statistics:
- 450 PDF objects out of 1000 (max. 8388607)
- 319 compressed objects within 4 object streams
- 87 named destinations out of 1000 (max. 500000)
+ 451 PDF objects out of 1000 (max. 8388607)
+ 320 compressed objects within 4 object streams
+ 88 named destinations out of 1000 (max. 500000)
  275 words of extra memory for PDF output out of 10000 (max. 10000000)
 
