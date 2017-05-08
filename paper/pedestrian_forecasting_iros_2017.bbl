@@ -158,7 +158,7 @@ A.~Robicquet, A.~Sadeghian, A.~Alahi, and S.~Savarese, \emph{Learning Social
   Etiquette: Human Trajectory Understanding In Crowded Scenes}.\hskip 1em plus
   0.5em minus 0.4em\relax Cham: Springer International Publishing, 2016, pp.
   549--565. [Online]. Available:
-  \url{http://dx.doi.org/10.1007/978-3-319-46484-8_33}
+  \url{http://dx.doi.org/10.1007/978-3-319-46484-8\_33}
 \BIBentrySTDinterwordspacing
 
 \bibitem{MTA}
@@ -192,5 +192,11 @@ B.~Morris and M.~Trivedi, ``Learning trajectory patterns by clustering:
   Experimental studies and comparative evaluation,'' in \emph{Computer Vision
   and Pattern Recognition, 2009. CVPR 2009. IEEE Conference on}.\hskip 1em plus
   0.5em minus 0.4em\relax IEEE, 2009, pp. 312--319.
+
+\bibitem{Lee2007}
+J.-G. Lee, J.~Han, and K.-Y. Whang, ``Trajectory clustering: a
+  partition-and-group framework,'' in \emph{Proceedings of the 2007 ACM SIGMOD
+  international conference on Management of data}.\hskip 1em plus 0.5em minus
+  0.4em\relax ACM, 2007, pp. 593--604.
 
 \end{thebibliography}
