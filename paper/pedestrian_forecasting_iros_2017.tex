@@ -26,6 +26,8 @@
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
 \usepackage{comment}
 \usepackage{color}  % For Highlighting
+%\usepackage{natbib}
+\usepackage[noadjust]{cite}
 
 %  For theorems, etc
 \newtheorem{thm}{Theorem}
@@ -52,11 +54,9 @@
 
 %%% first author
 \author{Henry O. Jacobs, Owen K. Hughes, Matthew Johnson-Roberson, and Ram Vasudevan
+ \thanks{ H.O. Jacobs, O. Hughes, M. Johnson-Roberson, and R.~Vasudevan are with the University of Michigan, Ann Arbor, MI 48109
+{\scriptsize \{\texttt{hojacobs,owhughes,mattjr,ramv}\}~\texttt{@umich.edu}}}
 \thanks{This work was supported by Ford Motor Company.}
- \thanks{ H.O. Jacobs, O. Hughes, and R.~Vasudevan are with the Department of Mechanical Engineering, University of Michigan, Ann Arbor, MI 48109
-{\scriptsize \{\texttt{hojacobs,owhughes,ramv}\}~\texttt{@umich.edu}}}
-\thanks{M. Johnson-Roberson is with the Department of Naval and Marine Engineering, University of Michigan, Ann Arbor, MI 48109\newline
-{\scriptsize \texttt{mattjr@umich.edu}}}
 }
 
 % You will get a Paper-ID when submitting a pdf file to the conference system
@@ -101,7 +101,7 @@ First, false negative rates for unoccupied regions must be minimized.
 The misclassification of space in this way has obvious safety issues.
 Second, speed is paramount.
 To effectively use human prediction within a vehicle control loop prediction rates must be commensurate with the speed at which humans change trajectories.
-The margins between humans and vehicles are small and both frequently operate at the boundary. 
+%The margins between humans and vehicles are small and both frequently operate at the boundary. 
 Finally, long-time horizon forecasting is preferable since this improves robot predictability, reduces operation close to safety margins, prevents the need for overly conservative or aggressive controllers and makes high-level goal planning more feasible.
 This paper presents an algorithm for real-time, long-term prediction of pedestrian behavior which can subsequently be used by autonomous agents.
 As depicted in Figure \ref{fig:gates-1-2}, this method works quickly to generate predictions that are precise while reducing the likelihood of false negative detections.
@@ -125,8 +125,9 @@ As depicted in Figure \ref{fig:gates-1-2}, this method works quickly to generate
 		\includegraphics[width=\linewidth]{./figures/FirstPage/gates_1_2_t=345.jpg}
 		\caption{$t=11.5s$}
 	\end{subfigure}
-	\caption{The performance of the presented algorithm captures the most probable routes that a pedestrian chooses.  In this figure, the dot is the start point of the test trajectory, the diamond is the position at time $t$, and the X is the end of the trajectory. The likelihood of detection is depicted using the \textit{virdis} color palette. In this example which was captured at thirty frames per second, the presented algorithm took 0.00465s per frame in a Python implementation. }
+	\caption{The performance of the presented algorithm captures the most probable routes that a pedestrian chooses. The dot is the starting point of the trajectory, the diamond is the position at time $t$, and the X is the end of the trajectory. The likelihood of detection is depicted using the \textit{virdis} color palette. The presented algorithm took $0.00465$s per frame in a Python implementation. }
 	\label{fig:gates-1-2}
+	\vspace*{-0.7cm}
 \end{figure}
 
 %First, since safety is paramount, generated predictions must avoid misclassifying areas as unoccupied even though humans are present. 
@@ -136,100 +137,86 @@ As depicted in Figure \ref{fig:gates-1-2}, this method works quickly to generate
 Most forecasting algorithm are well characterized by the underlying evolution model they adopt.
 Such models come in a variety flavors, and are adapted to the task at hand (e.g. crowd modeling \cite{Helbing1992}).
 This paper is focused on the construction of useful motion models for pedestrians that can aide the task of real-time forecasting for autonomous agents.
-The simplest approach to forecasting with motion models forward integrates a Kalman filter \cite{kalman1960new} based upon the observed heading.
+The simplest approach to forecasting with motion models forward integrates a Kalman filter based upon the observed heading.
 Over short time scales this method may perform well, but the resulting distribution devolves into an imprecise Gaussian mass over longer time scales.
-This is a typical property of the extended Kalman filter and the Kalman filter with deterministic nonlinear drift \cite{Schneider2013}.
+%This is a typical property of the extended Kalman filter and the Kalman filter with deterministic nonlinear drift \cite{Schneider2013}.
 In particular, such models are less useful for forecasts beyond two seconds, especially when a pedestrian turns.
 Nonetheless, these stochastic linear models serve as a reasonable default in the absence of any contextual knowledge.
-For example, \cite{Kooji2014} uses a motion model of this variety, parametrized by latent variables, such as the pedestrian's awareness of nearby vehicles, to predict when and how a pedestrian may cross a street without leveraging any environmental context.
+%For example, \cite{Kooji2014} uses a motion model of this variety, parametrized by latent variables, such as the pedestrian's awareness of nearby vehicles, to predict when and how a pedestrian may cross a street without leveraging any environmental context.
 
-More sophisticated models that attempt to leverage environmental data include inverse optimal control (IOC) based models \cite{Ziebart2008,Ziebart2009,Kitani2012,Xie2013,Karasev2016}.
+More sophisticated models that attempt to leverage environmental data include Inverse Optimal Control (IOC) based models \cite{Ziebart2008,Ziebart2009,Kitani2012,Xie2013,Karasev2016}.
 These IOC models have the desirable property of attributing intention and goal-seeking behavior to the agents.
 For example, \cite{Kitani2012} extracts a Markov Decision Process (MDP) evolving on a finite 2D lattice by training on a small collection of features and trajectories.
 The resulting MDP is light-weight since it is parametrized by only a small collection of coefficients equal in number to that of the feature maps.
 Moreover, given an initial and final state, the probability distribution of the pedestrian at intermediate states is computable using matrix multiplication.
 The speed of this computation, makes the algorithm of \cite{Kitani2012} a reasonable baseline for comparison for the algorithm that is presented in this paper.
 
-The approach presented in \cite{Kitani2012} has been generalized in a variety of ways.
+%The approach presented in \cite{Kitani2012} has been generalized in a variety of ways.
+This approach has been generalized in a variety of ways.
 For example, time-dependent information, such as traffic signals, are incorporated in \cite{Karasev2016}, by relaxing the Markov property and considering a switched Markov process.
-Other generalizations in \cite{Karasev2016} include replacing the finite-state space with a continuous one, and using a Markov jump process in the motion model.
-Unfortunately the desired posteriors are difficult to compute in closed form, and as a result a sampling based method: a Rao-Blackwellized particle filter~\cite{Doucet2000} is employed.
-The resulting accuracy of such methods can only be known in a probabilistic sense in that the error bounds are themselves random variables.
-Moreover, accuracy can come at a large computational expensive which is prohibitive during real-time control.
+Other generalizations include replacing the finite-state space with a continuous one, and using a Markov jump process in the motion model.
+Unfortunately the desired posteriors are difficult to compute in closed form, and as a result a sampling based method.
+The resulting accuracy of such methods, which can come at a large computational expense, can only be known in a probabilistic sense in that the error bounds are themselves random variables.
+%Moreover, accuracy can come at a large computational expense.
+% which is prohibitive during real-time control.
 
-
-One limitation of IOC models occurs in cases where there are many locally optimal solutions between a start and end goal.
-In these cases, IOC type methods can yield non-robust and imprecise behavior.
-This can occur, for example, when agents make sharp turns due to intermediate criteria on the way toward reaching their final destination.
-To address this, \cite{Ballan2016} adopt an empiricists approach, computing ``turning maps'' and attempting to infer how agents behave in a given patch based on its feature and the behavior of previous agents on similar patches.
-The motion model is a Markov jump process and the relevant posteriors were approximated using sample based techniques similar to \cite{Karasev2016}.
+One limitation of IOC models occurs in cases where there are locally optimal solutions between a start and end goals which can yield non-robust and imprecise behavior.
+This can occur when agents make sharp turns due to intermediate criteria on the way toward reaching their final destination.
+To address this, \cite{Ballan2016} adopt an empiricists approach, computing ``turning maps'' and attempting to infer how agents behave in a given patch.
+The motion model is a Markov jump process and the relevant posteriors are approximated using sample based techniques similar to \cite{Karasev2016}.
 The objective of \cite{Ballan2016} is not only prediction, but the development of a motion model learned on one scene that could then subsequently be transferred to other scenes. 
 This requires representations of ``objects'' in the scene that do not depend rigidly on the finitely many labels an engineer managed to think of in a late-night brainstorming session.
-For example, such an algorithm should be able to infer how to behave near a roundabout by using prior knowledge of more fundamental building blocks like pavement, curbs, and asphalt.
+%For example, such an algorithm should be able to infer how to behave near a roundabout by using prior knowledge of more fundamental building blocks like pavement, curbs, and asphalt.
 
-Along similar lines to \cite{Ballan2016}, \cite{Walker2014} constructed an unsupervised approach towards forecasting.
-As before, the motion model was a Markov jump process, and the training set was a collection unlabeled videos.
+Recent work has focused on constructing an unsupervised approach towards forecasting  \cite{Walker2014}.
+%As before, the motion model was a Markov jump process, and the training set was a collection unlabeled videos.
 Unlike all the approaches mentioned thus far, the agents in \cite{Walker2014} were not manually specified.
 They were learned by detecting which sort of patches of video were likely to move, and how.
-The resulting predictions outperformed \cite{Kitani2012} when comparing the most likely path with the ground truth using the mean Hausdorff distance.
-As in all methods mentioned thus far, computational speed and accuracy of any predicted posteriors were not a concern of \cite{Walker2014}, so no such results were reported.
-However, since the motion model was a Markov jump process which required the application of a sample based technique, we should expect the same painful trade-off between error and speed to occur as in \cite{Karasev2016} and \cite{Ballan2016}.
+The resulting predictions outperformed \cite{Kitani2012} when comparing the most likely path with the ground truth using the Modified Hausdorff Distance.
+As in all methods mentioned thus far, computational speed and accuracy of any predicted posteriors were not a concern, so no such results were reported.
+However, since the motion model was a Markov jump process which required the application of a sample based technique, we should expect the same painful trade-off between error and speed to occur as in \cite{Karasev2016,Ballan2016}.
 
+\reversemarginpar
 \marginnote{\#1.1}
-\rtext{On the other hand, many authors have approached pedestrian forecasting by deriving their motion model from interactions between pedestrians. 
-	Early work by \cite{Helbing1995} and \cite{Xu2012} describe pedestrians interactions using physically motivated methods. 
-	Several models such as \cite{Yamaguchi2011}, \cite{Yi2016}, and \cite{Pellegrini2009} derive their motion models from \cite{Helbing1995} who incorporates collision avoidance through an interaction potential. 
-	However this method suffers from not planning for other pedestrian' positions at future times. 
-	\cite{Emonet2011}, \cite{Hospedales2009} , and \cite{Wang2009}  all take optical flow as input.
-	\cite{Wang2009} and \cite{Emonet2011} both use variants of Hierarchical Dirichlet Processes on discretized optical flow to determine temporal motifs (i.e. classes of motion within the scene), where \cite{Hospedales2009} substitutes a Markov model. 
-	These models are not agent based, and the lack of an explicit motion model limits their predictive power. 
-	\cite{Koppula2016} predict trajectories by introducing and sampling Anticipatory Temporal Conditional Random Fields which incorporate learned affordances for humans and objects based on observed objectives within the scene. 
-	\cite{Tay2008} , \cite{Wang2008}, and \cite{Trautman2015} create agent-based models based on Gaussian Processes, though they suffer issues when trained on discretized trajectories. 
-	\cite{Alahi2016} uses Long Short-Term Memory (lstm) to learn pedestrian motion models without making assumptions about the manner in which agents will interact and is the state-of-the-art algorithm for socially based models while also having a quick run time.}
-
-
-
+\rtext{Many have approached pedestrian forecasting by deriving their motion model from interactions between pedestrians using physically motivated methods \cite{Helbing1995,Xu2012}. 
+	Several models derive their motion models from \cite{Helbing1995} by incorporating collision avoidance through an interaction potential \cite{Pellegrini2009,Yamaguchi2011,Yi2016}. 
+	However this method suffers from not planning for other pedestrian positions at future times. 
+	Others take optical flow as input \cite{Hospedales2009,Wang2009,Emonet2011}.
+	These approaches use variants of Hierarchical Dirichlet Processes on discretized optical flow to determine temporal motifs (i.e. classes of motion within the scene), or on a Markov model. 
+	 These models are not agent based, and the lack of an explicit motion model limits their predictive power. 
+	 Recently methods have been developed to predict trajectories by introducing and sampling Anticipatory Temporal Conditional Random Fields which incorporate learned affordances based on observed objectives within the scene \cite{Koppula2016}. 
+	 Others create agent-based models based on Gaussian Processes, though they suffer issues when trained on discretized trajectories \cite{Tay2008,Wang2008,Trautman2015}. 
+	Most recently a method using Long Short-Term Memory (lstm) to learn pedestrian motion models without making assumptions about the manner in which agents interact is the state-of-the-art algorithm for socially based models and has a rapid computation time \cite{Alahi2016}.}
 
 \subsection{Contributions}
 
-The primary contributions of this paper are:
-\begin{itemize}
-	\item An accurate motion model for pedestrian forecasting.
-	\item An expedient method for computing approximations of relevant posteriors generated by our motion model.
-	\item Hard error bounds on the proposed approximations.
-\end{itemize}
+The primary contributions of this paper are three-fold: first, an accurate motion model for pedestrian forecasting, second, an expedient method for computing approximations of relevant posteriors generated by our motion model, and finally hard error bounds on the proposed approximations.
 The method proposed by this paper is able to work three times faster than the existing state of the art while improving upon its performance over long time horizons.
-
 For clarification, we should mention that there are a number of things that we do not do.
 For example, we do not concern ourselves with detection and tracking. 
-Nor do we concern ourselves with updating our prediction as new data comes along \cite{Kitani2012}.
+Nor do we concern ourselves with updating our prediction as new data comes along.
 We largely work in a 2D environment with a bird's eye view, operating under the assumption that the data has been appropriately transformed by a third party.
-This is in contrast to \cite{Karasev2016}, which operates from first person video.
-While it would be a straight forward extension to consider such things, it would detract from the presentation.
+%This is in contrast to \cite{Karasev2016}, which operates from first person video.
+While it would be a straight forward extension to consider a first person perspective, it would detract from the presentation.
 %Such questions are important, but beyond the scope of this paper, which concerns the underlying dynamic model.
 
-The rest of the paper is organized as follows:
-\begin{itemize}
-	\item \S \ref{sec:model} describes our motion model as a Bayesian network.
-	\item \S \ref{sec:efficient} describes how to compute probability densities for an agent's position efficiently.
-	\item \S \ref{sec:implementation} demonstrates the model by training and testing it on the Stanford drone dataset \cite{Robicquet2016}.
-\end{itemize}
+The rest of the paper is organized as follows: \S \ref{sec:model} describes our motion model as a Bayesian network, \S \ref{sec:efficient} describes how to compute probability densities for an agent's position efficiently, and \S \ref{sec:implementation} demonstrates the model by training and testing it on the Stanford drone dataset \cite{Robicquet2016}.
 
 \section{Model}\label{sec:model}
 This paper's goal is to generate a time-dependent probability density over $\mathbb{R}^2$, which predicts the true location of an agent in the future.
 The input to the algorithm at runtime is a noisy measurement of position and velocity, $\hat{x}_0, \hat{v}_0 \in \mathbb{R}^2$.
 If the (unknown) location of agent at time $t$ is given by $x_t \in \mathbb{R}^2$, then the distribution we seek is the posterior $\rho_t(x_t) := \Pr( x_t \mid \hat{x}_0, \hat{v}_0 )$ for each time $t \in \{\Delta t, \dots, N_t \Delta t \}$ for some user-specified $N_t \in \mathbb{N}$ and $\Delta t \in \mathbb{R}$.
 
-To numerically compute $\rho_t$, we build a probabilistic graphical model.
-Our model assumes we have noisy information about agents, and each agent moves with some intention through the world in a way that is roughly approximated by a model.
-Our model can be divided into three parts:
+To compute $\rho_t$, we build a probabilistic graphical model, which is composed of three parts:
+%Our model assumes we have noisy information about agents, and each agent moves with some intention through the world.
+%Our model is divided into three parts:
 \begin{enumerate}
 	\item Reality: This is parametrized by the true position for all time, $x_t$, and the initial velocity of the agent $v_0$.
 	\item Measurements:  This is represented by our sensor readings $\hat{x}_0$ and $\hat{v}_0$ and are independent of all other variables given the true initial position and velocity, $x_o, v_0$.
-	\item Motion Model: This is represented by a trajectory $\check{x}_t$ and depends on a variety of other variables which are described below.
+	\item Motion Model: This is represented by a trajectory $\check{x}_t$ and depends on a variety of other variables.
 \end{enumerate}
-We now elaborate on these three components, and relate them to one another.
-Many of the choices we make are motivated by a balance between model quality and computational speed (see \S \ref{sec:efficient}).
+We elaborate on these three components next.
+%Many of the choices are motivated by a balance between model quality and computational speed.
 
 \subsection{The Variables of the Model}
 The model concerns the position of an agent $x_t \in \mathbb{R}^2$ for $t \in [0,N_t \Delta t]$.
@@ -264,7 +251,7 @@ If the agent is of nonlinear type, then we assume the dynamics take the form:
 \begin{align}n
 	\frac{d \check{x}_t}{dt} = s \cdot X_k(\check{x}_t) \label{eq:ode}
 \end{align}
-where $X_k$ is a vector-field\footnote{A vector-field, generally speaking, is an assignment of a velocity to each position in some space.  A vector-field on $\mathbb{R}^n$ is nothing but a map from $\mathbb{R}^n \to \mathbb{R}^n$.} drawn from a finite collection $\{X_1, \dots, X_n\}$, and $s \in \mathbb{R}$.
+where $X_k$ is a vector-field\footnote{A vector-field is an assignment of a velocity to each position in some space.  A vector-field on $\mathbb{R}^n$ is a map from $\mathbb{R}^n \to \mathbb{R}^n$.} drawn from a finite collection $\{X_1, \dots, X_n\}$, and $s \in \mathbb{R}$.
 More specifically, we assume that each $X_k$ has the property that $\| X_k(x) \| = 1$ for all $x \in D$.
 This property ensures that speed is constant in time.
 % and it has the further advantage of being the (local) generator of solutions to an optimal navigation problem (see Appendix \ref{app:ioc}).
@@ -280,22 +267,18 @@ Explicitly, we have the posterior:
 	\Pr( \check{x}_t \mid x_0 , k , s) = \delta( \check{x}_t - \Phi^{t}_{k,s}( x_0) )  d\check{x}_t \label{eq:x_check | ksx}
 \end{align}
 where $\Phi^{t}_{k,s}$ is the flow-map of the vector field $s \,X_k$ up to time $t$.
-Note that this flow-map can be evaluated for an initial condition efficiently by just integrating the vector field from that initial condition.
+Note that this flow-map can be evaluated for an initial condition by just integrating the vector field from that initial condition.
 Note the variables $k,s$ and $x_0$ determine $v_0$.
 Thus we have the posterior:
 \begin{align}
 	\Pr( v_0 \mid k, s, x_0) = \delta( v_0 -s X_k( x_0) ) dv_0. \label{eq:v | ksx}
 \end{align}
-In summary, the agent models are parametrized by the set:
-\begin{align}
-	\mathcal{M} = \{ lin \} \cup \left( \mathbb{R} \times \{ 1 , \dots, n \} \right) \label{eq:models}
-\end{align}
-and each flavor determines the type of motion we should expect from the agent model.
+In summary, the agent models are parametrized by the set $\mathcal{M} = \{ lin \} \cup \left( \mathbb{R} \times \{ 1 , \dots, n \} \right)$ whose elements determine the type of agent motion.
 
 \subsection{The Full Model}
 Concatenating the measurement model with our motion models yields the Bayesian network, where $M \in \mathcal{M}$ denotes the model of the agent:
 \begin{align}
-\begin{tikzpicture}[thick, var/.style={circle,draw,thin,rounded corners,shade,top color=blue!50,minimum size = 4mm}]
+\begin{tikzpicture}[thick, var/.style={circle,draw,thin,rounded corners,shade,top color=blue!50,minimum size = 2mm}]
 	\node[var] (M) {$M$};
 	\node[var] (x)[right=of M] {$x_0$};
 	\node[var] (v)[below=of x] {$v_0$};
@@ -314,29 +297,26 @@ Concatenating the measurement model with our motion models yields the Bayesian n
 	\draw[->] (x_check_t) to (x_t); 
 \end{tikzpicture}.\label{eq:pgm}
 \end{align}
-We use this Bayesian network to compute $\rho_t$ efficiently.
+We use this Bayesian network to compute $\rho_t$.
 In particular
 \begin{align}
-	\rho_t(x_t ) &:= \Pr( x_t \mid \hat{x}_0, \hat{v}_0 ) \\
-	&= \left( \sum_{k} \int \Pr( x_t, k , s  \mid \hat{x}_0, \hat{v}_0 ) ds \right)  \nonumber \\
-	&\quad + \Pr( x_t, lin \mid \hat{x}_0, \hat{v}_0 ). \label{eq:decomposition}
+	&\rho_t(x_t ) := \Pr( x_t \mid \hat{x}_0, \hat{v}_0 ) \\
+	&=\sum_{k} \int \Pr( x_t, k , s  \mid \hat{x}_0, \hat{v}_0 ) ds  + \Pr( x_t, lin \mid \hat{x}_0, \hat{v}_0 ). \label{eq:decomposition}
 \end{align}
-The final term $\Pr( x_t, lin \mid \hat{x}_0, \hat{v}_0 )$ is expressible in closed form when the posteriors $\Pr( x_0 \mid lin)$ and $\Pr( v_0 \mid lin,x_0)$ have known expressions ( e.g. Gaussians or uniform distributions). 
-In this instance, the numerical computation of $\Pr(x_t, lin \mid \hat{x}_0, \hat{v}_0)$ poses a negligible burden.
-Instead the primary computational burden derives from computing $\sum_{k} \int \Pr( x_t, k , s  \mid \hat{x}_0, \hat{v}_0 ) ds$.
+$\Pr( x_t, lin \mid \hat{x}_0, \hat{v}_0 )$ is expressible in closed form when the posteriors $\Pr( x_0 \mid lin)$ and $\Pr( v_0 \mid lin,x_0)$ are known. 
+In this instance, the numerical computation of $\Pr(x_t, lin \mid \hat{x}_0, \hat{v}_0)$ poses a negligible burden and the primary computational burden derives from computing $\sum_{k} \int \Pr( x_t, k , s  \mid \hat{x}_0, \hat{v}_0 ) ds$.
 
 \section{Efficient Probability Propagation} \label{sec:efficient}
-As mentioned, many of the modeling choices are born out of a balance between accuracy and real-time computability.
-One of the major modeling choices, that agents move approximately according to a small number of ODEs, is the most prominent such choice.
-This section details how this modeling choice can be leveraged to compute $\rho_t(x_t)$ quickly and accurately.
-
+%As mentioned, many of the modeling choices are born out of a balance between accuracy and real-time computability.
+%One of the major modeling choices, that agents move approximately according to a small number of ODEs, is the most prominent such choice.
+This section details how the modeling of the agent's motion as satisfying an ODE can be leveraged to compute $\rho_t(x_t)$ quickly and accurately.
 To begin, rather than focusing on computing $\rho_t(x_t)$, we describe how to compute the joint probability $\Pr( x_t , \hat{x}_0, \hat{v}_0)$.
 We can obtain $\rho_t(x_t)$ by normalizing $\Pr( x_t , \hat{x}_0, \hat{v}_0)$ with respect to integration over $x_t$.
 We can approximate the integration over $s$ in \eqref{eq:decomposition}, with a Riemann sum.
+
 Let us assume that $\Pr(s \mid k)$ is compactly supported for all $k = 1,\dots,n$, and the supported is always contained
 in some interval $[ - \bar{s} , \bar{s} ]$ for some $\bar{s} > 0$.
-Given a regular partition $\{ s_0, s_1, \dots, s_n \}$ of step-size $\Delta s > 0$ on $[-\bar{s}, \bar{s}]$, 
-we can conclude that the integral term in \eqref{eq:decomposition} can be approximated by
+Given a regular partition $\{ s_0, s_1, \dots, s_n \}$ of step-size $\Delta s > 0$ on $[-\bar{s}, \bar{s}]$,  we can conclude that the integral term in \eqref{eq:decomposition} is approximated by
 \begin{align}
 	\begin{split}
 	&\sum_{k} \int \Pr( x_t, k , s , \hat{x}_0, \hat{v}_0 ) ds = \\
@@ -354,16 +334,14 @@ $\hat{x}_0$ and $\hat{v}_0$ are measured and are assumed fixed for the remainder
 %The only continuous variable we must discretize is $x_t$.
 To begin, from \eqref{eq:pgm}  notice that:
 \begin{align}
-	&\Pr( x_t, k,s,\hat{x}_0, \hat{v}_0) =\\
-	&= \int \Pr( x_t, \check{x}_t , \hat{x}_0, \hat{v}_0, k,s) d\check{x}_t \\
-	&= \int \Pr( x_t \mid \check{x}_t ) \Pr(\check{x}_t , \hat{x}_0, \hat{v}_0, k,s) d\check{x}_t \label{eq:convolve}
+	\Pr( x_t, k,s,\hat{x}_0, \hat{v}_0) &= \int \Pr( x_t, \check{x}_t , \hat{x}_0, \hat{v}_0, k,s) d\check{x}_t  \label{eq:convolve} \\
+	&= \int \Pr( x_t \mid \check{x}_t ) \Pr(\check{x}_t , \hat{x}_0, \hat{v}_0, k,s) d\check{x}_t \nonumber
 \end{align}
 Observe that from the last line that $\Pr( x_t, k,s, \hat{x}_0, \hat{v}_0)$ is a convolution of the joint distribution $\Pr( \check{x}_t , \hat{x}_0, \hat{v}_0, k,s)$.
 Assuming, for the moment, that such a convolution can be performed efficiently, we focus on computation of $\Pr( \check{x}_t , \hat{x}_0, \hat{v}_0, k,s)$.
 Again, \eqref{eq:pgm} implies:
 \begin{align}
-	&\Pr( \check{x}_t , \hat{x}_0, \hat{v}_0, k,s) = \\
-	&= \int \Pr( \check{x}_t , x_0, \hat{x}_0, v_0, \hat{v}_0, k,s) dx_0 \, dv_0 \\
+	&\Pr( \check{x}_t , \hat{x}_0, \hat{v}_0, k,s) =\int \Pr( \check{x}_t , x_0, \hat{x}_0, v_0, \hat{v}_0, k,s) dx_0 \, dv_0 \nonumber \\
 	&= \int \Pr( \check{x}_t \mid  x_0, k,s, v_0) \Pr( \hat{v}_0 \mid v_0) \cdot \\
 	& \hspace{10ex}  \cdot \Pr( v_0 \mid k,s,x_0) \Pr(\hat{x}_0, x_0, k, s) dx_0 \, dv_0 \nonumber \\
 		&= \int \delta\left( \check{x}_t - \Phi_{k,s}^{t}( x_0) \right) \delta\left( v_0 - s X_k (x_0) \right) \cdot \\
@@ -388,11 +366,9 @@ where the last equality follows from substituting \eqref{eq:x_check | ksx} and \
  The grid spacing is given by $\Delta x = ( \frac{L}{2N_x}, \frac{L}{2N_x} )$.
 We approximate the smooth distribution $\Pr(\hat{x}_0, x_0, k, s) \Psi( \hat{v}_0 ; k, s, x_0 )$ as a weighted sum of Dirac-deltas (in the variable $x_0$) supported on $\Gamma_L( \hat{x}_0;N)$:
 \begin{align}
-	\begin{split}
-		&\Pr(\hat{x}_0, x_0, k, s) \Psi( \hat{v}_0 ; k, s, x_0 ) = \\
-		&\qquad \underbrace{\left( \sum_{i,j=-N}^{N} W(k,s,i,j,\hat{x}_0) \delta( x_0 - x_0^{i,j} ) \right)}_{\text{approximation}}
+		&\Pr(\hat{x}_0, x_0, k, s) \Psi( \hat{v}_0 ; k, s, x_0 ) = \nonumber \\
+		& \underbrace{\left( \sum_{i,j=-N}^{N} W(k,s,i,j,\hat{x}_0) \delta( x_0 - x_0^{i,j} ) \right)}_{\text{approximation}}
 		+ \underbrace{ \varepsilon_0(x_0) }_{\text{error}}
-	\end{split}
 	\label{eq:approximation 1}
 \end{align}
 where $W(k,s,i,j,\hat{x}_0)$ is the evaluation of $\Pr(\hat{x}_0, x_0, k, s) \Psi( \hat{v}_0 ; k, s, x_0 )$ at the grid point $x_0 = x_0^{i,j} \in \Gamma( \hat{x}_0; N)$.
@@ -425,16 +401,16 @@ In fact, this method of approximating $\Pr( \check{x}_t , \hat{x}_0, \hat{v}_0, 
 	The error term, $\varepsilon_t \sim \mathcal{O}( | \Delta x | + \varepsilon_{tol} )$ in the $L^1$-norm, for fixed $k,s,\hat{x}_0$, and $\hat{v}_0$.
 	Moreover, $\| \varepsilon_t \|_{L^1}$ is constant in time.
 \end{thm}
-\begin{proof}
-	To declutter notation, let us temporarily denote $\Phi_{k,s}^t$ by $\Phi$.
-	We observe
-\begin{align*}
-	\| \varepsilon_t \|_{L^1} &= \int \left| \int \delta( \check{x}_t - \Phi(x_0) ) \varepsilon_0(x_0) dx_0 \right| d\check{x}_t \\
-	&= \int \det( \left. D\Phi \right|_{\Phi^{-1}( \check{x}_t) }) |\varepsilon_{0}( \Phi^{-1}( \check{x}_t )) | d\check{x}_t \\
-	&= \int | \varepsilon_0( u) | du = \| \varepsilon_0 \|_{L^1}
-\end{align*}
-As $\varepsilon_0$ is of magnitude $\mathcal{O}( |\Delta x| + \varepsilon_{tol} )$ the result follows.
-\end{proof}
+%\begin{proof}
+%	To declutter notation, let us temporarily denote $\Phi_{k,s}^t$ by $\Phi$.
+%	We observe
+%\begin{align*}
+%	\| \varepsilon_t \|_{L^1} &= \int \left| \int \delta( \check{x}_t - \Phi(x_0) ) \varepsilon_0(x_0) dx_0 \right| d\check{x}_t \\
+%	&= \int \det( \left. D\Phi \right|_{\Phi^{-1}( \check{x}_t) }) |\varepsilon_{0}( \Phi^{-1}( \check{x}_t )) | d\check{x}_t \\
+%	&= \int | \varepsilon_0( u) | du = \| \varepsilon_0 \|_{L^1}
+%\end{align*}
+%As $\varepsilon_0$ is of magnitude $\mathcal{O}( |\Delta x| + \varepsilon_{tol} )$ the result follows.
+%\end{proof}
 
 While this allows us to compute posteriors over the output of our models, $\check{x}_t$, we ultimately care about densities over the true position.
 The following corollary of Theorem \ref{thm:error} addresses this:
@@ -445,49 +421,49 @@ The following corollary of Theorem \ref{thm:error} addresses this:
 	\end{align}
 	is an approximation of $\Pr( x_t, k, s, \hat{x}_0, \hat{v}_0)$ with a constant in time error bound of magnitude $\mathcal{O}( |\Delta x| + \varepsilon_{tol} )$.
 \end{cor}
-\begin{proof}
-	By \eqref{eq:convolve}
-	\begin{align*}
-		\Pr(x_t, k, s, \hat{x}_0, \hat{v}_0) = \int \Pr( x_t \mid \check{x}_t ) \Pr( \check{x}_t, k,s,\hat{x}_0, \hat{v}_0) d\check{x}_t
-	\end{align*}
-	Substitution of \eqref{eq:approximation 1} yields
-	\begin{align*}
-		\begin{split}
-		&\Pr(x_t, k, s, \hat{x}_0, \hat{v}_0) \nonumber \\
-		& = \sum_{i,j} W(k,s,i,j,\hat{x}_0) \left. \Pr( x_t \mid \check{x}_t ) \right|_{ \check{x}_t = \Phi_{k,s}^t( x_0^{i,j}) } + \tilde{\varepsilon}_t(x_t)
-		\end{split}
-	\end{align*}
-	where the error term is
-	\begin{align}
-		\tilde{\varepsilon}_t(x_t) = \int \Pr( x_t \mid \check{x}_t) \varepsilon_t( \check{x}_t) d \check{x}_t
-	\end{align}
-	and $\varepsilon_t$ is the error term of \eqref{eq:approximation 1}.
-	We see that the $L^1$-norm of $\tilde{\varepsilon}_t$ is 
-	\begin{align}
-		\| \tilde{\varepsilon}_t \|_{L^1} &= \int \left| \int \Pr( x_t \mid \check{x}_t) \varepsilon_t( \check{x}_t) d \check{x}_t \right| dx_t \\
-			&\leq \int \Pr( x_t \mid \check{x}_t ) | \varepsilon_t |( \check{x}_t) d\check{x}_t \, dx_t
-	\end{align}
-	Implementing the integration over $x_t$ first yields:
-	\begin{align}
-		\| \tilde{\varepsilon}_t \|_{L^1} \leq \int | \varepsilon_t |( \check{x}_t) d\check{x}_t =: \| \varepsilon_t \|_{L^1}
-	\end{align}
-	which is $\mathcal{O}( | \Delta x | + \varepsilon_{tol} )$ by Theorem \ref{thm:error}.
-\end{proof}
+%\begin{proof}
+%	By \eqref{eq:convolve}
+%	\begin{align*}
+%		\Pr(x_t, k, s, \hat{x}_0, \hat{v}_0) = \int \Pr( x_t \mid \check{x}_t ) \Pr( \check{x}_t, k,s,\hat{x}_0, \hat{v}_0) d\check{x}_t
+%	\end{align*}
+%	Substitution of \eqref{eq:approximation 1} yields
+%	\begin{align*}
+%		\begin{split}
+%		&\Pr(x_t, k, s, \hat{x}_0, \hat{v}_0) \nonumber \\
+%		& = \sum_{i,j} W(k,s,i,j,\hat{x}_0) \left. \Pr( x_t \mid \check{x}_t ) \right|_{ \check{x}_t = \Phi_{k,s}^t( x_0^{i,j}) } + \tilde{\varepsilon}_t(x_t)
+%		\end{split}
+%	\end{align*}
+%	where the error term is
+%	\begin{align}
+%		\tilde{\varepsilon}_t(x_t) = \int \Pr( x_t \mid \check{x}_t) \varepsilon_t( \check{x}_t) d \check{x}_t
+%	\end{align}
+%	and $\varepsilon_t$ is the error term of \eqref{eq:approximation 1}.
+%	We see that the $L^1$-norm of $\tilde{\varepsilon}_t$ is 
+%	\begin{align}
+%		\| \tilde{\varepsilon}_t \|_{L^1} &= \int \left| \int \Pr( x_t \mid \check{x}_t) \varepsilon_t( \check{x}_t) d \check{x}_t \right| dx_t \\
+%			&\leq \int \Pr( x_t \mid \check{x}_t ) | \varepsilon_t |( \check{x}_t) d\check{x}_t \, dx_t
+%	\end{align}
+%	Implementing the integration over $x_t$ first yields:
+%	\begin{align}
+%		\| \tilde{\varepsilon}_t \|_{L^1} \leq \int | \varepsilon_t |( \check{x}_t) d\check{x}_t =: \| \varepsilon_t \|_{L^1}
+%	\end{align}
+%	which is $\mathcal{O}( | \Delta x | + \varepsilon_{tol} )$ by Theorem \ref{thm:error}.
+%\end{proof}
 
 Corollary \ref{cor:error} justifies using \eqref{eq:approximation 2} as an approximation of $\Pr( x_t, k,s,\hat{x}_0, \hat{v}_0)$.
-In particular, this reduces the problem of computing $\rho_t(x_t)$ to the problem of computing the weights $W(k,s,i,j,\hat{x}_0)$ and the points $\Phi_{k,s}^t(x_0^{i,j})$ for all $k,s$ and points $x_0^{i,j} \in \Gamma_L( \hat{x}_0; N_x)$.
+This reduces the problem of computing $\rho_t(x_t)$ to the problem of computing the weights $W(k,s,i,j,\hat{x}_0)$ and the points $\Phi_{k,s}^t(x_0^{i,j})$ for all $k,s$ and points $x_0^{i,j} \in \Gamma_L( \hat{x}_0; N_x)$.
 We can reduce this burden further by exploiting the following symmetry:
 \begin{thm} \label{thm:symmetry}
 	$\Phi_{k,s}^t = \Phi_{k,1}^{st}$.
 \end{thm}
-\begin{proof}
-	Say $x(t)$ satisfies the ordinary differential equation $x'(t) = sX_k(x(t))$ with the initial condition $x_0$.
-	In other words, $x(t) = \Phi_{k,s}^{t}(x_0)$.
-	Taking a derivative of $x(t/s)$, we see $\frac{d}{dt} (x(t/s)) = x'(t/s) /s = X_k(x(st))$.
-	Therefore $x(t/s) = \Phi_{k,1}^{t}( x_0)$.
-	Substitution of $t$ with $\tau = t/s$ yields $x(\tau) = \Phi_{k,1}^{s \tau} (x_0)$.
-	As $x(\tau) = \Phi_{k,s}^{\tau}(x_0)$ as well, the result follows.
-\end{proof}
+%\begin{proof}
+%	Say $x(t)$ satisfies the ordinary differential equation $x'(t) = sX_k(x(t))$ with the initial condition $x_0$.
+%	In other words, $x(t) = \Phi_{k,s}^{t}(x_0)$.
+%	Taking a derivative of $x(t/s)$, we see $\frac{d}{dt} (x(t/s)) = x'(t/s) /s = X_k(x(st))$.
+%	Therefore $x(t/s) = \Phi_{k,1}^{t}( x_0)$.
+%	Substitution of $t$ with $\tau = t/s$ yields $x(\tau) = \Phi_{k,1}^{s \tau} (x_0)$.
+%	As $x(\tau) = \Phi_{k,s}^{\tau}(x_0)$ as well, the result follows.
+%\end{proof}
 This, allows us to compute $\Phi_{k,s}^t( x_0^{\alpha})$ using computations of $\Phi_{k,1}^t(x_0^{\alpha})$, which yields the following result:
 \begin{thm} \label{thm:main}
 	Let $\{s_1,\dots,s_n\}$ be a regular partition on the support of $\Pr(s)$.
@@ -501,11 +477,11 @@ This, allows us to compute $\Phi_{k,s}^t( x_0^{\alpha})$ using computations of $
 	\end{align}
 	approximates $\Pr( x_t, \hat{x}_0, \hat{v}_0)$ with an error of size $\mathcal{O}( \Delta s + \Delta x + \varepsilon_{\rm tol})$.
 \end{thm}
-\begin{proof}
-	Substitute Theorem \ref{thm:symmetry} into Corollary \ref{cor:error}, to replace $\Phi_{k,s}^t$ with $\Phi_{k,1}^{st}$.
-	This gives us an error term of size $\Delta x$, if we compute the integral over $s$ exactly.
-	Using \eqref{eq:approximation 0}, we can compute the integral over $s$ approximately, with an error of magnitude $\Delta s$.
-\end{proof}
+%\begin{proof}
+%	Substitute Theorem \ref{thm:symmetry} into Corollary \ref{cor:error}, to replace $\Phi_{k,s}^t$ with $\Phi_{k,1}^{st}$.
+%	This gives us an error term of size $\Delta x$, if we compute the integral over $s$ exactly.
+%	Using \eqref{eq:approximation 0}, we can compute the integral over $s$ approximately, with an error of magnitude $\Delta s$.
+%\end{proof}
 
 This is a powerful result since it allows us to compute $\Pr( x_t, \hat{x}_0, \hat{v}_0)$  (and thus $\rho_t(x_t)$) at times $t \in \{\Delta t, \dots, N_t \Delta t\}$ with a single computation of $\Phi_{k,1}^{\ell \Delta t \bar{s}}( x_0^{i,j})$ for each $\ell \in  \{-N_t,\dots,N_t\}$, $k \in \{1,\dots,n\}$, and $x_0^{i,j} \in \Gamma_L( \hat{x}_0 , N_x)$.
 To appreciate this, assume we are given $\Phi_{k,1}^{m  \bar{s} \Delta t}(x_0^{i,j})$ for all $m \in \{ -\ell, \ldots, \ell \}$.
@@ -516,34 +492,14 @@ We can then use the regular partition
 of $[-\bar{s}, \bar{s}]$ to compute a Riemann sum approximation using Theorem \ref{thm:main}.
 The partition $\mathcal{P}_\ell$ has a width of size, $\Delta s = \bar{s} / \ell$, and substitution in \eqref{eq:approximation 3} yields an approximation of $\Pr( x_t, \hat{x}_0, \hat{v}_0)$ at time $t=\ell \Delta t$
 given by
-\begin{align*}
-	\begin{split}
-		&\frac{\bar{s}}{\ell} \sum_{i,j,k,m} W(k,m \bar{s} / \ell ,i,j,\hat{x}_0) \left. \Pr( x_t \mid \check{x}_t ) \right|_{ \check{x}_t = \Phi_{k,1}^{m \bar{s} \Delta t}( x_0^{i,j}) } \\
+\begin{align}
+		&\frac{\bar{s}}{\ell} \sum_{i,j,k,m} W(k,m \bar{s} / \ell ,i,j,\hat{x}_0) \left. \Pr( x_t \mid \check{x}_t ) \right|_{ \check{x}_t = \Phi_{k,1}^{m \bar{s} \Delta t}( x_0^{i,j}) }  \nonumber \\
 		&\qquad+\Pr( x_t , lin, \hat{x}_0, \hat{v}_0 ).
-	\end{split}
-\end{align*}
+\end{align}
 As we have already computed $\Phi_{k,1}^{m \bar{s} \Delta t}$ for $| m | \leq \ell$ by assumption, the only obstacle to computing this sum is the computation of the weights $W(k,m \bar{s} / \ell ,i,j,\hat{x}_0)$.
-Now if we want to compute $\Pr( x_t, \hat{x}_0, \hat{v}_0)$ at $t=(\ell + 1 ) \Delta t$, then by reusing the earlier computation one would only need to compute $\Phi_{k,1}^{m  \bar{s} \Delta t}(x_0^{i,j})$ for $m \in \{ -( \ell + 1 ), (\ell + 1 )\}$ along with the weights to obtain an approximation using the partition $\mathcal{P}_{\ell + 1}$.
+If we want to compute $\Pr( x_t, \hat{x}_0, \hat{v}_0)$ at $t=(\ell + 1 ) \Delta t$, then by reusing the earlier computation one only need to compute $\Phi_{k,1}^{m  \bar{s} \Delta t}(x_0^{i,j})$ for $m \in \{ -( \ell + 1 ), (\ell + 1 )\}$ along with the weights to obtain an approximation using the partition $\mathcal{P}_{\ell + 1}$.
 %Admittedly, this means our approximations might be imprecise over very short times, but more accurate over longer time-horizons.
 
-\begin{algorithm}[t]
-		  \caption{Algorithm to compute  $\rho_t$ for each $t \in  \{\Delta t, 2 \Delta t, \dots, N_t \Delta t$\}.}
-		  \label{alg:1}
-		  \begin{algorithmic}[1]
-		    \Require $\bar{s} > 0$, $N_t \in \mathbb{N}$, $\Delta t > 0$,  $ \{ X_k \}_{k=1}^{n}$, $\hat{x}_0$, $\hat{v}_0$, $\Gamma_L( \hat{x}_0, N_x)$, $\Pr(x_0 \mid M), \Pr(x_0 \mid \hat{x}_0), \Pr(v_0 \mid \hat{v}_0 ), \Pr(M \in \mathcal{M}), \text{ and } \Pr(s \mid k)$.
-		    \For {$\ell \in \{1,\dots,N_t\}$}
-		    \State Compute $\Phi_{k,1}^{ \pm \bar{s} \ell \Delta t}( x_0^{i,j} )$ for all $x_0^{i,j} \in \Gamma_L( \hat{x}_0 ; N_x)$ and \hspace*{12pt} for all $k \in  \{1,\dots, n\}$.
-		    \For {$m \in \{-\ell,\dots,\ell\}$}
-		    \State Compute $W(k,s,i,j,\hat{x}_0)$ for $s = \bar{s} m / \ell$ for all \hspace*{28pt} $i,j\in \{-N_x,\dots, N_x\}$ and $k\in \{1,\dots,n\}$.
-		    \EndFor  
-		    \State Compute $\Pr(\check{x}_t, \hat{x}_0, \hat{v}_0)$ at $t=\ell \Delta t$ via Theorem \ref{thm:main} 
-%		    \State Construct a $\mathcal{O}( \Delta x + \bar{s}/\ell + \varepsilon_{\rm tol})$ approximation of $\Pr(\check{x}_t, \hat{x}_0, \hat{v}_0)$ at $t=\ell \Delta t$ via Theorem \ref{thm:main} 
-		    \hspace*{12pt} with partition $\mathcal{P}_\ell$ of \eqref{eq:partition}.\label{alg1:step2}
-		    \State Apply Bayes' Theorem to obtain $\Pr(\check{x}_t \mid \hat{x}_0, \hat{v}_0)$.
-		    \State Compute $\rho_t(x_t)$ at $t= \ell \cdot \Delta t$ via \eqref{eq:convolve}.
-		    \EndFor
-		  \end{algorithmic}
-\end{algorithm}
 
 %\begin{algorithm}[t]
 %		    \KwData{ $N_t \in \mathbb{N},  \{ X_k \}_{k=1}^{n}, \hat{x}_0, \hat{v}_0, \Gamma_L( \hat{x}_0, N_x)$, and the posteriors of \eqref{eq:pgm}.}
@@ -573,6 +529,26 @@ If the posteriors represented by the arrows in \eqref{eq:pgm} are efficiently co
 %	Suppose we have an accurate scheme for integrating ODEs in a computation time proportional to the integration time-interval\footnote{For example, 4th order explicit Runge-Kutta}.  
 %	Algorithm \ref{alg:main} yields an $\mathcal{O}( \Delta x + \bar{s} / \ell + \epsilon_{\rm tol})$ accurate approximation of $\rho_t$ in $\mathcal{O}( N_t n N_x^2 / N_p )$ computation time given $N_p$ processing units and $n$ vector fields.
 %\end{thm}
+
+\begin{algorithm}[t]
+		  \caption{Algorithm to compute  $\rho_t$ for each $t \in  \{\Delta t, 2 \Delta t, \dots, N_t \Delta t$\}.}
+		  \label{alg:1}
+		  \begin{algorithmic}[1]
+		    \Require $\bar{s} > 0$, $N_t \in \mathbb{N}$, $\Delta t > 0$,  $ \{ X_k \}_{k=1}^{n}$, $\hat{x}_0$, $\hat{v}_0$, $\Gamma_L( \hat{x}_0, N_x)$, $\Pr(x_0 \mid M), \Pr(x_0 \mid \hat{x}_0), \Pr(v_0 \mid \hat{v}_0 ), \Pr(M \in \mathcal{M}), \text{ and } \Pr(s \mid k)$.
+		    \For {$\ell \in \{1,\dots,N_t\}$}
+		    \State Compute $\Phi_{k,1}^{ \pm \bar{s} \ell \Delta t}( x_0^{i,j} )$ for all $x_0^{i,j} \in \Gamma_L( \hat{x}_0 ; N_x)$ and \hspace*{12pt} for all $k \in  \{1,\dots, n\}$.
+		    \For {$m \in \{-\ell,\dots,\ell\}$}
+		    \State Compute $W(k,s,i,j,\hat{x}_0)$ for $s = \bar{s} m / \ell$ for all \hspace*{28pt} $i,j\in \{-N_x,\dots, N_x\}$ and $k\in \{1,\dots,n\}$.
+		    \EndFor  
+		    \State Compute $\Pr(\check{x}_t, \hat{x}_0, \hat{v}_0)$ at $t=\ell \Delta t$ via Theorem \ref{thm:main} 
+%		    \State Construct a $\mathcal{O}( \Delta x + \bar{s}/\ell + \varepsilon_{\rm tol})$ approximation of $\Pr(\check{x}_t, \hat{x}_0, \hat{v}_0)$ at $t=\ell \Delta t$ via Theorem \ref{thm:main} 
+		    \hspace*{12pt} with partition $\mathcal{P}_\ell$ of \eqref{eq:partition}.\label{alg1:step2}
+		    \State Apply Bayes' Theorem to obtain $\Pr(\check{x}_t \mid \hat{x}_0, \hat{v}_0)$.
+		    \State Compute $\rho_t(x_t)$ at $t= \ell \cdot \Delta t$ via \eqref{eq:convolve}.
+		    \EndFor
+		  \end{algorithmic}
+\end{algorithm}
+
   
 \section{Implementation and Experimental results} \label{sec:implementation}
   Given the model established in the previous section, we describe an implementation to showcase one way the model can be applied to observational data.
@@ -583,16 +559,16 @@ If the posteriors represented by the arrows in \eqref{eq:pgm} are efficiently co
   
   \subsection{Learning the Vector Fields}
  We begin by identifying the number of possible vector-fields.
-  To do this we use a clustering algorithm on the trajectories observed in a scene to categorize them into groups.
   %In principal, any clustering algorithm could accomplish this.
-  \marginnote{\#4.2}
-\rtext{We then cluster in $\mathbb{R}^4$ using Affinity Propagation \cite{FreyDueck2007} and a custom distance measure defined on the endpoints of trajectories. 
+  \normalmarginpar
+\marginnote{\#4.1}
+\rtext{To do, this we use a clustering algorithm on the trajectories using Affinity Propagation \cite{FreyDueck2007} and a custom distance measure defined on the endpoints of trajectories. 
 	Let one trajectory $A$ start at $(x_{A,\mathrm{start}}, y_{A,\mathrm{start}})$ and end at  $(x_{A,\mathrm{end}}, y_{A,\mathrm{end}})$, and another trajectory $B$ start at $(x_{B,\mathrm{start}}, y_{B,\mathrm{start}})$ and end at $(x_{B,\mathrm{end}}, y_{B,\mathrm{end}})$ . 
 	We define the points $\mathbf{a}_1 = (x_{A, \mathrm{start}}, y_{A, \mathrm{start}}, x_{A, \mathrm{end}}, y_{A, \mathrm{end}})$, $\mathbf{a}_2 = (x_{A, \mathrm{end}}, y_{A, \mathrm{end}}, x_{A, \mathrm{start}}, y_{A, \mathrm{start}})$, and $\mathbf{b} = (x_{B, \mathrm{start}}, y_{B, \mathrm{start}}, x_{B, \mathrm{end}}, y_{B, \mathrm{end}})$. 
 	We then define our distance measure as $d(A, B) :=  \min \left\{ d_e(\mathbf{a}_1, \mathbf{b}), d_e(\mathbf{a}_2, \mathbf{b}) \right\}$, for the euclidean distance $d_e$ in $\mathbb{R}^4$. 
 	This function measures the distance between the endpoints irrespective of their ordering, which means that a trajectory that starts from point A and ends at point B will be close to a trajectory that starts from point B and ends at point A.
 	The scale of the datasets we tested on had large enough spatial scale that clustering based on endpoints captured people moving from destination to destination, e.g. from a storefront to the sidewalk at the edge of a scene. On this dataset, distance functions that utilize the entire trajectory such as DTW, LCSS, and PF from \cite{Morris2009} and TRACLUS from \cite{Lee2007} did not identify pedestrian intent as well as our method did. While it is unclear why TRACLUS underperformed on our data, PF, DTW, and LCSS appeared to put trajectories that were very similar for periods of time together even though they had very different intents.}
-  This clustering of the end-points induces a clustering of the trajectories.
+	This clustering of the end-points induces a clustering of the trajectories.
   Suppose we obtain clusters $S_1, \dots, S_n$ consisting of trajectories from our data set, as well as a set of unclassified trajectories, $S_0$.
   
   For each set $S_k$ we learn a vector-field that is approximately compatible with that set.
@@ -600,19 +576,16 @@ If the posteriors represented by the arrows in \eqref{eq:pgm} are efficiently co
   Since most trajectories appearing in the dataset have roughly constant speed, we chose a vector-field that has unit magnitude. 
   That is, we assume the vector-field takes the form $X_k(x) = \left( \cos( \Theta_k(x) ) , \sin(\Theta_k(x)) \right)$ for some scalar function $\Theta_k(x)$.
   Learning the vector-fields then boils down to learning the scalar function $\Theta_k$.
-  We assume $\Theta_k$ takes the form:
-  \begin{align*}
-  	\Theta_k(x) = \sum_{\alpha} \theta_{k,\alpha} L_{\alpha}(x),
-  \end{align*}
-  for some collection of coefficients, $\theta_{k,\alpha}$, and a fixed collection of basis functions, $L_{\alpha}$.
-  In our case, we choose $L_{\alpha}$ to be a set of low degree Legendre polynomials.
+  We assume $\Theta_k = \sum_{\alpha} \theta_{k,\alpha} L_{\alpha}(x)$ for some collection of coefficients, $\theta_{k,\alpha}$, and a fixed collection of basis functions, $L_{\alpha}$.
+  We choose $L_{\alpha}$ to be a set of low degree Legendre polynomials.
+ 
  $\Theta_k$ is learned by computing the velocities observed in the cluster, $S_k$.
   These velocities are obtained by a low order finite difference formula.
   Upon normalizing the velocities, we obtain a unit-length velocity vectors, $v_{i,k}$, anchored at each point, $x_{i,k}$, of $S_k$.
   We learn $\Theta_k$ by defining the cost-function:
-  \begin{align*}
+  \begin{align}
   	C[ \Theta_k] = \sum_i \langle v_{i,k} , ( \cos(\Theta_k( x_{i,k}) , \sin( \Theta_k( x_{i,k} ) ) \rangle
-  \end{align*}
+  \end{align}
   which penalizes $\Theta_k$ for producing a misalignment with the observed velocities at the observed points of $S_k$.
   When $\Theta_{k}$ includes high order polynomials (e.g. beyond 5th order), we also include a regularization term to bias the cost towards smoother outputs.
   Using the $H^1$-norm times a fixed scalar suffices as a regularization term. 
@@ -625,34 +598,25 @@ We first considering the nonlinear models.
   We begin by assuming that $x_0$ is independent of $s$ given $k$, i.e. $\Pr( x_0 \mid k,s) = \Pr(x_0 \mid k)$.
   Additionally, we assume that $s$ and $k$ are independent.
   This means that we only need to learn $\Pr( x_0 \mid k)$, $\Pr(k)$, and $\Pr(s)$.
-  
   We let $\Pr(k) = (n+1)^{-1}$ and $\Pr(s) \sim \mathcal{U}( [-s_{\max}, s_{\max} ] )$  where $s_{\max}>0$ is the largest observed speed in the dataset.  
   This implies that $\Pr(lin) = (n+1)^{-1}$ as well.
 %  Other reasonable choices (such as $\Pr(k) \propto | S_k|$) could work, but we have chosen to be conservative in this paper.
   
 %  To learn $\Pr( x_0 \mid k)$, we assume that its logarithm may be approximated by a low dimensional subspace of functions on $\mathbb{R}^2$.
 %  That is to say, 
-  For each $k$ we assume $\Pr( x_0 \mid k) = \frac{1}{Z_k} \exp( - V_k(x_0) )$ and $V_k$ is a function whose constant term is $0$ and is given by:
-  \begin{align*}
-  	V_k(x_0; \mathbf{c} ) := \sum_{|\alpha|< d} c_{\alpha} L_{\alpha}( x_0)
-  \end{align*}
-  for a collection of basis functions, $L_{\alpha}$ and coefficients $\mathbf{c} = \{ c_{\alpha} \}_{|\alpha| < d}$.
+  For each $k$ we assume $\Pr( x_0 \mid k) = \frac{1}{Z_k} \exp( - V_k(x_0) )$ and $V_k$ is a function whose constant term is $0$ and is  $V_k(x_0; \mathbf{c} ) := \sum_{|\alpha|< d} c_{\alpha} L_{\alpha}( x_0)$ for a collection of basis functions, $L_{\alpha}$ and coefficients $\mathbf{c} = \{ c_{\alpha} \}_{|\alpha| < d}$.
   We chose our basis functions to be the collection of tensor products of the first six Legendre polynomials, normalized to the size of the domain.
   Then, one may fit the coefficients $c_{\alpha}$ to the data by using a log-likelihood criterion.
   The resulting (convex) optimization problem takes the form:
-  \begin{align*}
-  	\mathbf{c}^* = \inf_{ |\mathbf{c}| } \sum_{x \in S_k} V_k( x_0; \mathbf{c})
-  \end{align*}
+  \begin{align}
+  	\mathbf{c}^* = \inf_{ \mathbf{c} } \sum_{x \in S_k} V_k( x_0; \mathbf{c})
+  \end{align}
   Where the norm on $\mathbf{c}$ is a sup-norm.
-  We bias this optimization towards more regular functions by adding a penalty to the cost function.
+  We bias this optimization towards smooth functions by adding a penalty to the cost function.
     Finally, we let $\Pr( x_0 \mid lin) \sim \mathcal{U}(D)$.
   
   \subsection{Learning the Measurement Model}
-  We assume a Gaussian noise model.  
-  That is
-  \begin{align*}
-  	\Pr( \hat{x}_0 \mid x_0 ) \sim \mathcal{N}( x_0 , \sigma_x) \quad, \quad \Pr( \hat{v}_0 \mid v_0 ) \sim \mathcal{N}( v_0, \sigma_v).
-  \end{align*}
+  We assume a Gaussian noise model (i.e. $\Pr( \hat{x}_0 \mid x_0 ) \sim \mathcal{N}( x_0 , \sigma_x)$ and $\Pr( \hat{v}_0 \mid v_0 ) \sim \mathcal{N}( v_0, \sigma_v)$).
   Therefore, our model is parametrized by the standard deviations $\sigma_x$ and $\sigma_v$.
   We assume that the true trajectory of an agent is smooth compared to the noisy output of our measurement device.
   This justifies smoothing the trajectories, and using the difference between the smoothed signals and the raw data to learn the variance $\sigma_x$.
@@ -662,9 +626,10 @@ We first considering the nonlinear models.
   In particular, if velocity is approximated via finite differencing as $v(t) \approx (x(t+h) - x(t))\,\Delta t^{-1} + \mathcal{O}(h)$ and the measurements are corrupted by Gaussian noise, then the measurement $\hat{v}(t)$ is related to $v(t)$ by Gaussian noise with roughly the same standard deviation as $(x(t+h) - x(t))\,\Delta t^{-1}$.
   
   
-  \begin{figure}
+  \begin{figure*}[t!]
+  \begin{subfigure}[t]{0.48\textwidth}
 	\centering
-	\begin{minipage}[c]{0.5cm}
+	\begin{minipage}[c]{0.47cm}
 		\rotatebox{90}{\small{Our Algorithm}   }
 	\end{minipage}
 	\begin{minipage}[c]{0.3\linewidth}
@@ -678,7 +643,7 @@ We first considering the nonlinear models.
 	\end{minipage}
 	
 	\vspace{0.1cm}
-	\begin{minipage}[c]{0.5cm}
+	\begin{minipage}[c]{0.47cm}
 		\rotatebox{90}{\small{Kitani et al.}  }
 	\end{minipage}
 	\begin{minipage}[c]{0.3\linewidth}
@@ -692,7 +657,7 @@ We first considering the nonlinear models.
 	\end{minipage}
 	
 	\vspace{0.1cm}
-		\begin{minipage}[c]{0.5cm}
+		\begin{minipage}[c]{0.47cm}
 			\rotatebox{90}{\small{S-LSTM} }  
 		\end{minipage}
 		\begin{minipage}[c]{0.3\linewidth}
@@ -706,7 +671,7 @@ We first considering the nonlinear models.
 		\end{minipage}
 	
 	\vspace{0.1cm}
-	\begin{minipage}[c]{0.5cm}
+	\begin{minipage}[c]{0.47cm}
 		\rotatebox{90}{\small{Random Walk} }  
 	\end{minipage}
 	\begin{minipage}[c]{0.3\linewidth}
@@ -733,18 +698,16 @@ We first considering the nonlinear models.
 		\centering
 		$t = 12.33s$
 	\end{minipage}
-	
-	
-	
-	\caption{
-		\rtext{An illustration of the predictions generated by the various algorithms. In this figure, the dot is the start point of the test trajectory, the diamond is the position at time t, and the X is the end of the trajectory. The likelihood of detection is depicted using the virdis color palette. Notice that the Random Walk is imprecise, while the predictions generated by the algorithm in [7] suffer from the inability of their motion model to adequately match the speed of the agent. The algorithm in [13] is confident and close to the trajectory at small times, but their lack of a motion model causes their prediction to compress into a point at intermediate time scales.}}
-	\marginnote{\#4.7}
+	\caption{Scene 1}
+%	\caption{
+%		\rtext{An illustration of the predictions generated by the various algorithms. In this figure, the dot is the start point of the test trajectory, the diamond is the position at time t, and the X is the end of the trajectory. The likelihood of detection is depicted using the virdis color palette. Notice that the Random Walk is imprecise, while the predictions generated by the algorithm in \cite{Kitani2012} are unable to match the speed of the agent and choose the wrong direction to follow the agent around the circle. The algorithm in \cite{Alahi2016} is confident and close to the trajectory at small times, but their lack of a motion model causes their prediction to compress into a point at intermediate time scales.}}
+%	\marginnote{\#4.7}
 	\label{fig:bookstore-1-2}
-\end{figure}
-
-\begin{figure}
+	\end{subfigure} 
+	\hspace*{0.5cm}
+	\begin{subfigure}[t]{0.48\textwidth}
 	\centering
-	\begin{minipage}[c]{0.5cm}
+	\begin{minipage}[c]{0.47cm}
 		\rotatebox{90}{\small{Our Algorithm}}   
 	\end{minipage}
 	\begin{minipage}[c]{0.3\linewidth}
@@ -758,7 +721,7 @@ We first considering the nonlinear models.
 	\end{minipage}
 	
 	\vspace{0.1cm}
-	\begin{minipage}[c]{0.5cm}
+	\begin{minipage}[c]{0.47cm}
 		\rotatebox{90}{\small{Kitani et al.}} 
 	\end{minipage}
 	\begin{minipage}[c]{0.3\linewidth}
@@ -772,7 +735,7 @@ We first considering the nonlinear models.
 	\end{minipage}
 	
 	\vspace{0.1cm}
-	\begin{minipage}[c]{0.5cm}
+	\begin{minipage}[c]{0.47cm}
 		\rotatebox{90}{\small{S-LSTM}} 
 	\end{minipage}
 	\begin{minipage}[c]{0.3\linewidth}
@@ -786,7 +749,7 @@ We first considering the nonlinear models.
 	\end{minipage}
 	
 	\vspace{0.1cm}
-	\begin{minipage}[c]{0.5cm}
+	\begin{minipage}[c]{0.47cm}
 		\rotatebox{90}{\small{Random Walk} }
 	\end{minipage}
 	\begin{minipage}[c]{0.3\linewidth}
@@ -812,12 +775,93 @@ We first considering the nonlinear models.
 	\begin{minipage}{0.3\linewidth}
 		\centering
 		$t = 12.33s$
-	\end{minipage}
-	
-	\caption{\rtext{An illustration of the predictions generated by the various algorithms. In this figure, the dot is the start point of the test trajectory, the diamond is the position at time t, and the X is the end of the trajectory. The likelihood of detection is depicted using the virdis color palette. Notice that the Random Walk is imprecise, while the predictions generated by the algorithm in [7] are unable to match the speed of the agent and choose the wrong direction to follow the agent around the circle. The algorithm in [13] is confident and close to the trajectory at small times, but their lack of a motion model causes their prediction to compress into a point at intermediate time scales.}}
-	\reversemarginpar\marginnote{\#4.8}
+	\end{minipage}	
+	\caption{Scene 2}
+%	\caption{\rtext{An illustration of the predictions generated by the various algorithms. In this figure, the dot is the start point of the test trajectory, the diamond is the position at time t, and the X is the end of the trajectory. The likelihood of detection is depicted using the virdis color palette. Notice that the Random Walk is imprecise, while the predictions generated by the algorithm in \cite{Kitani2012} are unable to match the speed of the agent and choose the wrong direction to follow the agent around the circle. The algorithm in \cite{Alahi2016} is confident and close to the trajectory at small times, but their lack of a motion model causes their prediction to compress into a point at intermediate time scales.}}
+%	\reversemarginpar\marginnote{\#4.8}
 	\label{fig:death-1-2}
-\end{figure}
+	\end{subfigure}
+	\caption{An illustration of the predictions generated by the various algorithms. In this figure, the dot is the start point of the test trajectory, the diamond is the position at time t, and the X is the end of the trajectory. The likelihood of detection is depicted using the virdis color palette. Notice that the Random Walk is imprecise, while the predictions generated by the algorithm in \cite{Kitani2012} are unable to match the speed of the agent and choose the wrong direction to follow the agent around the circle. The algorithm in \cite{Alahi2016} is confident and close to the trajectory at small times, but their lack of a motion model causes their prediction to compress into a point at intermediate time scales.}
+	\normalmarginpar \marginnote{\#4.5}
+	\vspace{-0.7cm}
+\end{figure*}
+
+%\begin{figure}
+%	\centering
+%	\begin{minipage}[c]{0.5cm}
+%		\rotatebox{90}{\small{Our Algorithm}}   
+%	\end{minipage}
+%	\begin{minipage}[c]{0.3\linewidth}
+%		\includegraphics[width=\linewidth]{./figures/comparison/ours_death_1_2_t=70.jpg}
+%	\end{minipage}
+%	\begin{minipage}[c]{0.3\linewidth}
+%		\includegraphics[width=\linewidth]{./figures/comparison/ours_death_1_2_t=250.jpg}
+%	\end{minipage}
+%	\begin{minipage}[c]{0.3\linewidth}
+%		\includegraphics[width=\linewidth]{./figures/comparison/ours_death_1_2_t=370.jpg}
+%	\end{minipage}
+%	
+%	\vspace{0.1cm}
+%	\begin{minipage}[c]{0.5cm}
+%		\rotatebox{90}{\small{Kitani et al.}} 
+%	\end{minipage}
+%	\begin{minipage}[c]{0.3\linewidth}
+%		\includegraphics[width=\linewidth]{./figures/comparison/kit_death_1_2_t=70.jpg}
+%	\end{minipage}
+%	\begin{minipage}[c]{0.3\linewidth}
+%		\includegraphics[width=\linewidth]{./figures/comparison/kit_death_1_2_t=250.jpg}
+%	\end{minipage}
+%	\begin{minipage}[c]{0.3\linewidth}
+%		\includegraphics[width=\linewidth]{./figures/comparison/kit_death_1_2_t=370.jpg}
+%	\end{minipage}
+%	
+%	\vspace{0.1cm}
+%	\begin{minipage}[c]{0.5cm}
+%		\rotatebox{90}{\small{S-LSTM}} 
+%	\end{minipage}
+%	\begin{minipage}[c]{0.3\linewidth}
+%		\includegraphics[width=\linewidth]{./figures/comparison/lstm_1_2_t=100.jpg}
+%	\end{minipage}
+%	\begin{minipage}[c]{0.3\linewidth}
+%		\includegraphics[width=\linewidth]{./figures/comparison/lstm_1_2_t=300.jpg}
+%	\end{minipage}
+%	\begin{minipage}[c]{0.3\linewidth}
+%		\includegraphics[width=\linewidth]{./figures/comparison/lstm_1_2_t=380.jpg}
+%	\end{minipage}
+%	
+%	\vspace{0.1cm}
+%	\begin{minipage}[c]{0.5cm}
+%		\rotatebox{90}{\small{Random Walk} }
+%	\end{minipage}
+%	\begin{minipage}[c]{0.3\linewidth}
+%		\includegraphics[width=\linewidth]{./figures/comparison/rand_death_1_2_t=70.jpg}
+%	\end{minipage}
+%	\begin{minipage}[c]{0.3\linewidth}
+%		\includegraphics[width=\linewidth]{./figures/comparison/rand_death_1_2_t=250.jpg}
+%	\end{minipage}
+%	\begin{minipage}[c]{0.3\linewidth}
+%		\includegraphics[width=\linewidth]{./figures/comparison/rand_death_1_2_t=370.jpg}
+%	\end{minipage}
+%	
+%	\vspace{0.2cm}
+%	\hspace{.5cm}
+%	\begin{minipage}{0.3\linewidth}
+%		\centering
+%		$t = 2.33s$
+%	\end{minipage}
+%	\begin{minipage}{0.3\linewidth}
+%		\centering
+%		$t = 8.33s$
+%	\end{minipage}
+%	\begin{minipage}{0.3\linewidth}
+%		\centering
+%		$t = 12.33s$
+%	\end{minipage}
+%	
+%	\caption{\rtext{An illustration of the predictions generated by the various algorithms. In this figure, the dot is the start point of the test trajectory, the diamond is the position at time t, and the X is the end of the trajectory. The likelihood of detection is depicted using the virdis color palette. Notice that the Random Walk is imprecise, while the predictions generated by the algorithm in \cite{Kitani2012} are unable to match the speed of the agent and choose the wrong direction to follow the agent around the circle. The algorithm in \cite{Alahi2016} is confident and close to the trajectory at small times, but their lack of a motion model causes their prediction to compress into a point at intermediate time scales.}}
+%	\reversemarginpar\marginnote{\#4.8}
+%	\label{fig:death-1-2}
+%\end{figure}
 
   
   \subsection{Learning the Noise Model}
@@ -831,13 +875,12 @@ We first considering the nonlinear models.
   
  \subsection{Evaluating Performance}
  
-This section establishes our methods performance and compares it to the model from \cite{Kitani2012} and a random walk.
-We implement our model as well as our evaluation code in Python 2.6. 
-Our implementation is available online\footnote{https://github.com/OkayHughes/iros2017\_pedestrian\_forecasting}.
-\reversemarginpar\marginnote{\#4.3}
-\rtext{We did a 2-fold cross validation by using 20\% of the data for testing and the remainder for training within each scene. 
+This section establishes our methods performance and compares it to the model from \cite{Kitani2012}, \cite{Alahi2016}, and a random walk.
+We implement our model as well as our evaluation code in Python 2.6\footnote{https://github.com/ramvasudevan/iros2017\_pedestrian\_forecasting}.
+\marginnote{\#4.2}
+\rtext{We performed a 2-fold cross validation by using 20\% of the data for testing and the remainder for training within each scene. 
 	We learned separate collections of vector fields and model parameters for each fold on all of the four scenes on which we tested.}
-\reversemarginpar\marginnote{\#4.4}
+\marginnote{\#4.3}
 \rtext{Our analysis was conducted on the Coupa, Bookstore, Death Circle, and Gates scenes from the dataset from \cite{Robicquet2016}, with a total of 142 trajectories analyzed.}
 
 
@@ -847,45 +890,31 @@ Note that the implementation of the algorithm in \cite{Kitani2012} required the 
 Without this information the implementation of the predictor provided by the authors devolved into a random walk.
 Neither our algorithm nor the random walk were provided this information.
 
-The output distributions of the three algorithms were compared using their integrals over the cells of a regular grid over our domain. 
+The output distributions of the four algorithms were compared using their integrals over the cells of a regular grid over our domain. 
 These integrals are used to visualize the distributions in Figures \ref{fig:bookstore-1-2} and \ref{fig:death-1-2}.
 %In keeping with our measurement model, the ground truth compared against was a grid that was identically zero except on a bounding box around the measurement at time $t$. 
 %The ground truth bounding box at each time instance were set equal to the average bounding box dimension centered at the 
 %were the average bounding box dimensions in the training data set. 
-Because our predictions all share the same scale, we were able to amalgamate all of the prediction and truth values for all of the simulated agents at a given time step and generate ROC curves.
-\reversemarginpar\marginnote{\#4.5} \rtext{In our analysis, we sought a metric that evaluated the utility of prediction algorithms in the autonomous vehicle context. 
+Because our predictions all share the same scale, we amalgamate all of the prediction and truth values for all of the simulated agents at a given time step and generate ROC curves.
+\marginnote{\#4.4} \rtext{In our analysis, we sought a metric that evaluated the utility of prediction algorithms in the autonomous vehicle context. 
 	In this instance it is critical that the generated set of predictions contains the ground-truth observed trajectory while including as few false positive detections as possible.
 	ROC curves which plot the true positive rate (i.e. the proportion of the ground truth trajectory that is correctly identified) against the false positive rate (i.e. the proportion of the generated set that does not correspond to the ground truth trajectory), evaluate this aforementioned safety criteria for autonomous vehicles exactly. 
 	The Area Under the Curve (AUC) is a standard measure of the quality of a predictor.  
 	The closer that this AUC is to one, the better the prediction algorithm.
-	Figure \ref{ref:auc_vs_time} shows the analysis of the AUC of each algorithm versus time. 
-	In addition, we evaluated the Modified Hausdorff Distance (MHD) from the ground truth trajectory to a sample from the predictions at each time to provide a geometric measure of how accurate the predictions are. Figure \ref{ref:mhd_vs_time} shows MHD plotted against time.
+	Figure \ref{fig:auc_vs_time} shows the analysis of the AUC of each algorithm versus time. }
+	
+	\rtext{In addition, we evaluated the Modified Hausdorff Distance (MHD) from the ground truth trajectory to a sample from the predictions at each time to provide a geometric measure of how accurate the predictions are. 
+	Figure \ref{fig:mhd_vs_time} shows MHD plotted against time.
 	Though popular in evaluating the geometric proximity of the ground truth trajectory and a predicted set, it is not the most appropriate way to evaluate the utility of an algorithm in the autonomous vehicle context. 
 	Specifically consider the instance of a generated set of predictions which does not contain the ground-truth observed trajectory but is close to the ground-truth trajectory geometrically. 
 	If this generated set of predictions was used in the autonomous vehicle context, it would not preclude certain portions of the space where the person was occupying. 
-	Notice that In this instance the true positive rate would be zero meaning that the generated set of predictions was not useful.
+	Notice that the true positive rate would be zero meaning that the generated set of predictions was not useful.
 	Whereas the MHD would describe this generated set of predictions as informative.}
 Our predictor behaves better than any of the other compared methods at moderately large $t$.
 %, where we capture the behavior of the agent without suffering the misplaced confidence observed in Kitani et al.'s predictions. 
 %Their encoding of velocity results in the prediction lagging behind the actual observed motion. 
 This is despite providing the algorithm in \cite{Kitani2012} with the specific final location of each agent.
 %Even given significantly better information, Kitani et al. generates lower quality predictions than our algorithm at all time scales. 
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\linewidth]{./figures/the_results.eps}
-	\caption{\rtext{A comparison of the AUC of the various algorithms. Note that the initial dip in the performance of \cite{Kitani2012} is due to their confidence in their initial estimate. We sampled the S-LSTM \cite{Alahi2016} model 100 times in order to give them the best chance in this analysis, but their confidence combined with the over-reliance on ourdated pedestrian measurements at moderate-to-large timescales lowered their performance.}}
-	\normalmarginpar\marginnote{\#4.9}
-	\label{fig:auc_vs_time}
-\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\linewidth]{./figures/MHD_results.eps}
-	\caption{\rtext{A comparison of the Modified Hausdorff Distance from the ground truth of the pedestrian to a 1000 point sample from each distribution. The method from \cite{Alahi2016} does very well at short time scales due to its confidence, but we outperform all other methods at intermediate times. At long timescales the MHD to the trajectory of most algorithms converges. Our method increases positional uncertainty with time, and so \cite{Kitani2012} outperforms us because they know the end point and we do not, and \cite{Alahi2016} places too much significance on the initial positions of other pedestrians at large time scales.}}
-	\normalmarginpar\marginnote{\#4.10}
-	\label{fig:mhd_vs_time}
-\end{figure}
 
 \begin{table}
 	\begin{center}
@@ -900,12 +929,33 @@ This is despite providing the algorithm in \cite{Kitani2012} with the specific f
 			\hline
 		\end{tabular}
 	\end{center}
+	\vspace*{-0.6cm}
 \end{table}
 
-\normalmarginpar\marginnote{\#4.6}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\linewidth]{./figures/the_results.eps}
+	\caption{\rtext{A comparison of the AUC of the various algorithms. Note that the initial dip in the performance of \cite{Kitani2012} is due to their confidence in their initial estimate. We sampled the S-LSTM \cite{Alahi2016} model $100$ times to extract a less concentrated probability distribution from their algorithm.}}
+	\normalmarginpar\marginnote{\#4.7}
+	\label{fig:auc_vs_time}
+	\vspace*{-0.75cm}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\linewidth]{./figures/MHD_results.eps}
+	\caption{\rtext{A comparison of the MHD from the ground truth of the pedestrian to a 1000 point samples from each distribution. The method from \cite{Alahi2016} does well at short time scales since it places a highly confident distribution at the given initial position of the pedestrian, but the method developed in this paper outperforms all others at intermediate times. \cite{Kitani2012}, which requires the end point of each trajectory, outperforms all other algorithms at longer time scales since they assume that the end point of the trajectory is unknown.}}
+	\reversemarginpar\marginnote{\#4.8}
+	\label{fig:mhd_vs_time}
+	\vspace*{-0.7cm}
+\end{figure}
+
+
+\reversemarginpar
+\marginnote{\#4.6}
 \rtext{The run time per frame for each algorithm was generated using the mean run time for 400 frames, averaged across all of the trajectory data used in the quality analysis.}
 This is shown in Table~\ref{tab:time}. 
-Our algorithm implementation leveraged its embarrassing parallelism using a relatively naive Python implementation, which split the computation of frames among 18 cores. 
+Our algorithm implementation leveraged its parallelism, which split the computation of frames among 18 cores. 
 %Our run times would significantly decrease using an implementation of our algorithm in C that uses a more clever scheme. 
 The algorithm in \cite{Kitani2012} was timed with minimal modification using the source code provided by the authors. 
 
@@ -916,16 +966,19 @@ The algorithm in \cite{Kitani2012} was timed with minimal modification using the
 \section{Conclusion} 
 \label{sec:conclusion}
 This paper presents a real-time approach to probabilistic pedestrian modeling. 
-We demonstrate the ability to accurately predict the final location of a pedestrian with superior accuracy compared to a state-of-the-art with additional contributions in three critical areas: 1) prediction speed is efficient enabling tight loop real-time control;  2) our error bound on the predictions accurately reflects potential paths for the human limiting false negatives and maximizing the utility and safety of the predictions; and 3) the prediction made by the proposed approach do not require knowledge of the end point  making them applicable to a wide variety of real world applications. 
-These three features have great utility for robotic applications, and we see the integration of such techniques with autonomous system control as one pathway to enable safer operations in shared human-robot spaces. 
-We plan to explore the optimization of the naive python implementation using GPU parallelization to further increase speed and ease integration into system's control loop. \reversemarginpar\marginnote{\#5.1}\rtext{Though including social forces into the model is outside of the scope of this paper, its incorporation could begin as follows.  
-	In the current motion model with a single vector field, the acceleration of the $i$th agent is given by $\ddot{x}_i = s^2 DX(x_i) \cdot X(x_i)$.  
-	Incorporating a social force $F_{i}$ acting on the $i$th agent can be done by instead asserting $\ddot{x}_i = s^2 DX(x) \cdot X(x) + F_i$.  
-	Usually $F_{i} = \sum_{j} \nabla U( x_j - x_i)$ where $U$ is an interaction potential \cite{Helbing1995}. 
-	The algorithms for generating real-time prediction would then generalize to this new vector-field definition.} \reversemarginpar\marginnote{\#5.2}\rtext{We also hope to do transfer learning with this model using scene segmentation from \cite{Walker2014}, as well as the semantic context descriptors and routing scores from \cite{Ballan2016} to show how vector fields can be transferred to novel scenes. It appears that the low-order parameterization of our model, and unit-length vector field assumption make it particularly amenable to the methods developed in \cite{Ballan2016}.}
+We demonstrate the ability to accurately predict the final location of a pedestrian with superior accuracy compared to a state-of-the-art with additional contributions in two critical areas: 1) prediction speed is efficient to enable real-time control and 2) our error bound on the predictions accurately reflects potential paths for the human. 
+These two features have great utility for robotic applications, and we see the integration of such techniques with autonomous system control as one pathway to enable safe operation in human-robot spaces. 
 
-\section*{Acknowledgments}
-Kris Kitani was critical in aiding the comparison to his algorithm.
+%We plan to explore the optimization of the naive python implementation using GPU parallelization to further increase speed and ease integration into system's control loop. 
+\reversemarginpar\marginnote{\#5.1}\rtext{Social forces can be incorporated into this model by
+	%In the current motion model with a single vector field, the acceleration of the $i$th agent is given by $\ddot{x}_i = s^2 DX(x_i) \cdot X(x_i)$.  
+	including a social force $F_{i}$ acting on the $i$th agent by letting $\ddot{x}_i = s^2 DX(x) \cdot X(x) + F_i$.  
+	Usually $F_{i} = \sum_{j} \nabla U( x_j - x_i)$ where $U$ is an interaction potential \cite{Helbing1995}. 
+	The algorithms for generating real-time predictions would then generalize to this definition.} 
+	\reversemarginpar\marginnote{\#5.2}\rtext{We also plan to explore transfer learning using scene segmentation, as well as the semantic context descriptors and routing scores to show how vector fields can be transferred to novel scenes. It appears that the low-order parameterization and unit-length vector field of our model, make it amenable to the methods developed in \cite{Ballan2016}.}
+
+%\section*{Acknowledgments}
+%Kris Kitani was critical in aiding in comparison.
 
 %\appendix
 %\subsection{Inverse Optimal Control} \label{app:ioc}
