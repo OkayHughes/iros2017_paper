@@ -37,6 +37,13 @@ A.~Robicquet, A.~Sadeghian, A.~Alahi, and S.~Savarese, \emph{Learning Social
   \url{http://dx.doi.org/10.1007/978-3-319-46484-8\_33}
 \BIBentrySTDinterwordspacing
 
+\bibitem{Dubuisson1994}
+M.-P. Dubuisson and A.~K. Jain, ``A modified hausdorff distance for object
+  matching,'' in \emph{Pattern Recognition, 1994. Vol. 1-Conference A: Computer
+  Vision \& Image Processing., Proceedings of the 12th IAPR International
+  Conference on}, vol.~1.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 1994,
+  pp. 566--568.
+
 \bibitem{Alahi2016}
 A.~Alahi, K.~Goel, V.~Ramanathan, A.~Robicquet, L.~Fei-Fei, and S.~Savarese,
   ``Social lstm: Human trajectory prediction in crowded spaces,'' in
@@ -47,15 +54,15 @@ A.~Alahi, K.~Goel, V.~Ramanathan, A.~Robicquet, L.~Fei-Fei, and S.~Savarese,
 D.~Helbing and P.~Molnar, ``Social force model for pedestrian dynamics,''
   \emph{Physical review E}, vol.~51, no.~5, p. 4282, 1995.
 
-\bibitem{FreyDueck2007}
-B.~J. Frey and D.~Dueck, ``Clustering by passing messages between data
-  points,'' \emph{Science}, vol. 315, no. 5814, pp. 972--976, 2007.
-
 \bibitem{Morris2009}
 B.~Morris and M.~Trivedi, ``Learning trajectory patterns by clustering:
   Experimental studies and comparative evaluation,'' in \emph{Computer Vision
   and Pattern Recognition, 2009. CVPR 2009. IEEE Conference on}.\hskip 1em plus
   0.5em minus 0.4em\relax IEEE, 2009, pp. 312--319.
+
+\bibitem{FreyDueck2007}
+B.~J. Frey and D.~Dueck, ``Clustering by passing messages between data
+  points,'' \emph{Science}, vol. 315, no. 5814, pp. 972--976, 2007.
 
 \bibitem{Lee2007}
 J.-G. Lee, J.~Han, and K.-Y. Whang, ``Trajectory clustering: a

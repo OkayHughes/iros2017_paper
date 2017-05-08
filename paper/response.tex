@@ -10,7 +10,6 @@
 
 \newcommand{\todo}[1]{\textcolor{red}{#1}}
 \newcommand{\Ram}[1]{{\normalsize{\textbf{({\color{green}Ram:\ }#1)}}}}
-
 \providecommand{\response}[1]{
 \noindent
 \noindent\colorbox{gray!20}{
@@ -24,7 +23,7 @@
 
 \title{\LARGE Real-Time Certified Probabilistic Pedestrian Forecasting \\ \textbf{Author's Response} }
 
-\author{Henry O. Jacobs, Owen Hughes, \\ Matt Johnson-Roberson, and Ram Vasudevan }
+\author{Henry O. Jacobs, Owen K. Hughes, \\ Matt Johnson-Roberson, and Ram Vasudevan }
 
 \begin{document}
 \maketitle
@@ -63,15 +62,15 @@ The objective of this paper was to develop a predictor that would be effective f
 In this instance, to ensure safety it is critical that the generated set of predictions contains the ground-truth observed trajectory while including as few false positive detections as possible.
 Since the ROC curve plots the true positive rate (i.e. the proportion of the ground truth trajectory that is correctly identified) against the false positive rate (i.e. the proportion of the generated set that does not correspond to the ground truth trajectory), it evaluates this aforementioned safety criteria for autonomous vehicles exactly. 
 
-On the other hand the Modified Hausdorff Distance (MHD) from \Ram{which paper and in what form} measures the average geometric distance between the ground-truth observed trajectory and the generated set of predictions. 
+On the other hand the Modified Hausdorff Distance (MHD) from \cite{Dubuisson1994} measures the average geometric distance between the ground-truth observed trajectory and the generated set of predictions. 
 Though popular in evaluating the geometric proximity of the ground truth trajectory and a predicted set, it is not the most appropriate way to evaluate the utility of an algorithm in the autonomous vehicle context. 
 Specifically consider the instance of a generated set of predictions which does not contain the ground-truth observed trajectory but is close to the ground-truth trajectory geometrically. 
 If this generated set of predictions was used in the autonomous vehicle context, it would not preclude certain portions of the space where the person was occupying. 
 Notice that In this instance the true positive rate would be zero meaning that the generated set of predictions was not useful.
 Whereas the MHD would describe this generated set of predictions as informative.
 
-Nevertheless, we addressed this concern by adding a comparison to the MHD which is summarized in the Figure \ref{MHD} below and included in the resubmitted version of our manuscript. 
-\Ram{it would be useful if we summarized what we were seeing the MHD plot here. Meaning it would be helpful if you could say something to the effect that with respect to MHD we are good in the medium term. In addition it would be nice if we could see some sample trajectories from lstm to really illustrate that they aren't including the ground truth trajectory but are just close geometrically which contributes to their low MHD score. That image should be included in the resubmitted text and in this response letter}
+Nevertheless, we addressed this concern by adding a comparison to the MHD which is summarized in the Figure \ref{MHD} below and included in the resubmitted version of our manuscript. We outperform \cite{Kitani2012} and \cite{Alahi2016} in the intermediate term, but at short times \cite{Alahi2016} puts more weight on the direction of the observed trajectory, and so their narrow distribution is closer to the trajectory. At large scales, \cite{Kitani2012} outperforms us because they know the endpoint of the trajectory. If you look at Figure \ref{bookstore} and \ref{death}, you'll see that while they are geometrically closer to the observed trajectory, they don't include it.
+%\Ram{it would be useful if we summarized what we were seeing the MHD plot here. Meaning it would be helpful if you could say something to the effect that with respect to MHD we are good in the medium term. In addition it would be nice if we could see some sample trajectories from lstm to really illustrate that they aren't including the ground truth trajectory but are just close geometrically which contributes to their low MHD score. That image should be included in the resubmitted text and in this response letter}
 We have included the following passage to explain both metrics in the revised submission:
 
 \reversemarginpar\marginnote{\#4.5}
@@ -101,7 +100,7 @@ Whereas the MHD would describe this generated set of predictions as informative.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\textwidth]{figures/the_results.eps}
-	\caption{A comparison of the AUC of the various algorithms. Note that the initial dip in the performance of \cite{Kitani2012} is due to their confidence in their initial estimate. We sampled the S-LSTM \cite{Alahi2016} model $100$ times to give them the best chance in this analysis \Ram{why does sampling a $100$ times give them the best chance?}, but their confidence combined with the over-reliance on social forces at moderate-to-large timescales lowered their performance.}
+	\caption{A comparison of the AUC of the various algorithms. Note that the initial dip in the performance of \cite{Kitani2012} is due to their confidence in their initial estimate. We sampled the S-LSTM \cite{Alahi2016} model $100$ times in order to organically extract a less concentrated probability distribution from their algorithm, but their confidence combined with the over-reliance on social forces at moderate-to-large timescales lowered their performance.}
 	\reversemarginpar\marginnote{\#4.9}
 	\label{AUC}
 \end{figure}
@@ -161,19 +160,19 @@ What is the distance measure used (i.e Euclidian) ?
 Not specifying such information makes reproduction of this work not feasible. }
 
 This was an oversight on our part, thank you for noticing it. 
-The distance used is a custom distance function on $\mathbb{R}^4$, which disregards the involution $(x_1, x_2, x_3, x_4) \to (x_3, x_4, x_1, x_2)$, and so does not care about parity of trajectories. 
-\Ram{You are using words that roboticists do not know (e.g. involution).  
-Can you please explicitly give the distance function and explain its properties and why you selected for those properties?
-For example you say parity of trajectories.
-What does parity mean and why is it important that the distance function ignore it?
-In your response below what is $x_1,x_2,x_3,x_4$ correspond to in the scene? 
-It may make more sense to use $(x_1,y_1)$ and $(x_2,y_2)$ since this is more indicative of the relationship between the points.
-What is $\bf{y}$ in your definition below?
-Please be more clear, again its easier for us to reduce the text then it is for us to add.}
+The distance used is a custom distance function. Let one trajectory $A$ start at $(x_{A,\mathrm{start}}, y_{A,\mathrm{start}})$ and end at  $(x_{A,\mathrm{end}}, y_{A,\mathrm{end}})$, and another trajectory $B$ start at $(x_{B,\mathrm{start}}, y_{B,\mathrm{start}})$ and end at $(x_{B,\mathrm{end}}, y_{B,\mathrm{end}})$ . 
+We define the points $\mathbf{a}_1 = (x_{A, \mathrm{start}}, y_{A, \mathrm{start}}, x_{A, \mathrm{end}}, y_{A, \mathrm{end}})$, $\mathbf{a}_2 = (x_{A, \mathrm{end}}, y_{A, \mathrm{end}}, x_{A, \mathrm{start}}, y_{A, \mathrm{start}})$, and $\mathbf{b} = (x_{B, \mathrm{start}}, y_{B, \mathrm{start}}, x_{B, \mathrm{end}}, y_{B, \mathrm{end}})$. 
+We then define our distance measure as $d(A, B) :=  \min \left\{ d_e(\mathbf{a}_1, \mathbf{b}), d_e(\mathbf{a}_2, \mathbf{b}) \right\}$, for the euclidean distance $d_e$ in $\mathbb{R}^4$.  This is designed such that transposing endpoints of a trajectory doesn't matter, and so a trajectory that starts at point A and ends at point B is close to a trajectory that starts at point B and ends at point A.  
 We have included the following clarification:
 
 \reversemarginpar\marginnote{\#4.2}
-\response{We then cluster in $\mathbb{R}^4$ using Affinity Propagation \cite{FreyDueck2007} and a custom distance measure defined by $d((x_1, x_2, x_3, x_4),\mathbf{y}) : \mathbb{R}^4 \times \mathbb{R}^4 \to \mathbb{R} = \min \left\{ d_e((x_1, x_2, x_3, x_4), \mathbf{y}), d_e((x_3, x_4, x_1, x_2), \mathbf{y}) \right\}$, for the euclidean distance $d_e$. This function measures the distance between the endpoints irrespective of their ordering. The scale of the datasets we tested on had large enough spatial scale that clustering based on endpoints captured people moving from destination to destination, e.g. from a storefront to the sidewalk at the edge of a scene. On this dataset, other distance measures \Ram{are these distance functions that utilize the entire trajectory?} from \cite{Morris2009} and \cite{Lee2007} didn't \Ram{avoid contractions} identify coherent \Ram{what does coherent mean?} motion models. This is partly due to the fact that oftentimes pedestrians would take slightly different routes to get to their destination, and the cumulative effect on the distance measures is enough to hinder the clustering \Ram{what does hinder clustering mean? Please be more explicit}. }
+\response{
+	We then cluster in $\mathbb{R}^4$ using Affinity Propagation \cite{FreyDueck2007} and a custom distance measure defined on the endpoints of trajectories. 
+	Let one trajectory $A$ start at $(x_{A,\mathrm{start}}, y_{A,\mathrm{start}})$ and end at  $(x_{A,\mathrm{end}}, y_{A,\mathrm{end}})$, and another trajectory $B$ start at $(x_{B,\mathrm{start}}, y_{B,\mathrm{start}})$ and end at $(x_{B,\mathrm{end}}, y_{B,\mathrm{end}})$ . 
+	We define the points $\mathbf{a}_1 = (x_{A, \mathrm{start}}, y_{A, \mathrm{start}}, x_{A, \mathrm{end}}, y_{A, \mathrm{end}})$, $\mathbf{a}_2 = (x_{A, \mathrm{end}}, y_{A, \mathrm{end}}, x_{A, \mathrm{start}}, y_{A, \mathrm{start}})$, and $\mathbf{b} = (x_{B, \mathrm{start}}, y_{B, \mathrm{start}}, x_{B, \mathrm{end}}, y_{B, \mathrm{end}})$. 
+	We then define our distance measure as $d(A, B) :=  \min \left\{ d_e(\mathbf{a}_1, \mathbf{b}), d_e(\mathbf{a}_2, \mathbf{b}) \right\}$, for the euclidean distance $d_e$ in $\mathbb{R}^4$. 
+	This function measures the distance between the endpoints irrespective of their ordering, which means that a trajectory that starts from point A and ends at point B will be close to a trajectory that starts from point B and ends at point A.
+	The scale of the datasets we tested on had large enough spatial scale that clustering based on endpoints captured people moving from destination to destination, e.g. from a storefront to the sidewalk at the edge of a scene. On this dataset, distance functions that utilize the entire trajectory such as DTW, LCSS, and PF from \cite{Morris2009} and TRACLUS from \cite{Lee2007} did not identify pedestrian intent as well as our method did. While it is unclear why TRACLUS underperformed on our data, PF, DTW, and LCSS appeared to put trajectories that were very similar for periods of time together even though they had very different intents.}
 	
 \end{item}
 
@@ -233,11 +232,6 @@ dive a little bit deeper into the technical approach. }
 Thank you for this criticism. 
 We hope we adequately addressed it by strengthening the description of our method for learning the motion model, as well as quantifying the way that we tested our data as is described in our responses to the suggestions by other reviewers.
 
-\Ram{I don't think we need this addition to the text.}  
-We also changed the language below to better reflect that the specific implementation we chose is an example of how to use the larger framework.
-
-\reversemarginpar\marginnote{\#4.1}
-\response{Given the model established in the previous section, we describe an implementation to showcase one way the model can be applied to observational data.}
 \end{item}
 
 
@@ -249,12 +243,164 @@ or other machine methods.}
 Thank you for the suggestion. 
 We hope that we have addressed it by including a review of literature of social motivated models, including S-LSTM, as well as a section on how social factors can be integrated into our model. 
 In addition, we compared our approach against S-LSTM in addition to the method proposed in \cite{Kitani2012}. 
-The figures corresponding to the predictions of the S-LSTM model are omitted from the paper because as happened for many of the agents, the S-LSTM predictions quickly exit the bounds of the scene, and so the visualization is identically zero \Ram{I don't like this. We should include these predictions somehow anyway.}. 
-We changed the subtitle of the figure to reflect this, which is shown below.
+We included the visualizations in Figures \ref{bookstore} and \ref{death} below, also which are also updated in the paper. 
 
 \reversemarginpar\marginnote{\#4.8}
-\response{An illustration of the predictions generated by the various algorithms. In this figure, the dot is the start point of the test trajectory, the diamond is the position at time t, and the X is the end of the trajectory. The likelihood of detection is depicted using the virdis color palette. Notice that the Random Walk is imprecise, while the predictions generated by the algorithm in \cite{Kitani2012} suffer from the inability of their motion model to adequately match the speed of the agent. The algorithm from \cite{Alahi2016} quickly passes beyond the boundaries of the scene, so the plots are ommitted here.
-}
+
+\begin{figure}
+	\centering
+	\begin{minipage}[c]{0.5cm}
+		\rotatebox{90}{\small{Our Algorithm}   }
+	\end{minipage}
+	\begin{minipage}[c]{0.3\linewidth}
+		\includegraphics[width=\linewidth]{./figures/bookstore/ours_1_2_t=50.jpg}
+	\end{minipage}
+	\begin{minipage}[c]{0.3\linewidth}
+		\includegraphics[width=\linewidth]{./figures/bookstore/ours_1_2_t=130.jpg}
+	\end{minipage}
+	\begin{minipage}[c]{0.3\linewidth}
+		\includegraphics[width=\linewidth]{./figures/bookstore/ours_1_2_t=370.jpg}
+	\end{minipage}
+	
+	\vspace{0.1cm}
+	\begin{minipage}[c]{0.5cm}
+		\rotatebox{90}{\small{Kitani et al.}  }
+	\end{minipage}
+	\begin{minipage}[c]{0.3\linewidth}
+		\includegraphics[width=\linewidth]{./figures/bookstore/kit_1_2_t=50.jpg}
+	\end{minipage}
+	\begin{minipage}[c]{0.3\linewidth}
+		\includegraphics[width=\linewidth]{./figures/bookstore/kit_1_2_t=130.jpg}
+	\end{minipage}
+	\begin{minipage}[c]{0.3\linewidth}
+		\includegraphics[width=\linewidth]{./figures/bookstore/kit_1_2_t=370.jpg}
+	\end{minipage}
+	
+	\vspace{0.1cm}
+	\begin{minipage}[c]{0.5cm}
+		\rotatebox{90}{\small{S-LSTM} }  
+	\end{minipage}
+	\begin{minipage}[c]{0.3\linewidth}
+		\includegraphics[width=\linewidth]{./figures/bookstore/lstm_1_2_t=100.jpg}
+	\end{minipage}
+	\begin{minipage}[c]{0.3\linewidth}
+		\includegraphics[width=\linewidth]{./figures/bookstore/lstm_1_2_t=300.jpg}
+	\end{minipage}
+	\begin{minipage}[c]{0.3\linewidth}
+		\includegraphics[width=\linewidth]{./figures/bookstore/lstm_1_2_t=360.jpg}
+	\end{minipage}
+	
+	\vspace{0.1cm}
+	\begin{minipage}[c]{0.5cm}
+		\rotatebox{90}{\small{Random Walk} }  
+	\end{minipage}
+	\begin{minipage}[c]{0.3\linewidth}
+		\includegraphics[width=\linewidth]{./figures/bookstore/rand_1_2_t=50.jpg}
+	\end{minipage}
+	\begin{minipage}[c]{0.3\linewidth}
+		\includegraphics[width=\linewidth]{./figures/bookstore/rand_1_2_t=130.jpg}
+	\end{minipage}
+	\begin{minipage}[c]{0.3\linewidth}
+		\includegraphics[width=\linewidth]{./figures/bookstore/rand_1_2_t=370.jpg}
+	\end{minipage}
+	
+	\vspace{0.2cm}
+	\hspace{.5cm}
+	\begin{minipage}{0.3\linewidth}
+		\centering
+		$t = 1.66s$
+	\end{minipage}
+	\begin{minipage}{0.3\linewidth}
+		\centering
+		$t = 4.33s$
+	\end{minipage}
+	\begin{minipage}{0.3\linewidth}
+		\centering
+		$t = 12.33s$
+	\end{minipage}
+	
+	
+	
+	\caption{
+		An illustration of the predictions generated by the various algorithms. In this figure, the dot is the start point of the test trajectory, the diamond is the position at time t, and the X is the end of the trajectory. The likelihood of detection is depicted using the virdis color palette. Notice that the Random Walk is imprecise, while the predictions generated by the algorithm in [7] suffer from the inability of their motion model to adequately match the speed of the agent. The algorithm in [13] is confident and close to the trajectory at small times, but their lack of a motion model causes their prediction to compress into a point at intermediate time scales.}
+	\label{bookstore}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\begin{minipage}[c]{0.5cm}
+		\rotatebox{90}{\small{Our Algorithm}}   
+	\end{minipage}
+	\begin{minipage}[c]{0.3\linewidth}
+		\includegraphics[width=\linewidth]{./figures/comparison/ours_death_1_2_t=70.jpg}
+	\end{minipage}
+	\begin{minipage}[c]{0.3\linewidth}
+		\includegraphics[width=\linewidth]{./figures/comparison/ours_death_1_2_t=250.jpg}
+	\end{minipage}
+	\begin{minipage}[c]{0.3\linewidth}
+		\includegraphics[width=\linewidth]{./figures/comparison/ours_death_1_2_t=370.jpg}
+	\end{minipage}
+	
+	\vspace{0.1cm}
+	\begin{minipage}[c]{0.5cm}
+		\rotatebox{90}{\small{Kitani et al.}} 
+	\end{minipage}
+	\begin{minipage}[c]{0.3\linewidth}
+		\includegraphics[width=\linewidth]{./figures/comparison/kit_death_1_2_t=70.jpg}
+	\end{minipage}
+	\begin{minipage}[c]{0.3\linewidth}
+		\includegraphics[width=\linewidth]{./figures/comparison/kit_death_1_2_t=250.jpg}
+	\end{minipage}
+	\begin{minipage}[c]{0.3\linewidth}
+		\includegraphics[width=\linewidth]{./figures/comparison/kit_death_1_2_t=370.jpg}
+	\end{minipage}
+	
+	\vspace{0.1cm}
+	\begin{minipage}[c]{0.5cm}
+		\rotatebox{90}{\small{S-LSTM}} 
+	\end{minipage}
+	\begin{minipage}[c]{0.3\linewidth}
+		\includegraphics[width=\linewidth]{./figures/comparison/lstm_1_2_t=100.jpg}
+	\end{minipage}
+	\begin{minipage}[c]{0.3\linewidth}
+		\includegraphics[width=\linewidth]{./figures/comparison/lstm_1_2_t=300.jpg}
+	\end{minipage}
+	\begin{minipage}[c]{0.3\linewidth}
+		\includegraphics[width=\linewidth]{./figures/comparison/lstm_1_2_t=380.jpg}
+	\end{minipage}
+	
+	\vspace{0.1cm}
+	\begin{minipage}[c]{0.5cm}
+		\rotatebox{90}{\small{Random Walk} }
+	\end{minipage}
+	\begin{minipage}[c]{0.3\linewidth}
+		\includegraphics[width=\linewidth]{./figures/comparison/rand_death_1_2_t=70.jpg}
+	\end{minipage}
+	\begin{minipage}[c]{0.3\linewidth}
+		\includegraphics[width=\linewidth]{./figures/comparison/rand_death_1_2_t=250.jpg}
+	\end{minipage}
+	\begin{minipage}[c]{0.3\linewidth}
+		\includegraphics[width=\linewidth]{./figures/comparison/rand_death_1_2_t=370.jpg}
+	\end{minipage}
+	
+	\vspace{0.2cm}
+	\hspace{.5cm}
+	\begin{minipage}{0.3\linewidth}
+		\centering
+		$t = 2.33s$
+	\end{minipage}
+	\begin{minipage}{0.3\linewidth}
+		\centering
+		$t = 8.33s$
+	\end{minipage}
+	\begin{minipage}{0.3\linewidth}
+		\centering
+		$t = 12.33s$
+	\end{minipage}
+	
+	\caption{An illustration of the predictions generated by the various algorithms. In this figure, the dot is the start point of the test trajectory, the diamond is the position at time t, and the X is the end of the trajectory. The likelihood of detection is depicted using the virdis color palette. Notice that the Random Walk is imprecise, while the predictions generated by the algorithm in [7] are unable to match the speed of the agent and choose the wrong direction to follow the agent around the circle. The algorithm in [13] is confident and close to the trajectory at small times, but their lack of a motion model causes their prediction to compress into a point at intermediate time scales.}
+	\label{death}
+\end{figure}
 
 \end{item}
 
@@ -271,7 +417,7 @@ forecasting in novel scenes.}
 Thank you for your comment. 
 Though this was not the focus of this paper, the low-dimensional parameterization of the vector fields make transfer learning more amenable. 
 As it is, this is as an immediate avenue for future work which we describe in the following addition to the text: 
-\response{We also hope to do transfer learning \Ram{I flipped the previous two words.} with this model using scene segmentation from \cite{Walker2014}, as well as the semantic context descriptors and routing scores from \cite{Ballan2016} to show how vector fields can be transferred to novel scenes. It appears that the low-order parameterization of our model, and unit-length vector field assumption make it particularly amenable to the methods developed in \cite{Ballan2016}.}
+\response{We also hope to do transfer learning with this model using scene segmentation from \cite{Walker2014}, as well as the semantic context descriptors and routing scores from \cite{Ballan2016} to show how vector fields can be transferred to novel scenes. It appears that the low-order parameterization of our model, and unit-length vector field assumption make it particularly amenable to the methods developed in \cite{Ballan2016}.}
 
 
 \end{item}

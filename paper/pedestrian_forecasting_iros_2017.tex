@@ -51,7 +51,7 @@
 \title{Real-Time Certified Probabilistic Pedestrian Forecasting}
 
 %%% first author
-\author{Henry O. Jacobs, Owen Hughes, Matthew Johnson-Roberson, and Ram Vasudevan
+\author{Henry O. Jacobs, Owen K. Hughes, Matthew Johnson-Roberson, and Ram Vasudevan
 \thanks{This work was supported by Ford Motor Company.}
  \thanks{ H.O. Jacobs, O. Hughes, and R.~Vasudevan are with the Department of Mechanical Engineering, University of Michigan, Ann Arbor, MI 48109
 {\scriptsize \{\texttt{hojacobs,owhughes,ramv}\}~\texttt{@umich.edu}}}
@@ -125,7 +125,7 @@ As depicted in Figure \ref{fig:gates-1-2}, this method works quickly to generate
 		\includegraphics[width=\linewidth]{./figures/FirstPage/gates_1_2_t=345.jpg}
 		\caption{$t=11.5s$}
 	\end{subfigure}
-	\caption{The performance of the presented algorithm captures the most probable routes that a pedestrian chooses.  In this figure, the dot is the start point of the test trajectory, the diamond is the position at time $t$, and the X is the end of the trajectory. The likelihood of detection is depicted using the \textit{virdis} color palette. In this example which was captured at thirty frames per second, the presented algorithm took 0.0158s per frame in a Python implementation. }
+	\caption{The performance of the presented algorithm captures the most probable routes that a pedestrian chooses.  In this figure, the dot is the start point of the test trajectory, the diamond is the position at time $t$, and the X is the end of the trajectory. The likelihood of detection is depicted using the \textit{virdis} color palette. In this example which was captured at thirty frames per second, the presented algorithm took 0.00465s per frame in a Python implementation. }
 	\label{fig:gates-1-2}
 \end{figure}
 
@@ -176,7 +176,16 @@ As in all methods mentioned thus far, computational speed and accuracy of any pr
 However, since the motion model was a Markov jump process which required the application of a sample based technique, we should expect the same painful trade-off between error and speed to occur as in \cite{Karasev2016} and \cite{Ballan2016}.
 
 \marginnote{\#1.1}
-\rtext{On the other hand, many authors have approached pedestrian forecasting by deriving their motion model from interactions between pedestrians. Early work by \cite{Helbing1995} and \cite{Xu2012} describe pedestrians interactions using physically motivated methods. Several models such as \cite{Yamaguchi2011}, \cite{Yi2016}, and \cite{Pellegrini2009} derive their motion models from \cite{Helbing1995} who incorporate collision avoidance through an interaction potential which repels pedestrians from each other, leading to forms of what is called Linear Trajectory Avoidance (LTA). However LTA suffers from not planning for other pedestrian’s positions at future times. \cite{Emonet2011}, \cite{Hospedales2009} , and \cite{Wang2009}  all take optical flow as input. \cite{Wang2009} and \cite{Emonet2011} both use variants of Hierarchical Dirichlet Processes on discretized optical flow to determine temporal motifs (i.e. classes of motion within the scene), where \cite{Hospedales2009} substitutes a Markov model. These models are not agent based, and the lack of an explicit motion model limits their predictive power in situations where we know more about the data. \cite{Koppula2016} predict trajectories by introducing and sampling Anticipatory Temporal Conditional Random Fields which incorporate learned affordances for humans and objects based on observed objectives within the scene. \cite{Tay2008} , \cite{Wang2008}, and \cite{Trautman2015} create agent-based models based on Gaussian Processes, though they suffer issues when trained on discretized trajectories. \cite{Alahi2016} uses Long Short-Term Memory to learn pedestrian motion models without making implicit (as in the case of CRFs) or explicit (in the case of social forces) assumptions about the manner in which agents will interact. \cite{Alahi2016} outperforms LTA, social forcing based on \cite{Yamaguchi2011},  and IGP from \cite{Trautman2015}. Along with its quick run time, this establishes \cite{Alahi2016} as state-of-the-art for socially based models, and so we our algorithm to theirs.}
+\rtext{On the other hand, many authors have approached pedestrian forecasting by deriving their motion model from interactions between pedestrians. 
+	Early work by \cite{Helbing1995} and \cite{Xu2012} describe pedestrians interactions using physically motivated methods. 
+	Several models such as \cite{Yamaguchi2011}, \cite{Yi2016}, and \cite{Pellegrini2009} derive their motion models from \cite{Helbing1995} who incorporates collision avoidance through an interaction potential. 
+	However this method suffers from not planning for other pedestrian' positions at future times. 
+	\cite{Emonet2011}, \cite{Hospedales2009} , and \cite{Wang2009}  all take optical flow as input.
+	\cite{Wang2009} and \cite{Emonet2011} both use variants of Hierarchical Dirichlet Processes on discretized optical flow to determine temporal motifs (i.e. classes of motion within the scene), where \cite{Hospedales2009} substitutes a Markov model. 
+	These models are not agent based, and the lack of an explicit motion model limits their predictive power. 
+	\cite{Koppula2016} predict trajectories by introducing and sampling Anticipatory Temporal Conditional Random Fields which incorporate learned affordances for humans and objects based on observed objectives within the scene. 
+	\cite{Tay2008} , \cite{Wang2008}, and \cite{Trautman2015} create agent-based models based on Gaussian Processes, though they suffer issues when trained on discretized trajectories. 
+	\cite{Alahi2016} uses Long Short-Term Memory (lstm) to learn pedestrian motion models without making assumptions about the manner in which agents will interact and is the state-of-the-art algorithm for socially based models while also having a quick run time.}
 
 
 
@@ -566,8 +575,7 @@ If the posteriors represented by the arrows in \eqref{eq:pgm} are efficiently co
 %\end{thm}
   
 \section{Implementation and Experimental results} \label{sec:implementation}
-\marginnote{\#4.1}
-  \rtext{Given the model established in the previous section, we describe an implementation to showcase one way the model can be applied to observational data.}
+  Given the model established in the previous section, we describe an implementation to showcase one way the model can be applied to observational data.
   In particular, we must learn the vector fields $\{X_1, \dots, X_n\}$, the posteriors $\Pr( x_0 \mid M)$ and the priors $\Pr(M)$ for $M \in \mathcal{M}$ from the data.
   For the purposes of demonstration, we use the Stanford Drone Dataset \cite{Robicquet2016}.
   More generally, we assume that for a fixed scene we have a database of previously observed trajectories $\{ \hat{x}^1, \dots, \hat{x}^N\}$.
@@ -578,7 +586,12 @@ If the posteriors represented by the arrows in \eqref{eq:pgm} are efficiently co
   To do this we use a clustering algorithm on the trajectories observed in a scene to categorize them into groups.
   %In principal, any clustering algorithm could accomplish this.
   \marginnote{\#4.2}
-\rtext{We then cluster in $\mathbb{R}^4$ using Affinity Propagation \cite{FreyDueck2007} and a custom distance measure defined by $d((x_1, x_2, x_3, x_4),\mathbf{y}) : \mathbb{R}^4 \times \mathbb{R}^4 \to \mathbb{R} = \min \left\{ d_e((x_1, x_2, x_3, x_4), \mathbf{y}), d_e((x_3, x_4, x_1, x_2), \mathbf{y}) \right\}$, for the euclidean distance $d_e$. This function measures the distance between the endpoints irrespective of their ordering. The scale of the datasets we tested on had large enough spatial scale that clustering based on endpoints captured people moving from destination to destination, e.g. from a storefront to the sidewalk at the edge of a scene. On our data, other distance measures from \cite{Morris2009} and \cite{Lee2007} didn't identify coherent motion models. This is partly due to the fact that oftentimes pedestrians would take slightly different routes to get to their destination, and the cumulative effect on the distance measures is enough to hinder the clustering.}
+\rtext{We then cluster in $\mathbb{R}^4$ using Affinity Propagation \cite{FreyDueck2007} and a custom distance measure defined on the endpoints of trajectories. 
+	Let one trajectory $A$ start at $(x_{A,\mathrm{start}}, y_{A,\mathrm{start}})$ and end at  $(x_{A,\mathrm{end}}, y_{A,\mathrm{end}})$, and another trajectory $B$ start at $(x_{B,\mathrm{start}}, y_{B,\mathrm{start}})$ and end at $(x_{B,\mathrm{end}}, y_{B,\mathrm{end}})$ . 
+	We define the points $\mathbf{a}_1 = (x_{A, \mathrm{start}}, y_{A, \mathrm{start}}, x_{A, \mathrm{end}}, y_{A, \mathrm{end}})$, $\mathbf{a}_2 = (x_{A, \mathrm{end}}, y_{A, \mathrm{end}}, x_{A, \mathrm{start}}, y_{A, \mathrm{start}})$, and $\mathbf{b} = (x_{B, \mathrm{start}}, y_{B, \mathrm{start}}, x_{B, \mathrm{end}}, y_{B, \mathrm{end}})$. 
+	We then define our distance measure as $d(A, B) :=  \min \left\{ d_e(\mathbf{a}_1, \mathbf{b}), d_e(\mathbf{a}_2, \mathbf{b}) \right\}$, for the euclidean distance $d_e$ in $\mathbb{R}^4$. 
+	This function measures the distance between the endpoints irrespective of their ordering, which means that a trajectory that starts from point A and ends at point B will be close to a trajectory that starts from point B and ends at point A.
+	The scale of the datasets we tested on had large enough spatial scale that clustering based on endpoints captured people moving from destination to destination, e.g. from a storefront to the sidewalk at the edge of a scene. On this dataset, distance functions that utilize the entire trajectory such as DTW, LCSS, and PF from \cite{Morris2009} and TRACLUS from \cite{Lee2007} did not identify pedestrian intent as well as our method did. While it is unclear why TRACLUS underperformed on our data, PF, DTW, and LCSS appeared to put trajectories that were very similar for periods of time together even though they had very different intents.}
   This clustering of the end-points induces a clustering of the trajectories.
   Suppose we obtain clusters $S_1, \dots, S_n$ consisting of trajectories from our data set, as well as a set of unclassified trajectories, $S_0$.
   
@@ -679,6 +692,20 @@ We first considering the nonlinear models.
 	\end{minipage}
 	
 	\vspace{0.1cm}
+		\begin{minipage}[c]{0.5cm}
+			\rotatebox{90}{\small{S-LSTM} }  
+		\end{minipage}
+		\begin{minipage}[c]{0.3\linewidth}
+			\includegraphics[width=\linewidth]{./figures/bookstore/lstm_1_2_t=100.jpg}
+		\end{minipage}
+		\begin{minipage}[c]{0.3\linewidth}
+			\includegraphics[width=\linewidth]{./figures/bookstore/lstm_1_2_t=300.jpg}
+		\end{minipage}
+		\begin{minipage}[c]{0.3\linewidth}
+			\includegraphics[width=\linewidth]{./figures/bookstore/lstm_1_2_t=360.jpg}
+		\end{minipage}
+	
+	\vspace{0.1cm}
 	\begin{minipage}[c]{0.5cm}
 		\rotatebox{90}{\small{Random Walk} }  
 	\end{minipage}
@@ -707,8 +734,10 @@ We first considering the nonlinear models.
 		$t = 12.33s$
 	\end{minipage}
 	
+	
+	
 	\caption{
-		\rtext{An illustration of the predictions generated by the various algorithms. In this figure, the dot is the start point of the test trajectory, the diamond is the position at time t, and the X is the end of the trajectory. The likelihood of detection is depicted using the virdis color palette. Notice that the Random Walk is imprecise, while the predictions generated by the algorithm in [7] suffer from the inability of their motion model to adequately match the speed of the agent. The algorithm from [13] quickly passes beyond the boundaries of the scene, so the plots are ommitted here.}}
+		\rtext{An illustration of the predictions generated by the various algorithms. In this figure, the dot is the start point of the test trajectory, the diamond is the position at time t, and the X is the end of the trajectory. The likelihood of detection is depicted using the virdis color palette. Notice that the Random Walk is imprecise, while the predictions generated by the algorithm in [7] suffer from the inability of their motion model to adequately match the speed of the agent. The algorithm in [13] is confident and close to the trajectory at small times, but their lack of a motion model causes their prediction to compress into a point at intermediate time scales.}}
 	\marginnote{\#4.7}
 	\label{fig:bookstore-1-2}
 \end{figure}
@@ -744,6 +773,20 @@ We first considering the nonlinear models.
 	
 	\vspace{0.1cm}
 	\begin{minipage}[c]{0.5cm}
+		\rotatebox{90}{\small{S-LSTM}} 
+	\end{minipage}
+	\begin{minipage}[c]{0.3\linewidth}
+		\includegraphics[width=\linewidth]{./figures/comparison/lstm_1_2_t=100.jpg}
+	\end{minipage}
+	\begin{minipage}[c]{0.3\linewidth}
+		\includegraphics[width=\linewidth]{./figures/comparison/lstm_1_2_t=300.jpg}
+	\end{minipage}
+	\begin{minipage}[c]{0.3\linewidth}
+		\includegraphics[width=\linewidth]{./figures/comparison/lstm_1_2_t=380.jpg}
+	\end{minipage}
+	
+	\vspace{0.1cm}
+	\begin{minipage}[c]{0.5cm}
 		\rotatebox{90}{\small{Random Walk} }
 	\end{minipage}
 	\begin{minipage}[c]{0.3\linewidth}
@@ -771,7 +814,7 @@ We first considering the nonlinear models.
 		$t = 12.33s$
 	\end{minipage}
 	
-	\caption{\rtext{An illustration of the predictions generated by the various algorithms. In this figure, the dot is the start point of the test trajectory, the diamond is the position at time t, and the X is the end of the trajectory. The likelihood of detection is depicted using the virdis color palette. Notice that the Random Walk is imprecise, while the predictions generated by the algorithm in [7] are unable to match the speed of the agent and choose the wrong direction to follow the agent around the circle. The algorithm in [13] passes beyond the boundaries of the scene, and so the plots are ommitted here.}}
+	\caption{\rtext{An illustration of the predictions generated by the various algorithms. In this figure, the dot is the start point of the test trajectory, the diamond is the position at time t, and the X is the end of the trajectory. The likelihood of detection is depicted using the virdis color palette. Notice that the Random Walk is imprecise, while the predictions generated by the algorithm in [7] are unable to match the speed of the agent and choose the wrong direction to follow the agent around the circle. The algorithm in [13] is confident and close to the trajectory at small times, but their lack of a motion model causes their prediction to compress into a point at intermediate time scales.}}
 	\reversemarginpar\marginnote{\#4.8}
 	\label{fig:death-1-2}
 \end{figure}
@@ -792,7 +835,8 @@ This section establishes our methods performance and compares it to the model fr
 We implement our model as well as our evaluation code in Python 2.6. 
 Our implementation is available online\footnote{https://github.com/OkayHughes/iros2017\_pedestrian\_forecasting}.
 \reversemarginpar\marginnote{\#4.3}
-\rtext{We did a 2-fold cross validation by using 20\% of the data for testing and the remainder for training within each scene. We learned separate collections of vector fields and model parameters for each fold on all of the four scenes on which we tested.}
+\rtext{We did a 2-fold cross validation by using 20\% of the data for testing and the remainder for training within each scene. 
+	We learned separate collections of vector fields and model parameters for each fold on all of the four scenes on which we tested.}
 \reversemarginpar\marginnote{\#4.4}
 \rtext{Our analysis was conducted on the Coupa, Bookstore, Death Circle, and Gates scenes from the dataset from \cite{Robicquet2016}, with a total of 142 trajectories analyzed.}
 
@@ -809,7 +853,18 @@ These integrals are used to visualize the distributions in Figures \ref{fig:book
 %The ground truth bounding box at each time instance were set equal to the average bounding box dimension centered at the 
 %were the average bounding box dimensions in the training data set. 
 Because our predictions all share the same scale, we were able to amalgamate all of the prediction and truth values for all of the simulated agents at a given time step and generate ROC curves.
-\reversemarginpar\marginnote{\#4.5} \rtext{In our analysis we sought a metric that measured the similarity between the predictor and the ground truth as well as the ``safety'' of the prediction. We used the area under the curve of the ROC curve as our measure of this. The ROC curve plots the rate of false positive detections against the probability of detecting a pedestrian, or in essence the quality of the detection versus the safety. The area under this curve is a standard measure of the quality of a predictor. Figure \ref{fig:auc_vs_time} shows the analysis of the AUC of each algorithm versus time. In addition, we used the Modified Hausdorff Distance (MHD) from the ground truth trajectory to a sample from the predictions at each time in order to provide a geometric measure of how accurate the predictions are. Figure \ref{fig:mhd_vs_time} shows MHD plotted against time.}
+\reversemarginpar\marginnote{\#4.5} \rtext{In our analysis, we sought a metric that evaluated the utility of prediction algorithms in the autonomous vehicle context. 
+	In this instance it is critical that the generated set of predictions contains the ground-truth observed trajectory while including as few false positive detections as possible.
+	ROC curves which plot the true positive rate (i.e. the proportion of the ground truth trajectory that is correctly identified) against the false positive rate (i.e. the proportion of the generated set that does not correspond to the ground truth trajectory), evaluate this aforementioned safety criteria for autonomous vehicles exactly. 
+	The Area Under the Curve (AUC) is a standard measure of the quality of a predictor.  
+	The closer that this AUC is to one, the better the prediction algorithm.
+	Figure \ref{ref:auc_vs_time} shows the analysis of the AUC of each algorithm versus time. 
+	In addition, we evaluated the Modified Hausdorff Distance (MHD) from the ground truth trajectory to a sample from the predictions at each time to provide a geometric measure of how accurate the predictions are. Figure \ref{ref:mhd_vs_time} shows MHD plotted against time.
+	Though popular in evaluating the geometric proximity of the ground truth trajectory and a predicted set, it is not the most appropriate way to evaluate the utility of an algorithm in the autonomous vehicle context. 
+	Specifically consider the instance of a generated set of predictions which does not contain the ground-truth observed trajectory but is close to the ground-truth trajectory geometrically. 
+	If this generated set of predictions was used in the autonomous vehicle context, it would not preclude certain portions of the space where the person was occupying. 
+	Notice that In this instance the true positive rate would be zero meaning that the generated set of predictions was not useful.
+	Whereas the MHD would describe this generated set of predictions as informative.}
 Our predictor behaves better than any of the other compared methods at moderately large $t$.
 %, where we capture the behavior of the agent without suffering the misplaced confidence observed in Kitani et al.'s predictions. 
 %Their encoding of velocity results in the prediction lagging behind the actual observed motion. 
@@ -863,7 +918,11 @@ The algorithm in \cite{Kitani2012} was timed with minimal modification using the
 This paper presents a real-time approach to probabilistic pedestrian modeling. 
 We demonstrate the ability to accurately predict the final location of a pedestrian with superior accuracy compared to a state-of-the-art with additional contributions in three critical areas: 1) prediction speed is efficient enabling tight loop real-time control;  2) our error bound on the predictions accurately reflects potential paths for the human limiting false negatives and maximizing the utility and safety of the predictions; and 3) the prediction made by the proposed approach do not require knowledge of the end point  making them applicable to a wide variety of real world applications. 
 These three features have great utility for robotic applications, and we see the integration of such techniques with autonomous system control as one pathway to enable safer operations in shared human-robot spaces. 
-We plan to explore the optimization of the naive python implementation using GPU parallelization to further increase speed and ease integration into system's control loop. \reversemarginpar\marginnote{\#5.1}\rtext{Though including social forces into the model is out of the scope of this paper, incorporation could begin as follows.  In the current motion model with a single vector field, the acceleration of the $i$th agent is given by $\ddot{x}_i = s^2 DX(x_i) \cdot X(x_i)$.  Incorporating a social force $F_{i}$ acting on the $i$th agent can be done by instead asserting $\ddot{x}_i = s^2 DX(x) \cdot X(x) + F_i$.  Usually $F_{i} = \sum_{j} \nabla U( x_j - x_i)$ where $U$ is an interaction potential.} \reversemarginpar\marginnote{\#5.2}\rtext{We also hope to do learning transfer with this model using scene segmentation from \cite{Walker2014}, as well as the semantic context descriptors and routing scores from \cite{Ballan2016} to show how vector fields can be transferred to novel scenes. It appears that the low-order parameterization of our model, and unit-length vector field assumption make it particularly amenable to the methods developed in \cite{Ballan2016}.}
+We plan to explore the optimization of the naive python implementation using GPU parallelization to further increase speed and ease integration into system's control loop. \reversemarginpar\marginnote{\#5.1}\rtext{Though including social forces into the model is outside of the scope of this paper, its incorporation could begin as follows.  
+	In the current motion model with a single vector field, the acceleration of the $i$th agent is given by $\ddot{x}_i = s^2 DX(x_i) \cdot X(x_i)$.  
+	Incorporating a social force $F_{i}$ acting on the $i$th agent can be done by instead asserting $\ddot{x}_i = s^2 DX(x) \cdot X(x) + F_i$.  
+	Usually $F_{i} = \sum_{j} \nabla U( x_j - x_i)$ where $U$ is an interaction potential \cite{Helbing1995}. 
+	The algorithms for generating real-time prediction would then generalize to this new vector-field definition.} \reversemarginpar\marginnote{\#5.2}\rtext{We also hope to do transfer learning with this model using scene segmentation from \cite{Walker2014}, as well as the semantic context descriptors and routing scores from \cite{Ballan2016} to show how vector fields can be transferred to novel scenes. It appears that the low-order parameterization of our model, and unit-length vector field assumption make it particularly amenable to the methods developed in \cite{Ballan2016}.}
 
 \section*{Acknowledgments}
 Kris Kitani was critical in aiding the comparison to his algorithm.
