@@ -1,7 +1,6 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  8 MAY 2017 17:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  8 MAY 2017 19:52
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
 **response.tex
 (./response.tex
@@ -366,10 +365,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 100--101
  []
 
 Package epstopdf Info: Source file: <figures/the_results.eps>
-(epstopdf)                    date: 2017-05-07 09:01:57
+(epstopdf)                    date: 2017-05-04 18:04:34
 (epstopdf)                    size: 36220 bytes
 (epstopdf)             Output file: <figures/the_results-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-05-07 09:01:57
+(epstopdf)                    date: 2017-05-04 18:05:30
 (epstopdf)                    size: 21234 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/the_results-eps-co
 nverted-to.pdf figures/the_results.eps>
@@ -389,10 +388,10 @@ Package marginnote Info: right page because not two side mode on input line 108
 Package marginnote Info: xpos seems to be 90.3375pt,
 (marginnote)             \marginnoteleftadjust ignored on input line 108.
 Package epstopdf Info: Source file: <figures/mhd_results.eps>
-(epstopdf)                    date: 2017-05-07 09:01:57
+(epstopdf)                    date: 2017-05-04 15:56:48
 (epstopdf)                    size: 38593 bytes
 (epstopdf)             Output file: <figures/mhd_results-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-05-07 09:01:57
+(epstopdf)                    date: 2017-05-04 16:28:58
 (epstopdf)                    size: 22563 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/mhd_results-eps-co
 nverted-to.pdf figures/mhd_results.eps>
@@ -535,21 +534,21 @@ Package pdftex.def Info: ./figures/bookstore/lstm_1_2_t=100.jpg used on input l
 ine 295.
 (pdftex.def)             Requested size: 65.04366pt x 49.95403pt.
 
-<./figures/bookstore/lstm_1_2_t=300.jpg, id=113, 90.3375pt x 69.3792pt>
+<./figures/bookstore/lstm_1_2_t=300.jpg, id=113, 90.3375pt x 69.19853pt>
 File: ./figures/bookstore/lstm_1_2_t=300.jpg Graphic file (type jpg)
 
 <use ./figures/bookstore/lstm_1_2_t=300.jpg>
 Package pdftex.def Info: ./figures/bookstore/lstm_1_2_t=300.jpg used on input l
 ine 298.
-(pdftex.def)             Requested size: 65.04366pt x 49.95403pt.
+(pdftex.def)             Requested size: 65.04366pt x 49.82394pt.
 
-<./figures/bookstore/lstm_1_2_t=360.jpg, id=114, 90.3375pt x 69.19853pt>
+<./figures/bookstore/lstm_1_2_t=360.jpg, id=114, 90.3375pt x 69.3792pt>
 File: ./figures/bookstore/lstm_1_2_t=360.jpg Graphic file (type jpg)
 
 <use ./figures/bookstore/lstm_1_2_t=360.jpg>
 Package pdftex.def Info: ./figures/bookstore/lstm_1_2_t=360.jpg used on input l
 ine 301.
-(pdftex.def)             Requested size: 65.04366pt x 49.82394pt.
+(pdftex.def)             Requested size: 65.04366pt x 49.95403pt.
 
 <./figures/bookstore/rand_1_2_t=50.jpg, id=115, 90.3375pt x 69.55988pt>
 File: ./figures/bookstore/rand_1_2_t=50.jpg Graphic file (type jpg)
@@ -684,7 +683,7 @@ Package marginnote Info: Margin note 6.2 is on absolute page 6
 (marginnote)              on input line 436.
 Package marginnote Info: right page because not two side mode on input line 436
 .
-Package marginnote Info: xpos seems to be 90.3375pt,
+Package marginnote Info: xpos seems to be 115.33752pt,
 (marginnote)             \marginnoteleftadjust ignored on input line 436.
 
 Overfull \hbox (37.66669pt too wide) in paragraph at lines 432--437
@@ -712,10 +711,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 452--453
 
  []
 
+Package marginnote Info: Margin note 6.4 is on absolute page 6
+(marginnote)              on input line 455.
 Package marginnote Info: right page because not two side mode on input line 455
 .
-Package marginnote Info: xpos not known,
-(marginnote)             using \marginnoteleftadjust on input line 455.
+Package marginnote Info: xpos seems to be 90.3375pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 455.
 
 Overfull \hbox (37.66669pt too wide) in paragraph at lines 455--457
 [][][][][][]
@@ -739,33 +740,30 @@ mparison/kit_death_1_2_t=250.jpg> <./figures/comparison/kit_death_1_2_t=370.jpg
 > <./figures/comparison/lstm_1_2_t=100.jpg> <./figures/comparison/lstm_1_2_t=30
 0.jpg> <./figures/comparison/lstm_1_2_t=380.jpg> <./figures/comparison/rand_dea
 th_1_2_t=70.jpg> <./figures/comparison/rand_death_1_2_t=250.jpg> <./figures/com
-parison/rand_death_1_2_t=370.jpg>] [8]) [9] (./response.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+parison/rand_death_1_2_t=370.jpg>] [8]) [9] (./response.aux) ) 
 Here is how much of TeX's memory you used:
- 4729 strings out of 493089
- 73042 string characters out of 6134842
- 153897 words of memory out of 5000000
- 8112 multiletter control sequences out of 15000+600000
+ 4728 strings out of 493089
+ 73030 string characters out of 6134842
+ 153909 words of memory out of 5000000
+ 8111 multiletter control sequences out of 15000+600000
  12767 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,10n,40p,840b,526s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
-usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></us
-r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/
-local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/lo
-cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loca
-l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texl
-ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
-ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texliv
-e/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on response.pdf (9 pages, 1351469 bytes).
+</usr/local/texli
+ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texliv
+e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/
+2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2
+015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/201
+5/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2015/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2015/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2015/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2015/texmf-dist/f
+onts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on response.pdf (9 pages, 1353076 bytes).
 PDF statistics:
  187 PDF objects out of 1000 (max. 8388607)
  69 compressed objects within 1 object stream

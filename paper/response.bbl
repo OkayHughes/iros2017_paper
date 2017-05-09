@@ -76,6 +76,12 @@ Y.~Xu and H.-J. Huang, ``Simulation of exit choosing in pedestrian evacuation
   Statistical Mechanics and its Applications}, vol. 391, no.~4, pp. 991--1000,
   2012.
 
+\bibitem{Pellegrini2009}
+S.~Pellegrini, A.~Ess, K.~Schindler, and L.~Van~Gool, ``You'll never walk
+  alone: Modeling social behavior for multi-target tracking,'' in
+  \emph{Computer Vision, 2009 IEEE 12th International Conference on}.\hskip 1em
+  plus 0.5em minus 0.4em\relax IEEE, 2009, pp. 261--268.
+
 \bibitem{Yamaguchi2011}
 K.~Yamaguchi, A.~C. Berg, L.~E. Ortiz, and T.~L. Berg, ``Who are you with and
   where are you going?'' in \emph{Computer Vision and Pattern Recognition
@@ -86,18 +92,6 @@ K.~Yamaguchi, A.~C. Berg, L.~E. Ortiz, and T.~L. Berg, ``Who are you with and
 S.~Yi, H.~Li, and X.~Wang, ``Pedestrian behavior modeling from stationary
   crowds with applications to intelligent surveillance,'' \emph{IEEE
   transactions on image processing}, vol.~25, no.~9, pp. 4354--4368, 2016.
-
-\bibitem{Pellegrini2009}
-S.~Pellegrini, A.~Ess, K.~Schindler, and L.~Van~Gool, ``You'll never walk
-  alone: Modeling social behavior for multi-target tracking,'' in
-  \emph{Computer Vision, 2009 IEEE 12th International Conference on}.\hskip 1em
-  plus 0.5em minus 0.4em\relax IEEE, 2009, pp. 261--268.
-
-\bibitem{Emonet2011}
-R.~Emonet, J.~Varadarajan, and J.-M. Odobez, ``Extracting and locating temporal
-  motifs in video scenes using a hierarchical non parametric bayesian model,''
-  in \emph{Computer Vision and Pattern Recognition (CVPR), 2011 IEEE Conference
-  on}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2011, pp. 3233--3240.
 
 \bibitem{Hospedales2009}
 T.~Hospedales, S.~Gong, and T.~Xiang, ``A markov clustering topic model for
@@ -110,6 +104,12 @@ X.~Wang, X.~Ma, and W.~E.~L. Grimson, ``Unsupervised activity perception in
   crowded and complicated scenes using hierarchical bayesian models,''
   \emph{IEEE Transactions on pattern analysis and machine intelligence},
   vol.~31, no.~3, pp. 539--555, 2009.
+
+\bibitem{Emonet2011}
+R.~Emonet, J.~Varadarajan, and J.-M. Odobez, ``Extracting and locating temporal
+  motifs in video scenes using a hierarchical non parametric bayesian model,''
+  in \emph{Computer Vision and Pattern Recognition (CVPR), 2011 IEEE Conference
+  on}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2011, pp. 3233--3240.
 
 \bibitem{Koppula2016}
 H.~S. Koppula and A.~Saxena, ``Anticipating human activities using object
@@ -131,10 +131,6 @@ P.~Trautman, J.~Ma, R.~M. Murray, and A.~Krause, ``Robot navigation in dense
   human crowds: Statistical models and experimental studies of human--robot
   cooperation,'' \emph{The International Journal of Robotics Research},
   vol.~34, no.~3, pp. 335--356, 2015.
-
-\bibitem{Walker2014}
-J.~Walker, A.~Gupta, and M.~Hebert, ``Patch to the future: Unsupervised visual
-  prediction,'' in \emph{Computer Vision and Pattern Recognition}, 2014.
 
 \bibitem{Ballan2016}
 \BIBentryALTinterwordspacing

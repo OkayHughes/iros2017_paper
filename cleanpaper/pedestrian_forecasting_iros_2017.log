@@ -1,7 +1,6 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  8 MAY 2017 17:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  8 MAY 2017 19:29
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
 **pedestrian_forecasting_iros_2017.tex
 (./pedestrian_forecasting_iros_2017.tex
@@ -1112,21 +1111,21 @@ Package pdftex.def Info: ./figures/bookstore/lstm_1_2_t=100.jpg used on input l
 ine 660.
 (pdftex.def)             Requested size: 72.84824pt x 55.94804pt.
 
-<./figures/bookstore/lstm_1_2_t=300.jpg, id=191, 90.3375pt x 69.3792pt>
+<./figures/bookstore/lstm_1_2_t=300.jpg, id=191, 90.3375pt x 69.19853pt>
 File: ./figures/bookstore/lstm_1_2_t=300.jpg Graphic file (type jpg)
 
 <use ./figures/bookstore/lstm_1_2_t=300.jpg>
 Package pdftex.def Info: ./figures/bookstore/lstm_1_2_t=300.jpg used on input l
 ine 663.
-(pdftex.def)             Requested size: 72.84824pt x 55.94804pt.
+(pdftex.def)             Requested size: 72.84824pt x 55.80235pt.
 
-<./figures/bookstore/lstm_1_2_t=360.jpg, id=192, 90.3375pt x 69.19853pt>
+<./figures/bookstore/lstm_1_2_t=360.jpg, id=192, 90.3375pt x 69.3792pt>
 File: ./figures/bookstore/lstm_1_2_t=360.jpg Graphic file (type jpg)
 
 <use ./figures/bookstore/lstm_1_2_t=360.jpg>
 Package pdftex.def Info: ./figures/bookstore/lstm_1_2_t=360.jpg used on input l
 ine 666.
-(pdftex.def)             Requested size: 72.84824pt x 55.80235pt.
+(pdftex.def)             Requested size: 72.84824pt x 55.94804pt.
 
 <./figures/bookstore/rand_1_2_t=50.jpg, id=193, 90.3375pt x 69.55988pt>
 File: ./figures/bookstore/rand_1_2_t=50.jpg Graphic file (type jpg)
@@ -1252,11 +1251,11 @@ Overfull \hbox (3.5952pt too wide) in paragraph at lines 917--924
  []
 
 Package epstopdf Info: Source file: <./figures/the_results.eps>
-(epstopdf)                    date: 2017-05-07 09:01:57
+(epstopdf)                    date: 2017-05-08 18:11:52
 (epstopdf)                    size: 36220 bytes
 (epstopdf)             Output file: <./figures/the_results-eps-converted-to.pdf
 >
-(epstopdf)                    date: 2017-05-07 09:01:57
+(epstopdf)                    date: 2017-05-08 18:11:52
 (epstopdf)                    size: 21234 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figures/the_results-eps-
 converted-to.pdf ./figures/the_results.eps>
@@ -1270,11 +1269,11 @@ Package pdftex.def Info: ./figures/the_results-eps-converted-to.pdf used on inp
 ut line 930.
 (pdftex.def)             Requested size: 221.14479pt x 165.50047pt.
 Package epstopdf Info: Source file: <./figures/MHD_results.eps>
-(epstopdf)                    date: 2017-05-07 09:01:57
+(epstopdf)                    date: 2017-05-08 18:11:52
 (epstopdf)                    size: 38593 bytes
 (epstopdf)             Output file: <./figures/MHD_results-eps-converted-to.pdf
 >
-(epstopdf)                    date: 2017-05-07 09:01:57
+(epstopdf)                    date: 2017-05-08 18:11:52
 (epstopdf)                    size: 22563 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figures/MHD_results-eps-
 converted-to.pdf ./figures/MHD_results.eps>
@@ -1331,10 +1330,10 @@ t changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1018.
  ) 
 Here is how much of TeX's memory you used:
- 20838 strings out of 493089
- 404301 string characters out of 6134842
- 463991 words of memory out of 5000000
- 23818 multiletter control sequences out of 15000+600000
+ 20836 strings out of 493089
+ 404279 string characters out of 6134842
+ 463955 words of memory out of 5000000
+ 23816 multiletter control sequences out of 15000+600000
  119373 words of font info for 141 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,22n,82p,882b,784s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1362,7 +1361,7 @@ blic/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type
 mes/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmbi8
 a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></us
 r/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on pedestrian_forecasting_iros_2017.pdf (8 pages, 1790991 bytes)
+Output written on pedestrian_forecasting_iros_2017.pdf (8 pages, 1792793 bytes)
 .
 PDF statistics:
  446 PDF objects out of 1000 (max. 8388607)

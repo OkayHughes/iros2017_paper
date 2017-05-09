@@ -35,10 +35,10 @@ We would like to begin by thanking the reviewers and the editor for their carefu
 The comments provided were incredibly helpful and insightful, and have strengthened the paper considerably.
 Based on the recommendations of the reviewers and the editor, we have made several modifications to the paper including performing additional analyses with an lstm-based approach and using the Modified Hausdorff Distance metric. 
 These additions pushed the paper beyond the eight page limit. 
-As a result we removed all proofs from the resubmitted manuscript, but have included them as instead in a supplementary technical report with our resubmission.
+As a result we removed all proofs from the resubmitted manuscript, but have included them instead in a supplementary technical report with our resubmission.
 This technical report will be posted to our websites if the paper is accepted. 
 %The changes made are presented below as a highlighted manuscript that indicates additions in green and removals in red.
-The changes made are summarized in detail below and a highlighted manuscript is attached that indicates additions in red. \textbf{This letter is largely self contained, so references here are to the bibliography in this file}.
+The changes made are summarized in detail in the letter below. Following the letter is an annotated version of the paper showing the changes made, followed by the technical report. \textbf{This letter is largely self contained, so references here are to the bibliography in this document}.
 % See the response to reviewers for a detailed breakdown of the changes made.
 
 \section*{Reviewer 1}
@@ -112,7 +112,7 @@ We have included the following passage to explain both metrics in the revised su
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\textwidth]{figures/mhd_results.eps}
-	\caption{A comparison of the Modified Hausdorff Distance from the ground truth of the pedestrian to a 1000 point samples from each distribution. The method from \cite{Alahi2016} does well at short time scales since it places a highly confident distribution at the given initial position of the pedestrian, but the method developed in this paper outperforms all others at intermediate times. At longer timescales the MHD to the trajectory of most algorithms converges. \cite{Kitani2012}, which requires the end point of each trajectory, outperforms all other algorithms which assume that the end point of the trajectory is unknown.}
+	\caption{A comparison of the MHD from the ground truth of the pedestrian to a 1000 point samples from each distribution. The method from \cite{Alahi2016} does well at short time scales since it places a highly confident distribution at the given initial position of the pedestrian, but the method developed in this paper outperforms all others at intermediate times. At longer timescales the MHD to the trajectory of most algorithms converges. \cite{Kitani2012}, which requires the end point of each trajectory, outperforms all other algorithms which assume that the end point of the trajectory is unknown.}
    \reversemarginpar\marginnote{\#4.8}
 	\label{MHD}
 \end{figure}
@@ -163,7 +163,7 @@ Our algorithm trains on each scene independently, so clustering, vector field le
 To make this more clear, we added the following text to the paper:
 
 \reversemarginpar\marginnote{\#4.2}
-\response{We did a 2-fold cross validation by using 20\% of the data for testing and the remainder for training within each scene. 
+\response{We performed a 2-fold cross validation by using 20\% of the data for testing and the remainder for training within each scene. 
 We learned separate collections of vector fields and model parameters for each fold on all of the four scenes on which we tested.}
 
 
@@ -180,7 +180,7 @@ We then define our distance measure as $d(A, B) :=  \min \left\{ d_e(\mathbf{a}_
 We have included the following clarification:
 
 \reversemarginpar\marginnote{\#4.1}
-\response{To do, this we use a clustering algorithm on the trajectories using Affinity Propagation \cite{FreyDueck2007} and a custom distance measure defined on the endpoints of trajectories. 
+\response{To do this, we use a clustering algorithm on the trajectories using Affinity Propagation \cite{FreyDueck2007} and a custom distance measure defined on the endpoints of trajectories. 
 	Let one trajectory $A$ start at $(x_{A,\mathrm{start}}, y_{A,\mathrm{start}})$ and end at  $(x_{A,\mathrm{end}}, y_{A,\mathrm{end}})$, and another trajectory $B$ start at $(x_{B,\mathrm{start}}, y_{B,\mathrm{start}})$ and end at $(x_{B,\mathrm{end}}, y_{B,\mathrm{end}})$ . 
 	We define the points $\mathbf{a}_1 = (x_{A, \mathrm{start}}, y_{A, \mathrm{start}}, x_{A, \mathrm{end}}, y_{A, \mathrm{end}})$, $\mathbf{a}_2 = (x_{A, \mathrm{end}}, y_{A, \mathrm{end}}, x_{A, \mathrm{start}}, y_{A, \mathrm{start}})$, and $\mathbf{b} = (x_{B, \mathrm{start}}, y_{B, \mathrm{start}}, x_{B, \mathrm{end}}, y_{B, \mathrm{end}})$. 
 	We then define our distance measure as $d(A, B) :=  \min \left\{ d_e(\mathbf{a}_1, \mathbf{b}), d_e(\mathbf{a}_2, \mathbf{b}) \right\}$, for the euclidean distance $d_e$ in $\mathbb{R}^4$. 
@@ -203,7 +203,7 @@ We agree that this adds to the paper, thank you for the suggestion.
 We added the following section to our literature review to reflect the relevant work:
 
 \reversemarginpar\marginnote{\#1.1}
-	\response{On the other hand, many authors have approached pedestrian forecasting by deriving their motion model from interactions between pedestrians using physically motivated methods \cite{Helbing1995,Xu2012}. 
+	\response{Many authors have approached pedestrian forecasting by deriving their motion model from interactions between pedestrians using physically motivated methods \cite{Helbing1995,Xu2012}. 
 	Several models derive their motion models from \cite{Helbing1995} by incorporating collision avoidance through an interaction potential \cite{Pellegrini2009,Yamaguchi2011,Yi2016}. 
 	However this method suffers from not planning for other pedestrian positions at future times. 
 	Others take optical flow as input \cite{Hospedales2009,Wang2009,Emonet2011}.
@@ -211,7 +211,7 @@ We added the following section to our literature review to reflect the relevant 
 	 These models are not agent based, and the lack of an explicit motion model limits their predictive power. 
 	 Recently methods have been developed to predict trajectories by introducing and sampling Anticipatory Temporal Conditional Random Fields which incorporate learned affordances for humans and objects based on observed objectives within the scene \cite{Koppula2016}. 
 	 Others create agent-based models based on Gaussian Processes, though they suffer issues when trained on discretized trajectories \cite{Tay2008,Wang2008,Trautman2015}. 
-	Most recently a method using Long Short-Term Memory (lstm) to learn pedestrian motion models without making assumptions about the manner in which agents interact and is the state-of-the-art algorithm for socially based models while also having a quick run time \cite{Alahi2016}.}
+	Most recently a method using Long Short-Term Memory (lstm) to learn pedestrian motion models without making assumptions about the manner in which agents interact and is the state-of-the-art algorithm for socially based models while also having a rapid computation time \cite{Alahi2016}.}
 
 \begin{item}
 \textbf{Furthermore a comprehensive review on trajectory clustering algorithms
@@ -431,7 +431,7 @@ forecasting in novel scenes.}
 
 Thank you for your comment. 
 Though this was not the focus of this paper, the low-dimensional parameterization of the vector fields make transfer learning more amenable. 
-As it is, this is as an immediate avenue for future work which we describe in the following addition to the text: 
+As it is, this is an immediate avenue for future work which we describe in the following addition to the text: 
 \reversemarginpar\marginnote{\#5.2}
 \response{We also plan to explore transfer learning using scene segmentation, as well as the semantic context descriptors and routing scores to show how vector fields can be transferred to novel scenes. It appears that the low-order parameterization and unit-length vector field of our model, make it amenable to the methods developed in \cite{Ballan2016}.}
 
