@@ -1,0 +1,143 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{#1}
+\csname url@rmstyle\endcsname
+\providecommand{\newblock}{\relax}
+\providecommand{\bibinfo}[2]{#2}
+\providecommand\BIBentrySTDinterwordspacing{\spaceskip=0pt\relax}
+\providecommand\BIBentryALTinterwordstretchfactor{4}
+\providecommand\BIBentryALTinterwordspacing{\spaceskip=\fontdimen2\font plus
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
+  \fontdimen4\font\relax}
+\providecommand\BIBforeignlanguage[2]{{%
+\expandafter\ifx\csname l@#1\endcsname\relax
+\typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
+\typeout{** loaded for the language `#1'. Using the pattern for}%
+\typeout{** the default language instead.}%
+\else
+\language=\csname l@#1\endcsname
+\fi
+#2}}
+
+\bibitem{Kitani2012}
+K.~M. Kitani, B.~D. Ziebart, J.~A. Bagnell, and M.~Hebert, \emph{Activity
+  Forecasting}.\hskip 1em plus 0.5em minus 0.4em\relax Berlin, Heidelberg:
+  Springer Berlin Heidelberg, 2012, pp. 201--214.
+
+\bibitem{Karasev2016}
+V.~Karasev, A.~Ayvaci, B.~Heisele, and S.~Soatto, ``Intent-aware long-term
+  prediction of pedestrian motion,'' \emph{Proceedings of the International
+  Conference on Robotics and Automation (ICRA)}, May 2016.
+
+\bibitem{Robicquet2016}
+\BIBentryALTinterwordspacing
+A.~Robicquet, A.~Sadeghian, A.~Alahi, and S.~Savarese, \emph{Learning Social
+  Etiquette: Human Trajectory Understanding In Crowded Scenes}.\hskip 1em plus
+  0.5em minus 0.4em\relax Cham: Springer International Publishing, 2016, pp.
+  549--565. [Online]. Available:
+  \url{http://dx.doi.org/10.1007/978-3-319-46484-8\_33}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Dubuisson1994}
+M.-P. Dubuisson and A.~K. Jain, ``A modified hausdorff distance for object
+  matching,'' in \emph{Pattern Recognition, 1994. Vol. 1-Conference A: Computer
+  Vision \& Image Processing., Proceedings of the 12th IAPR International
+  Conference on}, vol.~1.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 1994,
+  pp. 566--568.
+
+\bibitem{Alahi2016}
+A.~Alahi, K.~Goel, V.~Ramanathan, A.~Robicquet, L.~Fei-Fei, and S.~Savarese,
+  ``Social lstm: Human trajectory prediction in crowded spaces,'' in
+  \emph{Proceedings of the IEEE Conference on Computer Vision and Pattern
+  Recognition}, 2016, pp. 961--971.
+
+\bibitem{Helbing1995}
+D.~Helbing and P.~Molnar, ``Social force model for pedestrian dynamics,''
+  \emph{Physical review E}, vol.~51, no.~5, p. 4282, 1995.
+
+\bibitem{Morris2009}
+B.~Morris and M.~Trivedi, ``Learning trajectory patterns by clustering:
+  Experimental studies and comparative evaluation,'' in \emph{Computer Vision
+  and Pattern Recognition, 2009. CVPR 2009. IEEE Conference on}.\hskip 1em plus
+  0.5em minus 0.4em\relax IEEE, 2009, pp. 312--319.
+
+\bibitem{FreyDueck2007}
+B.~J. Frey and D.~Dueck, ``Clustering by passing messages between data
+  points,'' \emph{Science}, vol. 315, no. 5814, pp. 972--976, 2007.
+
+\bibitem{Lee2007}
+J.-G. Lee, J.~Han, and K.-Y. Whang, ``Trajectory clustering: a
+  partition-and-group framework,'' in \emph{Proceedings of the 2007 ACM SIGMOD
+  international conference on Management of data}.\hskip 1em plus 0.5em minus
+  0.4em\relax ACM, 2007, pp. 593--604.
+
+\bibitem{Xu2012}
+Y.~Xu and H.-J. Huang, ``Simulation of exit choosing in pedestrian evacuation
+  with consideration of the direction visual field,'' \emph{Physica A:
+  Statistical Mechanics and its Applications}, vol. 391, no.~4, pp. 991--1000,
+  2012.
+
+\bibitem{Pellegrini2009}
+S.~Pellegrini, A.~Ess, K.~Schindler, and L.~Van~Gool, ``You'll never walk
+  alone: Modeling social behavior for multi-target tracking,'' in
+  \emph{Computer Vision, 2009 IEEE 12th International Conference on}.\hskip 1em
+  plus 0.5em minus 0.4em\relax IEEE, 2009, pp. 261--268.
+
+\bibitem{Yamaguchi2011}
+K.~Yamaguchi, A.~C. Berg, L.~E. Ortiz, and T.~L. Berg, ``Who are you with and
+  where are you going?'' in \emph{Computer Vision and Pattern Recognition
+  (CVPR), 2011 IEEE Conference on}.\hskip 1em plus 0.5em minus 0.4em\relax
+  IEEE, 2011, pp. 1345--1352.
+
+\bibitem{Yi2016}
+S.~Yi, H.~Li, and X.~Wang, ``Pedestrian behavior modeling from stationary
+  crowds with applications to intelligent surveillance,'' \emph{IEEE
+  transactions on image processing}, vol.~25, no.~9, pp. 4354--4368, 2016.
+
+\bibitem{Hospedales2009}
+T.~Hospedales, S.~Gong, and T.~Xiang, ``A markov clustering topic model for
+  mining behaviour in video,'' in \emph{Computer Vision, 2009 IEEE 12th
+  International Conference on}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE,
+  2009, pp. 1165--1172.
+
+\bibitem{Wang2009}
+X.~Wang, X.~Ma, and W.~E.~L. Grimson, ``Unsupervised activity perception in
+  crowded and complicated scenes using hierarchical bayesian models,''
+  \emph{IEEE Transactions on pattern analysis and machine intelligence},
+  vol.~31, no.~3, pp. 539--555, 2009.
+
+\bibitem{Emonet2011}
+R.~Emonet, J.~Varadarajan, and J.-M. Odobez, ``Extracting and locating temporal
+  motifs in video scenes using a hierarchical non parametric bayesian model,''
+  in \emph{Computer Vision and Pattern Recognition (CVPR), 2011 IEEE Conference
+  on}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2011, pp. 3233--3240.
+
+\bibitem{Koppula2016}
+H.~S. Koppula and A.~Saxena, ``Anticipating human activities using object
+  affordances for reactive robotic response,'' \emph{IEEE transactions on
+  pattern analysis and machine intelligence}, vol.~38, no.~1, pp. 14--29, 2016.
+
+\bibitem{Tay2008}
+M.~Tay and C.~Laugier, ``Modelling smooth paths using gaussian processes,'' in
+  \emph{Field and Service Robotics}.\hskip 1em plus 0.5em minus 0.4em\relax
+  Springer, 2008, pp. 381--390.
+
+\bibitem{Wang2008}
+J.~M. Wang, D.~J. Fleet, and A.~Hertzmann, ``Gaussian process dynamical models
+  for human motion,'' \emph{IEEE transactions on pattern analysis and machine
+  intelligence}, vol.~30, no.~2, pp. 283--298, 2008.
+
+\bibitem{Trautman2015}
+P.~Trautman, J.~Ma, R.~M. Murray, and A.~Krause, ``Robot navigation in dense
+  human crowds: Statistical models and experimental studies of human--robot
+  cooperation,'' \emph{The International Journal of Robotics Research},
+  vol.~34, no.~3, pp. 335--356, 2015.
+
+\bibitem{Ballan2016}
+\BIBentryALTinterwordspacing
+L.~Ballan, F.~Castaldo, A.~Alahi, F.~Palmieri, and S.~Savarese, ``Knowledge
+  transfer for scene-specific motion prediction,'' in \emph{Proc. of European
+  Conference on Computer Vision (ECCV)}, Amsterdam, Netherlands, October 2016.
+  [Online]. Available: \url{http://arxiv.org/abs/1603.06987}
+\BIBentrySTDinterwordspacing
+
+\end{thebibliography}
