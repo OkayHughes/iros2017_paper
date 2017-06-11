@@ -177,4 +177,17 @@ J.-G. Lee, J.~Han, and K.-Y. Whang, ``Trajectory clustering: a
   international conference on Management of data}.\hskip 1em plus 0.5em minus
   0.4em\relax ACM, 2007, pp. 593--604.
 
+\bibitem{Judd2009}
+T.~Judd, K.~Ehinger, F.~Durand, and A.~Torralba, ``Learning to predict where
+  humans look,'' in \emph{Computer Vision, 2009 IEEE 12th international
+  conference on}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2009, pp.
+  2106--2113.
+
+\bibitem{Dubuisson1994}
+M.-P. Dubuisson and A.~K. Jain, ``A modified hausdorff distance for object
+  matching,'' in \emph{Pattern Recognition, 1994. Vol. 1-Conference A: Computer
+  Vision \& Image Processing., Proceedings of the 12th IAPR International
+  Conference on}, vol.~1.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 1994,
+  pp. 566--568.
+
 \end{thebibliography}

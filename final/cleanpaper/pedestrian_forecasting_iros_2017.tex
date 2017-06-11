@@ -1,8 +1,8 @@
-\documentclass[letterpaper,10pt,conference]{ieeeconf}
+\documentclass[letterpaper,10pt,conference]{ieeetran}
 %\usepackage{times}
 
 \IEEEoverridecommandlockouts 
-\overrideIEEEmargins   % Needed to meet printer requirements.
+%\overrideIEEEmargins   % Needed to meet printer requirements.
 \usepackage[T1]{fontenc}
 
 %  For math environment 
@@ -155,7 +155,7 @@ The speed of this computation, makes the algorithm of \cite{Kitani2012} a reason
 This approach has been generalized in a variety of ways.
 For example, time-dependent information, such as traffic signals, are incorporated in \cite{Karasev2016}, by relaxing the Markov property and considering a switched Markov process.
 Other generalizations include replacing the finite-state space with a continuous one, and using a Markov jump process in the motion model.
-Unfortunately the desired posteriors are difficult to compute in closed form, and as a result a sampling based method.
+Unfortunately the desired posteriors are difficult to compute in closed form, and as a result use sampling based methods.
 The resulting accuracy of such methods, which can come at a large computational expense, can only be known in a probabilistic sense in that the error bounds are themselves random variables.
 %Moreover, accuracy can come at a large computational expense.
 % which is prohibitive during real-time control.
@@ -184,7 +184,7 @@ Many have approached pedestrian forecasting by deriving their motion model from 
 	 These models are not agent based, and the lack of an explicit motion model limits their predictive power. 
 	 Recently methods have been developed to predict trajectories by introducing and sampling Anticipatory Temporal Conditional Random Fields which incorporate learned affordances based on observed objectives within the scene \cite{Koppula2016}. 
 	 Others create agent-based models based on Gaussian Processes, though they suffer issues when trained on discretized trajectories \cite{Tay2008,Wang2008,Trautman2015}. 
-	Most recently a method using Long Short-Term Memory (lstm) to learn pedestrian motion models without making assumptions about the manner in which agents interact is the state-of-the-art algorithm for socially based models and has a rapid computation time \cite{Alahi2016}.
+	Most recently a method using Long Short-Term Memory (LSTM) to learn pedestrian motion models without making assumptions about the manner in which agents interact is the state-of-the-art algorithm for socially based models and has a rapid computation time \cite{Alahi2016}.
 
 \subsection{Contributions}
 
@@ -892,11 +892,12 @@ Because our predictions all share the same scale, we amalgamate all of the predi
 In our analysis, we sought a metric that evaluated the utility of prediction algorithms in the autonomous vehicle context. 
 	In this instance it is critical that the generated set of predictions contains the ground-truth observed trajectory while including as few false positive detections as possible.
 	ROC curves which plot the true positive rate (i.e. the proportion of the ground truth trajectory that is correctly identified) against the false positive rate (i.e. the proportion of the generated set that does not correspond to the ground truth trajectory), evaluate this aforementioned safety criteria for autonomous vehicles exactly. 
+	In order to generate true positive rate and false positive rate, a probability distribution has to be thresholded to yield a binary map. 
+	Each chosen threshold creates a point on the ROC curve. We treat every value of each bounding box as a threshold.
 	The Area Under the Curve (AUC) is a standard measure of the quality of a predictor.  
-	The closer that this AUC is to one, the better the prediction algorithm.
-	Figure \ref{fig:auc_vs_time} shows the analysis of the AUC of each algorithm versus time. 
+	The closer that this AUC is to one, the better the prediction algorithm. Each method of generating thresholds creates a different AUC, ours in particular corresponds to the AUC variant from \cite{Judd2009}. Figure \ref{fig:auc_vs_time} shows the analysis of the AUC of each algorithm versus time. 
 	
-	In addition, we evaluated the Modified Hausdorff Distance (MHD) from the ground truth trajectory to a sample from the predictions at each time to provide a geometric measure of how accurate the predictions are. 
+	In addition, we evaluated the Modified Hausdorff Distance (MHD) \cite{Dubuisson1994} from the ground truth trajectory to a sample from the predictions at each time to provide a geometric measure of how accurate the predictions are. 
 	Figure \ref{fig:mhd_vs_time} shows MHD plotted against time.
 	Though popular in evaluating the geometric proximity of the ground truth trajectory and a predicted set, it is not the most appropriate way to evaluate the utility of an algorithm in the autonomous vehicle context. 
 	Specifically consider the instance of a generated set of predictions which does not contain the ground-truth observed trajectory but is close to the ground-truth trajectory geometrically. 
