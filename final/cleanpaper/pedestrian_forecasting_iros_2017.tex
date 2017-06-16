@@ -56,7 +56,7 @@
 \author{Henry O. Jacobs, Owen K. Hughes, Matthew Johnson-Roberson, and Ram Vasudevan
  \thanks{ H.O. Jacobs, O. Hughes, M. Johnson-Roberson, and R.~Vasudevan are with the University of Michigan, Ann Arbor, MI 48109
 {\scriptsize \{\texttt{hojacobs,owhughes,mattjr,ramv}\}~\texttt{@umich.edu}}}
-\thanks{This work was supported by Ford Motor Company.}
+\thanks{This material is based upon work supported by Ford Motor Company and the National Science Foundation under Grant No. 1562612.}
 }
 
 % You will get a Paper-ID when submitting a pdf file to the conference system
@@ -160,8 +160,8 @@ The resulting accuracy of such methods, which can come at a large computational 
 %Moreover, accuracy can come at a large computational expense.
 % which is prohibitive during real-time control.
 
-One limitation of IOC models occurs in cases where there are locally optimal solutions between a start and end goals which can yield non-robust and imprecise behavior.
-This can occur when agents make sharp turns due to intermediate criteria on the way toward reaching their final destination.
+A limitation of IOC models occurs when there are locally optimal solutions between a start and end goals that can yield non-robust and imprecise behavior.
+This occurs when agents make sharp turns due to intermediate criteria on the way toward reaching their final destination.
 To address this, \cite{Ballan2016} adopt an empiricists approach, computing ``turning maps'' and attempting to infer how agents behave in a given patch.
 The motion model is a Markov jump process and the relevant posteriors are approximated using sample based techniques similar to \cite{Karasev2016}.
 The objective of \cite{Ballan2016} is not only prediction, but the development of a motion model learned on one scene that could then subsequently be transferred to other scenes. 
@@ -182,9 +182,9 @@ Many have approached pedestrian forecasting by deriving their motion model from 
 	Others take optical flow as input \cite{Hospedales2009,Wang2009,Emonet2011}.
 	These approaches use variants of Hierarchical Dirichlet Processes on discretized optical flow to determine temporal motifs (i.e. classes of motion within the scene), or on a Markov model. 
 	 These models are not agent based, and the lack of an explicit motion model limits their predictive power. 
-	 Recently methods have been developed to predict trajectories by introducing and sampling Anticipatory Temporal Conditional Random Fields which incorporate learned affordances based on observed objectives within the scene \cite{Koppula2016}. 
-	 Others create agent-based models based on Gaussian Processes, though they suffer issues when trained on discretized trajectories \cite{Tay2008,Wang2008,Trautman2015}. 
-	Most recently a method using Long Short-Term Memory (LSTM) to learn pedestrian motion models without making assumptions about the manner in which agents interact is the state-of-the-art algorithm for socially based models and has a rapid computation time \cite{Alahi2016}.
+	 Recently, methods have been developed to predict trajectories by introducing and sampling Anticipatory Temporal Conditional Random Fields which incorporate learned affordances based on observed objectives within the scene \cite{Koppula2016}. 
+	 Others create agent-based models based on Gaussian Processes which perform poorly when trained on discretized trajectories \cite{Tay2008,Wang2008,Trautman2015}. 
+	Most recently, a method using Long Short-Term Memory (LSTM) was proposed to learn pedestrian motion models without making assumptions about the manner in which agents interact while having a rapid computation time \cite{Alahi2016}.
 
 \subsection{Contributions}
 
@@ -249,7 +249,7 @@ If the agent is of nonlinear type, then we assume the dynamics take the form:
 \begin{align}n
 	\frac{d \check{x}_t}{dt} = s \cdot X_k(\check{x}_t) \label{eq:ode}
 \end{align}
-where $X_k$ is a vector-field\footnote{A vector-field is an assignment of a velocity to each position in some space.  A vector-field on $\mathbb{R}^n$ is a map from $\mathbb{R}^n \to \mathbb{R}^n$.} drawn from a finite collection $\{X_1, \dots, X_n\}$, and $s \in \mathbb{R}$.
+where $X_k$ is a vector-field drawn from a finite collection $\{X_1, \dots, X_n\}$, and $s \in \mathbb{R}$.
 More specifically, we assume that each $X_k$ has the property that $\| X_k(x) \| = 1$ for all $x \in D$.
 This property ensures that speed is constant in time.
 % and it has the further advantage of being the (local) generator of solutions to an optimal navigation problem (see Appendix \ref{app:ioc}).
@@ -311,6 +311,7 @@ This section details how the modeling of the agent's motion as satisfying an ODE
 To begin, rather than focusing on computing $\rho_t(x_t)$, we describe how to compute the joint probability $\Pr( x_t , \hat{x}_0, \hat{v}_0)$.
 We can obtain $\rho_t(x_t)$ by normalizing $\Pr( x_t , \hat{x}_0, \hat{v}_0)$ with respect to integration over $x_t$.
 We can approximate the integration over $s$ in \eqref{eq:decomposition}, with a Riemann sum.
+Due to space limitations, the proofs of all the results presented in this section can be found in \cite{}.
 
 Let us assume that $\Pr(s \mid k)$ is compactly supported for all $k = 1,\dots,n$, and the supported is always contained
 in some interval $[ - \bar{s} , \bar{s} ]$ for some $\bar{s} > 0$.
@@ -563,10 +564,12 @@ To do, this we use a clustering algorithm on the trajectories using Affinity Pro
 	We define the points $\mathbf{a}_1 = (x_{A, \mathrm{start}}, y_{A, \mathrm{start}}, x_{A, \mathrm{end}}, y_{A, \mathrm{end}})$, $\mathbf{a}_2 = (x_{A, \mathrm{end}}, y_{A, \mathrm{end}}, x_{A, \mathrm{start}}, y_{A, \mathrm{start}})$, and $\mathbf{b} = (x_{B, \mathrm{start}}, y_{B, \mathrm{start}}, x_{B, \mathrm{end}}, y_{B, \mathrm{end}})$. 
 	We then define our distance measure as $d(A, B) :=  \min \left\{ d_e(\mathbf{a}_1, \mathbf{b}), d_e(\mathbf{a}_2, \mathbf{b}) \right\}$, for the euclidean distance $d_e$ in $\mathbb{R}^4$. 
 	This function measures the distance between the endpoints irrespective of their ordering, which means that a trajectory that starts from point A and ends at point B will be close to a trajectory that starts from point B and ends at point A.
-	The scale of the datasets we tested on had large enough spatial scale that clustering based on endpoints captured people moving from destination to destination, e.g. from a storefront to the sidewalk at the edge of a scene. On this dataset, distance functions that utilize the entire trajectory such as DTW, LCSS, and PF from \cite{Morris2009} and TRACLUS from \cite{Lee2007} did not identify pedestrian intent as well as our method did. While it is unclear why TRACLUS underperformed on our data, PF, DTW, and LCSS appeared to put trajectories that were very similar for periods of time together even though they had very different intents.
+	The scale of the datasets we tested on had large enough spatial scale that clustering based on endpoints captured people moving from destination to destination, e.g. from a storefront to the sidewalk at the edge of a scene. 
+	On this dataset, distance functions that utilize the entire trajectory did not identify pedestrian intent as well as our method \cite{Morris2009,Lee2007}. 
+	It appears the metrics proposed in \cite{Morris2009} put trajectories that were similar for periods of time together even though they had different intents.
+	
 	This clustering of the end-points induces a clustering of the trajectories.
   Suppose we obtain clusters $S_1, \dots, S_n$ consisting of trajectories from our data set, as well as a set of unclassified trajectories, $S_0$.
-  
   For each set $S_k$ we learn a vector-field that is approximately compatible with that set.
   %We'd like to only consider vector-fields who's vectors have unit magnitude because we observe many of the trajectories in the data appear to have a roughly constant speed.
   Since most trajectories appearing in the dataset have roughly constant speed, we chose a vector-field that has unit magnitude. 
@@ -881,7 +884,7 @@ Our analysis was conducted on the Coupa, Bookstore, Death Circle, and Gates scen
 
 Note that the implementation of the algorithm in \cite{Kitani2012} required the endpoint of each test trajectory. 
 Without this information the implementation of the predictor provided by the authors devolved into a random walk.
-Neither our algorithm nor the random walk were provided this information.
+None of the other tested algorithms required this information.
 
 The output distributions of the four algorithms were compared using their integrals over the cells of a regular grid over our domain. 
 These integrals are used to visualize the distributions in Figures \ref{fig:bookstore-1-2} and \ref{fig:death-1-2}.
@@ -891,11 +894,14 @@ These integrals are used to visualize the distributions in Figures \ref{fig:book
 Because our predictions all share the same scale, we amalgamate all of the prediction and truth values for all of the simulated agents at a given time step and generate ROC curves.
 In our analysis, we sought a metric that evaluated the utility of prediction algorithms in the autonomous vehicle context. 
 	In this instance it is critical that the generated set of predictions contains the ground-truth observed trajectory while including as few false positive detections as possible.
-	ROC curves which plot the true positive rate (i.e. the proportion of the ground truth trajectory that is correctly identified) against the false positive rate (i.e. the proportion of the generated set that does not correspond to the ground truth trajectory), evaluate this aforementioned safety criteria for autonomous vehicles exactly. 
-	In order to generate true positive rate and false positive rate, a probability distribution has to be thresholded to yield a binary map. 
-	Each chosen threshold creates a point on the ROC curve. We treat every value of each bounding box as a threshold.
+	ROC curves which plot the true positive rate against the false positive rate evaluate this aforementioned safety criteria for autonomous vehicles exactly. 
+	To generate the true positive rate and false positive rate, a probability distribution has to be thresholded to yield a binary map. 
+	Each chosen threshold creates a point on the ROC curve. 
+	% We treat every value of each bounding box as a threshold.
 	The Area Under the Curve (AUC) is a standard measure of the quality of a predictor.  
-	The closer that this AUC is to one, the better the prediction algorithm. Each method of generating thresholds creates a different AUC, ours in particular corresponds to the AUC variant from \cite{Judd2009}. Figure \ref{fig:auc_vs_time} shows the analysis of the AUC of each algorithm versus time. 
+	The closer that this AUC is to one, the better the prediction algorithm. 
+	%Each method of generating thresholds creates a different AUC, ours in particular corresponds to the AUC variant from \cite{Judd2009}. 
+	Figure \ref{fig:auc_vs_time} illustrates the AUC of each algorithm versus time. 
 	
 	In addition, we evaluated the Modified Hausdorff Distance (MHD) \cite{Dubuisson1994} from the ground truth trajectory to a sample from the predictions at each time to provide a geometric measure of how accurate the predictions are. 
 	Figure \ref{fig:mhd_vs_time} shows MHD plotted against time.
@@ -957,7 +963,8 @@ The algorithm in \cite{Kitani2012} was timed with minimal modification using the
 \label{sec:conclusion}
 This paper presents a real-time approach to probabilistic pedestrian modeling. 
 We demonstrate the ability to accurately predict the final location of a pedestrian with superior accuracy compared to a state-of-the-art with additional contributions in two critical areas: 1) prediction speed is efficient to enable real-time control and 2) our error bound on the predictions accurately reflects potential paths for the human. 
-These two features have great utility for robotic applications, and we see the integration of such techniques with autonomous system control as one pathway to enable safe operation in human-robot spaces. 
+These two features are critical in robotic applications.
+%, and we see the integration of such techniques with autonomous system control as one pathway to enable safe operation in human-robot spaces. 
 
 %We plan to explore the optimization of the naive python implementation using GPU parallelization to further increase speed and ease integration into system's control loop. 
 Social forces can be incorporated into this model by
