@@ -897,9 +897,9 @@ In our analysis, we sought a metric that evaluated the utility of prediction alg
 	ROC curves which plot the true positive rate against the false positive rate evaluate this aforementioned safety criteria for autonomous vehicles exactly. 
 	To generate the true positive rate and false positive rate, a probability distribution has to be thresholded to yield a binary map. 
 	Each chosen threshold creates a point on the ROC curve. 
-	We treat every value of each bounding box as a threshold.
-	The Area Under the Curve (AUC) is a standard measure of the quality of a predictor.  
-	The closer that this AUC is to one, the better the prediction algorithm. 
+	%We treat every value of each bounding box as a threshold.
+	The Area Under the Curve (AUC) is a standard measure of the quality of a predictor \cite{Judd2009}.  
+	The closer that this AUC is to one, the better the prediction algorithm .
 	%Each method of generating thresholds creates a different AUC, ours in particular corresponds to the AUC variant from \cite{Judd2009}. 
 	Figure \ref{fig:auc_vs_time} illustrates the AUC of each algorithm versus time. 
 	

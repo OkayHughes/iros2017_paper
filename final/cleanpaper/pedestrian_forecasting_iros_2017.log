@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  16 JUN 2017 21:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  16 JUN 2017 21:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1280,7 +1280,11 @@ File: ./figures/comparison/rand_death_1_2_t=370.jpg Graphic file (type jpg)
 Package pdftex.def Info: ./figures/comparison/rand_death_1_2_t=370.jpg used on 
 input line 761.
 (pdftex.def)             Requested size: 74.3041pt x 57.06068pt.
- [6]
+
+
+LaTeX Warning: Citation `Judd2009' on page 6 undefined on input line 901.
+
+[6]
 Package epstopdf Info: Source file: <./figures/the_results.eps>
 (epstopdf)                    date: 2017-05-06 19:46:48
 (epstopdf)                    size: 35819 bytes
@@ -1293,7 +1297,7 @@ converted-to.pdf ./figures/the_results.eps>
 (epstopdf)             \includegraphics on input line 937.
 Package epstopdf Info: Output file is already uptodate.
 
-<./figures/the_results-eps-converted-to.pdf, id=287, 462.72874pt x 346.29375pt>
+<./figures/the_results-eps-converted-to.pdf, id=288, 462.72874pt x 346.29375pt>
 File: ./figures/the_results-eps-converted-to.pdf Graphic file (type pdf)
 <use ./figures/the_results-eps-converted-to.pdf>
 Package pdftex.def Info: ./figures/the_results-eps-converted-to.pdf used on inp
@@ -1311,7 +1315,7 @@ converted-to.pdf ./figures/MHD_results.eps>
 (epstopdf)             \includegraphics on input line 945.
 Package epstopdf Info: Output file is already uptodate.
 
-<./figures/MHD_results-eps-converted-to.pdf, id=292, 578.16pt x 433.62pt>
+<./figures/MHD_results-eps-converted-to.pdf, id=293, 578.16pt x 433.62pt>
 File: ./figures/MHD_results-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./figures/MHD_results-eps-converted-to.pdf>
@@ -1332,7 +1336,7 @@ ison/lstm_1_2_t=100.jpg> <./figures/comparison/lstm_1_2_t=300.jpg> <./figures/c
 omparison/lstm_1_2_t=380.jpg> <./figures/comparison/rand_death_1_2_t=70.jpg> <.
 /figures/comparison/rand_death_1_2_t=250.jpg> <./figures/comparison/rand_death_
 1_2_t=370.jpg> <./figures/the_results-eps-converted-to.pdf>] (./pedestrian_fore
-casting_iros_2017.bbl [8 <./figures/MHD_results-eps-converted-to.pdf>])
+casting_iros_2017.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -1344,25 +1348,28 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
+[8 <./figures/MHD_results-eps-converted-to.pdf>]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1026.
-[9
-
-]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 1026.
- (./pedestrian_forecasting_iros_2017.aux)
+
+(./pedestrian_forecasting_iros_2017.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1026.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1026.
 
 Package rerunfilecheck Info: File `pedestrian_forecasting_iros_2017.out' has no
 t changed.
 (rerunfilecheck)             Checksum: C15FA0FDF2E41A3889D7AC72A4D18137;1095.
+
+
+LaTeX Warning: There were undefined references.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1026.
  ) 
 Here is how much of TeX's memory you used:
  21081 strings out of 493089
- 410309 string characters out of 6134842
+ 410313 string characters out of 6134842
  474442 words of memory out of 5000000
- 24059 multiletter control sequences out of 15000+600000
+ 24060 multiletter control sequences out of 15000+600000
  119373 words of font info for 141 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,22n,82p,882b,784s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1388,11 +1395,11 @@ type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/ur
 w/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/ut
 mbi8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
 </usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on pedestrian_forecasting_iros_2017.pdf (9 pages, 1782658 bytes)
+Output written on pedestrian_forecasting_iros_2017.pdf (8 pages, 1782640 bytes)
 .
 PDF statistics:
- 507 PDF objects out of 1000 (max. 8388607)
- 361 compressed objects within 4 object streams
- 91 named destinations out of 1000 (max. 500000)
+ 502 PDF objects out of 1000 (max. 8388607)
+ 357 compressed objects within 4 object streams
+ 90 named destinations out of 1000 (max. 500000)
  305 words of extra memory for PDF output out of 10000 (max. 10000000)
 
