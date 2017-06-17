@@ -144,6 +144,10 @@ R.~Abraham, J.~E. Marsden, and T.~S. Ratiu, \emph{Manifolds, Tensor Analysis,
   and Applications}, 3rd~ed., ser. Applied Mathematical Sciences.\hskip 1em
   plus 0.5em minus 0.4em\relax Spinger, 2009, vol.~75.
 
+\bibitem{Jacobs2017}
+H.~O. Jacobs, O.~K. Hughes, M.~Johnson-Roberson, and R.~Vasudevan. Technical
+  report for real-time certified probabilistic pedestrian forecasting.
+
 \bibitem{Leveque1992}
 \BIBentryALTinterwordspacing
 R.~J. LeVeque, \emph{Numerical methods for conservation laws}, 2nd~ed., ser.
@@ -176,12 +180,6 @@ J.-G. Lee, J.~Han, and K.-Y. Whang, ``Trajectory clustering: a
   partition-and-group framework,'' in \emph{Proceedings of the 2007 ACM SIGMOD
   international conference on Management of data}.\hskip 1em plus 0.5em minus
   0.4em\relax ACM, 2007, pp. 593--604.
-
-\bibitem{Judd2009}
-T.~Judd, K.~Ehinger, F.~Durand, and A.~Torralba, ``Learning to predict where
-  humans look,'' in \emph{Computer Vision, 2009 IEEE 12th international
-  conference on}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2009, pp.
-  2106--2113.
 
 \bibitem{Dubuisson1994}
 M.-P. Dubuisson and A.~K. Jain, ``A modified hausdorff distance for object

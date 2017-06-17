@@ -36,10 +36,7 @@
 % numbers option provides compact numerical references in the text. 
 %\usepackage[numbers]{natbib}
 %\usepackage{multicol}
-\usepackage[bookmarks=true]{hyperref}
-\newcommand{\Ram}[1]{\textcolor{red}{#1}}
-\newcommand{\Hoj}[1]{\textcolor{blue}{#1}}
-\newcommand{\rtext}[1]{\textcolor{red}{#1}}
+\usepackage{hyperref}
 
 
 % Custom commands
@@ -928,7 +925,7 @@ This is despite providing the algorithm in \cite{Kitani2012} with the specific f
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.9\linewidth]{./figures/the_results.eps}
+	\includegraphics[width=0.9\linewidth]{./figures/the_results.pdf}
 	\caption{A comparison of the AUC of the various algorithms. Note that the initial dip in the performance of \cite{Kitani2012} is due to their confidence in their initial estimate. We sampled the S-LSTM \cite{Alahi2016} model $100$ times to extract a less concentrated probability distribution from their algorithm.}
 %	\normalmarginpar\marginnote{\#4.7}
 	\label{fig:auc_vs_time}
@@ -937,7 +934,7 @@ This is despite providing the algorithm in \cite{Kitani2012} with the specific f
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.9\linewidth]{./figures/MHD_results.eps}
+	\includegraphics[width=0.9\linewidth]{./figures/mhd_results.pdf}
 	\caption{A comparison of the MHD from the ground truth of the pedestrian to a 1000 point samples from each distribution. The method from \cite{Alahi2016} does well at short time scales since it places a highly confident distribution at the given initial position of the pedestrian, but the method developed in this paper outperforms all others at intermediate times. \cite{Kitani2012}, which requires the end point of each trajectory, outperforms all other algorithms at longer time scales since they assume that the end point of the trajectory is known.}
 %	\reversemarginpar\marginnote{\#4.8}
 	\label{fig:mhd_vs_time}

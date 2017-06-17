@@ -54,7 +54,7 @@
 
 %%% first author
 \author{Henry O. Jacobs, Owen K. Hughes, Matthew Johnson-Roberson, and Ram Vasudevan
- \thanks{ H.O. Jacobs, O. Hughes, M. Johnson-Roberson, and R.~Vasudevan are with the University of Michigan, Ann Arbor, MI 48109
+ \thanks{ H.O. Jacobs, O.K. Hughes, M. Johnson-Roberson, and R.~Vasudevan are with the University of Michigan, Ann Arbor, MI 48109
 {\scriptsize \{\texttt{hojacobs,owhughes,mattjr,ramv}\}~\texttt{@umich.edu}}}
 \thanks{This material is based upon work supported by Ford Motor Company and the National Science Foundation under Grant No. 1562612.}
 }
@@ -311,7 +311,7 @@ This section details how the modeling of the agent's motion as satisfying an ODE
 To begin, rather than focusing on computing $\rho_t(x_t)$, we describe how to compute the joint probability $\Pr( x_t , \hat{x}_0, \hat{v}_0)$.
 We can obtain $\rho_t(x_t)$ by normalizing $\Pr( x_t , \hat{x}_0, \hat{v}_0)$ with respect to integration over $x_t$.
 We can approximate the integration over $s$ in \eqref{eq:decomposition}, with a Riemann sum.
-Due to space limitations, the proofs of all the results presented in this section can be found in \cite{}.
+Due to space limitations, the proofs of all the results presented in this section can be found in \cite{Jacobs2017}.
 
 Let us assume that $\Pr(s \mid k)$ is compactly supported for all $k = 1,\dots,n$, and the supported is always contained
 in some interval $[ - \bar{s} , \bar{s} ]$ for some $\bar{s} > 0$.
@@ -897,7 +897,7 @@ In our analysis, we sought a metric that evaluated the utility of prediction alg
 	ROC curves which plot the true positive rate against the false positive rate evaluate this aforementioned safety criteria for autonomous vehicles exactly. 
 	To generate the true positive rate and false positive rate, a probability distribution has to be thresholded to yield a binary map. 
 	Each chosen threshold creates a point on the ROC curve. 
-	% We treat every value of each bounding box as a threshold.
+	We treat every value of each bounding box as a threshold.
 	The Area Under the Curve (AUC) is a standard measure of the quality of a predictor.  
 	The closer that this AUC is to one, the better the prediction algorithm. 
 	%Each method of generating thresholds creates a different AUC, ours in particular corresponds to the AUC variant from \cite{Judd2009}. 
