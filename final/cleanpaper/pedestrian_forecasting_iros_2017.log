@@ -1,6 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  16 JUN 2017 21:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  18 JUN 2017 09:32
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
 **pedestrian_forecasting_iros_2017.tex
 (./pedestrian_forecasting_iros_2017.tex
@@ -1282,11 +1283,11 @@ input line 761.
 (pdftex.def)             Requested size: 74.3041pt x 57.06068pt.
  [6]
 Package epstopdf Info: Source file: <./figures/the_results.eps>
-(epstopdf)                    date: 2017-05-06 19:46:48
+(epstopdf)                    date: 2017-06-16 09:56:33
 (epstopdf)                    size: 35819 bytes
 (epstopdf)             Output file: <./figures/the_results-eps-converted-to.pdf
 >
-(epstopdf)                    date: 2017-06-09 17:58:47
+(epstopdf)                    date: 2017-06-16 09:56:33
 (epstopdf)                    size: 21851 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figures/the_results-eps-
 converted-to.pdf ./figures/the_results.eps>
@@ -1300,11 +1301,11 @@ Package pdftex.def Info: ./figures/the_results-eps-converted-to.pdf used on inp
 ut line 937.
 (pdftex.def)             Requested size: 226.79846pt x 169.73297pt.
 Package epstopdf Info: Source file: <./figures/MHD_results.eps>
-(epstopdf)                    date: 2017-06-09 17:51:35
+(epstopdf)                    date: 2017-06-16 09:56:33
 (epstopdf)                    size: 39003 bytes
 (epstopdf)             Output file: <./figures/MHD_results-eps-converted-to.pdf
 >
-(epstopdf)                    date: 2017-06-09 17:58:47
+(epstopdf)                    date: 2017-06-16 09:56:33
 (epstopdf)                    size: 23716 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figures/MHD_results-eps-
 converted-to.pdf ./figures/MHD_results.eps>
@@ -1387,7 +1388,7 @@ type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/ur
 w/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/ut
 mbi8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
 </usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on pedestrian_forecasting_iros_2017.pdf (8 pages, 1782568 bytes)
+Output written on pedestrian_forecasting_iros_2017.pdf (8 pages, 1782791 bytes)
 .
 PDF statistics:
  505 PDF objects out of 1000 (max. 8388607)

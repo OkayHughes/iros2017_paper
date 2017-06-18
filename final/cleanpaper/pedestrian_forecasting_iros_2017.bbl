@@ -145,8 +145,9 @@ R.~Abraham, J.~E. Marsden, and T.~S. Ratiu, \emph{Manifolds, Tensor Analysis,
   plus 0.5em minus 0.4em\relax Spinger, 2009, vol.~75.
 
 \bibitem{Jacobs2017}
-H.~O. Jacobs, O.~K. Hughes, M.~Johnson-Roberson, and R.~Vasudevan. Technical
-  report for real-time certified probabilistic pedestrian forecasting.
+H.~O. Jacobs, O.~K. Hughes, M.~Johnson-Roberson, and R.~Vasudevan, ``Technical
+  report for real-time certified probabilistic pedestrian forecasting,''
+  \emph{arXiv preprint}, 2017.
 
 \bibitem{Leveque1992}
 \BIBentryALTinterwordspacing
