@@ -541,7 +541,6 @@ If the posteriors represented by the arrows in \eqref{eq:pgm} are efficiently co
 %\end{thm}
 
 \begin{algorithm}[b]
-
 		  \caption{Algorithm to compute  $\rho_t$ for each $t \in  \{\Delta t, 2 \Delta t, \dots, N_t \Delta t$\}.}
 		  \label{alg:1}
 		  \begin{algorithmic}[1]
@@ -886,7 +885,7 @@ We first considering the nonlinear models.
  \subsection{Evaluating Performance}
  
 This section establishes our methods performance and compares it to the model from \cite{Kitani2012}, \cite{Alahi2016}, and a random walk.
-We implement our model as well as our evaluation code in Python 2.6\footnote{https://github.com/ramvasudevan/iros2017\_pedestrian\_forecasting}.
+We implement our model as well as our evaluation code in Python 2.6\footnote{\url{https://github.com/ramvasudevan/iros2017\_pedestrian\_forecasting}}.
 We performed a 2-fold cross validation by using 20\% of the data for testing and the remainder for training within each scene. 
 	We learned separate collections of vector fields and model parameters for each fold on all of the four scenes on which we tested.
 Our analysis was conducted on the Coupa, Bookstore, Death Circle, and Gates scenes from the dataset from \cite{Robicquet2016}, with a total of 142 trajectories analyzed.
